@@ -1,0 +1,7953 @@
+﻿###########################
+# Fengtian Events
+###########################
+# Converted from KRDH by Esmaerla
+###########################
+# New Events by Flamefang
+###########################
+
+add_namespace = fengtian
+add_namespace = fengtian.informalempire
+add_namespace = fengtian.new
+add_namespace = fngwar
+add_namespace = fngpolitic
+
+country_event = { # Zhang Zuolin's decision
+	id = fengtian.1
+	title = fengtian.1.t
+	desc = fengtian.1.d
+	picture = GFX_report_event_spain_civil_war_soldiers
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = FNG
+		surrender_progress > 0.70 #changed from 60, which is 6000
+		has_war_with = QIE
+		NOT = { has_global_flag = Man_puyi}
+		NOT = {
+			QIE = { is_subject = yes }
+		}
+		date > 1936.11.10
+	}
+
+	mean_time_to_happen = {
+		days = 2
+	}
+
+	option = {
+		name = fengtian.1.a
+
+		ai_chance = { factor = 30 }
+
+		trigger = {
+			OR = {
+				is_subject_of = JAP
+				is_in_faction_with = JAP
+			}
+		}
+
+		add_political_power = -60
+	}
+
+	option = {
+		name = fengtian.1.b
+
+		ai_chance = { factor = 10 }
+
+		trigger = {
+			NOT = {
+				is_subject_of = JAP
+				is_in_faction_with = JAP
+			}
+		}
+
+		add_political_power = -60
+	}
+
+	option = {
+		name = fengtian.1.c
+
+		ai_chance = { factor = 20 }
+
+		trigger = {
+			country_exists = JAP
+			NOT = {
+				is_subject = yes
+				JAP = { is_subject = yes }
+				has_global_flag = JAP_ISO
+				JAP = { has_war = yes }
+				OR = {
+					has_government = totalist
+					has_government = radical_socialist
+					has_government = syndicalist
+				}
+				has_war_with = JAP
+				is_in_faction_with = JAP
+				is_in_faction_with = RUS
+				is_in_faction_with = SOV
+				is_in_faction_with = FRA
+				is_in_faction_with = USA
+			}
+		}
+
+		add_political_power = -60
+		hidden_effect = { JAP = { country_event = { id = fengtian.2 days = 1 }}}
+	}
+
+	option = {
+		name = fengtian.1.e
+
+		ai_chance = { factor = 20 }
+
+		trigger = {
+			OR = {
+				is_subject_of = JAP
+				is_in_faction_with = JAP
+			}
+		}
+
+		QIE = { white_peace_with_ROOT = yes }
+		GER = { white_peace_with_ROOT = yes }
+		remove_from_faction = FNG
+		end_puppet = FNG
+		hidden_effect = { JAP = { country_event = { id = fengtian.3 days = 1 }}}
+		hidden_effect = { QIE = { country_event = { id = fengtian.4 days = 1 }}}
+		add_opinion_modifier = { target = JAP modifier = FNG_LEAVES_FIGHT_JAP } # -100
+		add_opinion_modifier = { target = QIE modifier = FNG_LEAVES_FIGHT } # 50
+		add_opinion_modifier = { target = GER modifier = FNG_LEAVES_FIGHT } # 50
+		set_global_flag = MAN_leave_japan
+		if = {
+			limit = { 
+				has_idea = FNG_informal_empire_2
+			}
+			add_timed_idea = {
+				idea = FNG_Post-Colonial_Chaos_1
+				days = 30
+			}
+		}
+		
+		if = {
+			limit = {
+				has_idea = FNG_informal_empire_3
+			}
+			add_timed_idea = {
+				idea = FNG_Post-Colonial_Chaos_1
+				days = 60
+			}
+		}
+		
+		if = {
+			limit = {
+				has_idea = FNG_informal_empire_4
+			}
+			add_timed_idea = {
+				idea = FNG_Post-Colonial_Chaos_2
+				days = 45
+			}
+		}
+		
+		if = {
+			limit = {
+				has_idea = FNG_informal_empire_5
+			}
+			add_timed_idea = {
+				idea = FNG_Post-Colonial_Chaos_3
+				days = 45
+			}
+		}
+	}
+
+	option = {
+		name = fengtian.1.f
+
+		ai_chance = { factor = 30 }
+
+		hidden_effect = { QIE = { country_event = { id = fengtian.5 days = 1 }}}
+		add_opinion_modifier = { target = JAP modifier = FNG_JOINS_QIE_JAP } # -150
+		add_opinion_modifier = { target = QIE modifier = FNG_JOINS_QIE } # 100
+		add_opinion_modifier = { target = GER modifier = FNG_JOINS_QIE } # 100
+		set_global_flag = MAN_leave_japan
+		if = {
+			limit = { 
+				has_idea = FNG_informal_empire_2
+			}
+			add_timed_idea = {
+				idea = FNG_Post-Colonial_Chaos_1
+				days = 30
+			}
+		}
+		
+		if = {
+			limit = {
+				has_idea = FNG_informal_empire_3
+			}
+			add_timed_idea = {
+				idea = FNG_Post-Colonial_Chaos_1
+				days = 60
+			}
+		}
+		
+		if = {
+			limit = {
+				has_idea = FNG_informal_empire_4
+			}
+			add_timed_idea = {
+				idea = FNG_Post-Colonial_Chaos_2
+				days = 45
+			}
+		}
+		
+		if = {
+			limit = {
+				has_idea = FNG_informal_empire_5
+			}
+			add_timed_idea = {
+				idea = FNG_Post-Colonial_Chaos_3
+				days = 45
+			}
+		}
+	}
+
+	option = {
+		name = fengtian.1.g
+
+		ai_chance = { factor = 20 }
+
+		trigger = {
+			OR = {
+				is_subject_of = JAP
+				is_in_faction_with = JAP
+			}
+		}
+
+		hidden_effect = { FNG = { country_event = { id = fengtian.11 days = 1 }}}
+		add_opinion_modifier = { target = JAP modifier = FNG_HELP_QIE_JAP } # -50
+		add_opinion_modifier = { target = QIE modifier = FNG_HELP_QIE } # 50
+		add_opinion_modifier = { target = GER modifier = FNG_HELP_QIE } # 50
+	}
+}
+
+country_event = { # Manchuria wants to form an alliance
+	id = fengtian.2
+	title = fengtian.2.t
+	desc = fengtian.2.d
+	picture = GFX_report_event_spain_civil_war_soldiers
+
+	is_triggered_only = yes
+
+	option = {
+		name = fengtian.2.a
+
+		ai_chance = { factor = 95 }
+
+		if = {
+			limit = { is_in_faction = no }
+
+			create_faction = "Asian Co-Prosperity Sphere"
+		}
+
+		add_to_faction = FNG
+		add_political_power = 60
+		add_opinion_modifier = { target = FNG modifier = JAP_ALL_FNG } # 100
+	}
+
+	option = {
+		name = fengtian.2.b
+
+		ai_chance = { factor = 5 }
+
+		add_political_power = -20
+		add_opinion_modifier = { target = FNG modifier = JAP_NO_ALL_FNG } # -100
+	}
+}
+
+country_event = { # Zhang Zuolin's Betrayal
+	id = fengtian.3
+	title = fengtian.3.t
+	desc = fengtian.3.d
+	picture = GFX_report_event_spain_civil_war_soldiers
+
+	is_triggered_only = yes
+
+	option = {
+		name = fengtian.3.a
+
+		ai_chance = { factor = 70 }
+
+		declare_war_on = { target = FNG type = annex_everything	}
+		end_puppet = FNG
+		hidden_effect = { FNG = { country_event = { id = fengtian.17 days = 1 }}}
+		if = {
+			limit = { 
+				has_idea = FNG_informal_empire_2
+			}
+			add_timed_idea = {
+				idea = FNG_Post-Colonial_Chaos_1
+				days = 30
+			}
+		}
+		
+		if = {
+			limit = {
+				has_idea = FNG_informal_empire_3
+			}
+			add_timed_idea = {
+				idea = FNG_Post-Colonial_Chaos_1
+				days = 60
+			}
+		}
+		
+		if = {
+			limit = {
+				has_idea = FNG_informal_empire_4
+			}
+			add_timed_idea = {
+				idea = FNG_Post-Colonial_Chaos_2
+				days = 45
+			}
+		}
+		
+		if = {
+			limit = {
+				has_idea = FNG_informal_empire_5
+			}
+			add_timed_idea = {
+				idea = FNG_Post-Colonial_Chaos_3
+				days = 45
+			}
+		}
+	}
+
+	option = {
+		name = fengtian.3.b
+
+		ai_chance = { factor = 10 }
+
+		if = {
+			limit = {
+				has_war_with = GER
+				NOT = {
+					is_in_faction_with = FRA
+					is_in_faction_with = RUS
+					is_in_faction_with = SOV
+					is_in_faction_with = USA
+					is_in_faction_with = CAN
+				}
+			}
+
+			hidden_effect = { GER = { country_event = { id = fengtian.17 days = 1 }}}
+		}
+	}
+
+	option = {
+		name = fengtian.3.c
+
+		ai_chance = { factor = 20 }
+
+		add_political_power = -60
+	}
+}
+
+country_event = { # Zhang Zuolin has refused to fight!
+	id = fengtian.4
+	title = fengtian.4.t
+	desc = fengtian.4.d
+	picture = GFX_report_event_spain_civil_war_soldiers
+
+	is_triggered_only = yes
+
+	option = {
+		name = fengtian.4.a
+
+		ai_chance = { factor = 60 }
+
+		hidden_effect = { FNG = { country_event = { id = fengtian.7 days = 1 }}}
+	}
+
+	option = {
+		name = fengtian.4.b
+
+		ai_chance = { factor = 20 }
+
+		add_political_power = -60
+	}
+
+	option = {
+		name = fengtian.4.c
+
+		ai_chance = { factor = 20 }
+
+		declare_war_on = { target = FNG type = annex_everything	}
+		end_puppet = FNG
+		if = {
+			limit = { 
+				has_idea = FNG_informal_empire_2
+			}
+			FNG = {
+				add_timed_idea = {
+					idea = FNG_Post-Colonial_Chaos_1
+					days = 30
+				}
+			}
+		}
+		
+		if = {
+			limit = {
+				has_idea = FNG_informal_empire_3
+			}
+			FNG = {
+				add_timed_idea = {
+					idea = FNG_Post-Colonial_Chaos_1
+					days = 60
+				}
+			}
+		}
+		
+		if = {
+			limit = {
+				has_idea = FNG_informal_empire_4
+			}
+			FNG = {
+				add_timed_idea = {
+					idea = FNG_Post-Colonial_Chaos_2
+					days = 45
+				}
+			}
+		}
+		
+		if = {
+			limit = {
+				has_idea = FNG_informal_empire_5
+			}
+			FNG = {
+				add_timed_idea = {
+					idea = FNG_Post-Colonial_Chaos_3
+					days = 45
+				}
+			}
+		}
+	}
+}
+
+#country_event = { # Manchuria Declares for the Qing!
+#	id = fengtian.5
+#	title = fengtian.5.t
+#	desc = fengtian.5.d
+#	picture = GFX_report_event_spain_civil_war_soldiers
+#
+#	is_triggered_only = yes
+#
+#	option = {
+#		name = fengtian.5.a
+#
+#		if = {
+#			limit = { is_ai = no }
+#
+#			change_tag_from = QIE
+#		}
+#
+#		set_country_flag = Manchuria_Joins_Qing
+#		annex_country = { target = FNG transfer_troops = yes }
+#	}
+#}
+
+country_event = { # Japan seeks to negotiate
+	id = fengtian.6
+	title = fengtian.6.t
+	desc = fengtian.6.d
+	picture = GFX_report_event_spain_civil_war_soldiers
+
+	is_triggered_only = yes
+
+	option = {
+		name = fengtian.6.a
+
+		ai_chance = { factor = 70 }
+
+		GER = { country_event = { id = fengtian.8 days = 6 }}
+	}
+
+	option = {
+		name = fengtian.6.b
+
+		ai_chance = { factor = 30 }
+
+		add_political_power = -60
+	}
+}
+
+country_event = { # The Qing are pushing us
+	id = fengtian.7
+	title = fengtian.7.t
+	desc = fengtian.7.d
+	picture = GFX_report_event_spain_civil_war_soldiers
+
+	is_triggered_only = yes
+
+	option = {
+		name = fengtian.7.a
+
+		ai_chance = { factor = 40 }
+
+		hidden_effect = { QIE = { country_event = { id = fengtian.9 days = 6 }}}
+	}
+
+	option = {
+		name = fengtian.7.b
+
+		ai_chance = { factor = 60 }
+
+		add_political_power = -60
+		set_global_flag = CSX_MAN_refusal
+	}
+}
+
+country_event = { # Our negotiators are meeting with the Japanese
+	id = fengtian.8
+	title = fengtian.8.t
+	desc = fengtian.8.d
+	picture = GFX_report_event_spain_civil_war_soldiers
+
+	is_triggered_only = yes
+
+	option = {
+		name = fengtian.8.a
+
+		ai_chance = { factor = 50 }
+
+		hidden_effect = { QIE = { country_event = { id = fengtian.13 days = 1 }}}
+	}
+
+	option = {
+		name = fengtian.8.b
+
+		ai_chance = { factor = 50 }
+
+		hidden_effect = { QIE = { country_event = { id = fengtian.14 days = 1 }}}
+	}
+}
+
+#country_event = { # Fengtian has submitted!
+	#id = fengtian.9
+	#title = fengtian.9.t
+	#desc = fengtian.9.d
+	#picture = GFX_report_event_spain_civil_war_soldiers
+
+	#is_triggered_only = yes
+
+	#option = {
+		#name = fengtian.9.a
+
+		#if = {
+			#limit = { is_ai = no }
+
+			#change_tag_from = QIE
+		#}
+
+		#set_country_flag = Manchuria_Joins_Qing
+		#annex_country = { target = FNG transfer_troops = yes }
+	#}
+#}
+
+country_event = { # Zhang Zuolin has refused our demands
+	id = fengtian.10
+	title = fengtian.10.t
+	desc = fengtian.10.d
+	picture = GFX_report_event_spain_civil_war_soldiers
+
+	is_triggered_only = yes
+
+	option = {
+		name = fengtian.10.a
+
+		ai_chance = { factor = 30 }
+
+		declare_war_on = { target = FNG type = annex_everything	}
+		end_puppet = FNG
+		if = {
+			limit = { 
+				has_idea = FNG_informal_empire_2
+			}
+			FNG = {
+				add_timed_idea = {
+					idea = FNG_Post-Colonial_Chaos_1
+					days = 30
+				}
+			}
+		}
+		
+		if = {
+			limit = {
+				has_idea = FNG_informal_empire_3
+			}
+			FNG = {
+				add_timed_idea = {
+					idea = FNG_Post-Colonial_Chaos_1
+					days = 60
+				}
+			}
+		}
+		
+		if = {
+			limit = {
+				has_idea = FNG_informal_empire_4
+			}
+			FNG = {
+				add_timed_idea = {
+					idea = FNG_Post-Colonial_Chaos_2
+					days = 45
+				}
+			}
+		}
+		
+		if = {
+			limit = {
+				has_idea = FNG_informal_empire_5
+			}
+			FNG = {
+				add_timed_idea = {
+					idea = FNG_Post-Colonial_Chaos_3
+					days = 45
+				}
+			}
+		}
+	}
+
+	option = {
+		name = fengtian.10.b
+
+		ai_chance = { factor = 30 }
+
+		add_political_power = -60
+	}
+
+	option = {
+		name = fengtian.10.c
+
+		ai_chance = { factor = 30 }
+
+		trigger = {
+			has_war_with = JAP
+		}
+
+		JAP = { white_peace_with_ROOT = yes }
+
+		if = {
+			limit = { is_in_faction_with = GER }
+
+			hidden_effect = { GER = { country_event = { id = fengtian.14 days = 1 }}}
+
+			remove_from_faction = QIE
+		}
+
+		hidden_effect = { JAP = { country_event = { id = fengtian.16 days = 1 }}}
+		hidden_effect = { FNG = { country_event = { id = fengtian.18 days = 1 }}}
+	}
+}
+
+country_event = { # OH NO! My troops are defecting!
+	id = fengtian.11
+	title = fengtian.11.t
+	desc = fengtian.11.d
+	picture = GFX_report_event_spain_civil_war_soldiers
+
+	is_triggered_only = yes
+
+	option = {
+		name = fengtian.11.a
+
+		add_ideas = defections_fng
+		QIE = {
+			load_oob = QIE_DEFECT_FROM_FNG
+		}
+
+		hidden_effect = { QIE = { country_event = { id = fengtian.12 days = 0 }}}
+	}
+}
+
+country_event = { # Zhang Zuolin is playing games
+	id = fengtian.12
+	title = fengtian.12.t
+	desc = fengtian.12.d
+	picture = GFX_report_event_spain_civil_war_soldiers
+
+	is_triggered_only = yes
+
+	option = {
+		name = fengtian.12.a
+
+		set_country_flag = Manchuria_Joins_Qing
+	}
+}
+
+country_event = { # We have sat down at the table
+	id = fengtian.13
+	title = fengtian.13.t
+	desc = fengtian.13.d
+	picture = GFX_report_event_spain_civil_war_soldiers
+
+	is_triggered_only = yes
+
+	option = {
+		name = fengtian.13.a
+
+		ai_chance = { factor = 75 }
+
+		GER = { white_peace_with_ROOT = yes }
+		QIE = { white_peace_with_ROOT = yes }
+
+		add_ideas = JAP_WAR_REP
+		GER = { add_ideas = JAP_WAR_REP_GER }
+
+		diplomatic_relation = { country = QIE relation = non_aggression_pact }
+		diplomatic_relation = { country = GER relation = non_aggression_pact }
+		add_political_power = -100
+	}
+
+	option = {
+		name = fengtian.13.a
+
+		ai_chance = { factor = 25 }
+
+		add_political_power = -40
+	}
+}
+
+country_event = { # We have sat down at the table
+	id = fengtian.14
+	title = fengtian.14.t
+	desc = fengtian.14.d
+	picture = GFX_report_event_spain_civil_war_soldiers
+
+	is_triggered_only = yes
+
+	option = {
+		name = fengtian.14.a
+
+		ai_chance = { factor = 25 }
+
+		GER = { white_peace_with_ROOT = yes }
+		QIE = { white_peace_with_ROOT = yes }
+
+		add_ideas = JAP_WAR_REP_FULL
+		GER = { add_ideas = JAP_WAR_REP_GER_FULL }
+
+		diplomatic_relation = { country = QIE relation = non_aggression_pact }
+		diplomatic_relation = { country = GER relation = non_aggression_pact }
+		add_political_power = -500
+		add_national_unity = -20
+
+		end_puppet = PHI
+		end_puppet = TRM
+
+		GER = {
+			transfer_state = 526
+			transfer_state = 645
+			transfer_state = 648
+		}
+	}
+
+	option = {
+		name = fengtian.14.a
+
+		ai_chance = { factor = 75 }
+
+		add_political_power = 100
+	}
+}
+
+country_event = { # The Qing have abandoned us!
+	id = fengtian.15
+	title = fengtian.15.t
+	desc = fengtian.15.d
+	picture = GFX_report_event_spain_civil_war_soldiers
+
+	is_triggered_only = yes
+
+	option = {
+		name = fengtian.15.a
+
+		ai_chance = { factor = 30 }
+
+		declare_war_on = { target = QIE type = annex_everything	}
+	}
+
+	option = {
+		name = fengtian.15.a
+
+		ai_chance = { factor = 70 }
+	}
+}
+
+country_event = { # The Qing have followed Fengtian
+	id = fengtian.16
+	title = fengtian.16.t
+	desc = fengtian.16.d
+	picture = GFX_report_event_spain_civil_war_soldiers
+
+	is_triggered_only = yes
+
+	option = {
+		name = fengtian.16.a
+
+		ai_chance = { factor = 70 }
+
+		add_political_power = 20
+	}
+
+	option = {
+		name = fengtian.16.a
+
+		ai_chance = { factor = 30 }
+
+		declare_war_on = { target = QIE type = annex_everything	}
+	}
+}
+
+country_event = { # Japan has attacked us!
+	id = fengtian.17
+	title = fengtian.17.t
+	desc = fengtian.17.d
+	picture = GFX_report_event_spain_civil_war_soldiers
+
+	is_triggered_only = yes
+
+	option = {
+		name = fengtian.17.a
+
+		ai_chance = { factor = 70 }
+
+		trigger = {
+			country_exists = QIE
+			is_subject = no
+		}
+
+		hidden_effect = { QIE = { country_event = { id = fengtian.5 days = 2 }}}
+	}
+
+	option = {
+		name = fengtian.17.a
+
+		ai_chance = { factor = 30 }
+		add_political_power = -100
+	}
+}
+
+#country_event = { # The Qing have followed our lead
+#	id = fengtian.18
+#	title = fengtian.18.t
+#	desc = fengtian.18.d
+#	picture = GFX_report_event_spain_civil_war_soldiers
+#
+#	is_triggered_only = yes
+#
+#	option = {
+#		name = fengtian.18.a
+#
+#		ai_chance = { factor = 70 }
+#
+#		trigger = {
+#			country_exists = QIE
+#			is_subject = no
+#		}
+#
+#		hidden_effect = { QIE = { country_event = { id = fengtian.5 days = 2 }}}
+#	}
+#
+#	option = {
+#		name = fengtian.18.a
+#
+#		ai_chance = { factor = 30 }
+#
+#		add_political_power = -40
+#	}
+#}
+
+#################################
+### Kolchak breaks away -	###
+### will Zuolin follow suit? ###
+#################################
+
+country_event = { # Kolchak has broken away from Japanese rule!
+	id = fengtian.19
+	title = fengtian.19.t
+	desc = fengtian.19.d
+	picture = GFX_report_event_spain_civil_war_soldiers
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = FNG
+		NOT = { has_global_flag = Man_puyi}
+		country_exists = TRM
+		OR = {
+			TRM = { has_country_flag = PRI_breaksaway }
+			has_global_flag = PRI_breaksaway
+		}
+		TRM = { is_subject = no }
+		is_subject_of = JAP
+	}
+
+	mean_time_to_happen = {
+		days = 2
+	}
+
+	option = {
+		name = fengtian.19.a
+
+		ai_chance = { factor = 45 }
+
+		add_political_power = -20
+		clr_global_flag = PRI_breaksaway
+		TRM = { clr_country_flag = PRI_breaksaway }
+	}
+
+	option = {
+		name = fengtian.19.b
+
+		ai_chance = { factor = 45 }
+
+		TRM = { white_peace_with_ROOT = yes }
+		end_puppet = FNG
+		hidden_effect = { TRM = { country_event = { id = fengtian.20 days = 1 }}}
+		hidden_effect = { JAP = { country_event = { id = fengtian.23 days = 1 }}}
+		clr_global_flag = PRI_breaksaway
+		TRM = { clr_country_flag = PRI_breaksaway }
+	}
+
+	option = {
+		name = fengtian.19.c
+
+		ai_chance = { factor = 10 }
+
+		trigger = {
+			country_exists = QIE
+			QIE = { is_subject = no }
+		}
+
+		QIE = { white_peace_with_ROOT = yes }
+		end_puppet = FNG
+		add_political_power = -500
+		hidden_effect = { QIE = { country_event = { id = fengtian.21 days = 1 }}}
+		hidden_effect = { JAP = { country_event = { id = fengtian.23 days = 1 }}}
+		clr_global_flag = PRI_breaksaway
+		TRM = { clr_country_flag = PRI_breaksaway }
+	}
+}
+
+country_event = { # Zhang Zuolin wishes to join us!
+	id = fengtian.20
+	title = fengtian.20.t
+	desc = fengtian.20.d
+	picture = GFX_report_event_spain_civil_war_soldiers
+
+	is_triggered_only = yes
+
+	option = {
+		name = fengtian.20.a
+
+		ai_chance = { factor = 70 }
+
+		TRM = { create_faction = "Anti-Japanese Pact" }
+		add_to_faction = FNG
+		add_opinion_modifier = { target = FNG modifier = TRM_ALL_FNG } # 150
+		add_opinion_modifier = { target = JAP modifier = TRM_ALL_FNG_JAP } # -100
+	}
+
+	option = {
+		name = fengtian.20.b
+
+		ai_chance = { factor = 30 }
+
+		add_political_power = -40
+		hidden_effect = { FNG = { country_event = { id = fengtian.22 days = 1 }}}
+	}
+}
+
+#country_event = { # Zhang Zuolin wishes to join us!
+	#id = fengtian.21
+	#title = fengtian.21.t
+	#desc = fengtian.21.d
+	#picture = GFX_report_event_spain_civil_war_soldiers
+
+	#is_triggered_only = yes
+
+	#option = {
+		#name = fengtian.21.a
+
+		#ai_chance = { factor = 70 }
+
+		#set_country_flag = Manchuria_Joins_Qing
+		#annex_country = { target = FNG transfer_troops = no }
+		#hidden_effect = { JAP = { country_event = { id = fengtian.26 days = 1 }}}
+	#}
+
+	#option = {
+		#name = fengtian.21.b
+
+		#ai_chance = { factor = 30 }
+
+		#add_political_power = -40
+		#hidden_effect = { FNG = { country_event = { id = fengtian.25 days = 1 }}}
+	#}
+#}
+
+country_event = { # Kolchak has refused our offer
+	id = fengtian.22
+	title = fengtian.22.t
+	desc = fengtian.22.d
+	picture = GFX_report_event_spain_civil_war_soldiers
+
+	is_triggered_only = yes
+
+	option = {
+		name = fengtian.22.a
+
+		ai_chance = { factor = 30 }
+
+		hidden_effect = { JAP = { country_event = { id = fengtian.27 days = 1 }}}
+	}
+
+	option = {
+		name = fengtian.22.b
+
+		ai_chance = { factor = 70 }
+
+		trigger = {
+			country_exists = QIE
+			QIE = { is_subject = no }
+		}
+
+		hidden_effect = { QIE = { country_event = { id = fengtian.21 days = 1 }}}
+	}
+}
+
+country_event = { # Decide how to react to Kolchack
+	id = fengtian.23
+	title = fengtian.23.t
+	desc = fengtian.23.d
+	picture = GFX_report_event_spain_civil_war_soldiers
+
+	is_triggered_only = yes
+
+	option = { #remove support
+		name = fengtian.23.a
+		ai_chance = {
+			factor = 40
+		}
+		FNG = { country_event = { id = fengtian.24 days = 1 }}
+	}
+	
+	option = { #Declare War
+		name = fengtian.23.b
+		ai_chance = {
+			factor = 59
+		}
+		FNG = { country_event = { id = fengtian.new.77 days = 1 }}
+	}
+	
+	option = {
+		name = fengtian.23.c
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+country_event = { # Japan has removed support from our country
+	id = fengtian.24
+	title = fengtian.24.t
+	desc = fengtian.24.d
+	picture = GFX_report_event_spain_civil_war_soldiers
+
+	is_triggered_only = yes
+
+	option = {
+		name = fengtian.24.a
+
+		clr_country_flag = JAP_Help
+		
+		add_timed_idea = {
+			idea = FNG_Japanese_Aid_Cut
+			days = 100
+		}
+		set_political_party = {
+			ideology = market_liberal
+			popularity = 0.00
+		}
+		add_ideas = FNG_informal_empire_1
+		
+
+	}
+}
+
+country_event = { # The Qing have turned us down!
+	id = fengtian.25
+	title = fengtian.25.t
+	desc = fengtian.25.d
+	picture = GFX_report_event_spain_civil_war_soldiers
+
+	is_triggered_only = yes
+
+	option = {
+		name = fengtian.25.a
+
+		ai_chance = { factor = 70 }
+
+		hidden_effect = { TRM = { country_event = { id = fengtian.20 days = 1 }}}
+	}
+
+	option = {
+		name = fengtian.25.b
+
+		ai_chance = { factor = 30 }
+
+		hidden_effect = { FNG = { country_event = { id = fengtian.27 days = 1 }}}
+	}
+}
+
+country_event = { # Zhang Zuolin has also betrayed us!
+	id = fengtian.26
+	title = fengtian.26.t
+	desc = fengtian.26.d
+	picture = GFX_report_event_spain_civil_war_soldiers
+
+	is_triggered_only = yes
+
+	option = {
+		name = fengtian.26.a
+
+		ai_chance = { factor = 50 }
+
+		add_political_power = -40
+	}
+
+	option = {
+		name = fengtian.26.b
+
+		ai_chance = { factor = 30 }
+
+		trigger = {
+			NOT = { has_war_with = QIE }
+		}
+
+		hidden_effect = { QIE = { country_event = { id = fengtian.28 days = 1 }}}
+	}
+
+	option = {
+		name = fengtian.26.c
+
+		ai_chance = { factor = 20 }
+
+		trigger = {
+			NOT = { has_war_with = QIE }
+		}
+
+		declare_war_on = { target = FNG type = annex_everything	}
+		end_puppet = FNG
+		if = {
+			limit = { 
+				has_idea = FNG_informal_empire_2
+			}
+			FNG = {
+				add_timed_idea = {
+					idea = FNG_Post-Colonial_Chaos_1
+					days = 30
+				}
+			}
+		}
+		
+		if = {
+			limit = {
+				has_idea = FNG_informal_empire_3
+			}
+			FNG = {
+				add_timed_idea = {
+					idea = FNG_Post-Colonial_Chaos_1
+					days = 60
+				}
+			}
+		}
+		
+		if = {
+			limit = {
+				has_idea = FNG_informal_empire_4
+			}
+			FNG = {
+				add_timed_idea = {
+					idea = FNG_Post-Colonial_Chaos_2
+					days = 45
+				}
+			}
+		}
+		
+		if = {
+			limit = {
+				has_idea = FNG_informal_empire_5
+			}
+			FNG = {
+				add_timed_idea = {
+					idea = FNG_Post-Colonial_Chaos_3
+					days = 45
+				}
+			}
+		}
+	}
+}
+
+country_event = { # Zhang Zuolin has been left out to dry
+	id = fengtian.27
+	title = fengtian.27.t
+	desc = fengtian.27.d
+	picture = GFX_report_event_spain_civil_war_soldiers
+
+	is_triggered_only = yes
+
+	option = {
+		name = fengtian.27.a
+
+		ai_chance = { factor = 80 }
+
+		declare_war_on = { target = FNG type = annex_everything	}
+		end_puppet = FNG
+		if = {
+			limit = { 
+				has_idea = FNG_informal_empire_2
+			}
+			FNG = {
+				add_timed_idea = {
+					idea = FNG_Post-Colonial_Chaos_1
+					days = 30
+				}
+			}
+		}
+		
+		if = {
+			limit = {
+				has_idea = FNG_informal_empire_3
+			}
+			FNG = {
+				add_timed_idea = {
+					idea = FNG_Post-Colonial_Chaos_1
+					days = 60
+				}
+			}
+		}
+		
+		if = {
+			limit = {
+				has_idea = FNG_informal_empire_4
+			}
+			FNG = {
+				add_timed_idea = {
+					idea = FNG_Post-Colonial_Chaos_2
+					days = 45
+				}
+			}
+		}
+		
+		if = {
+			limit = {
+				has_idea = FNG_informal_empire_5
+			}
+			FNG = {
+				add_timed_idea = {
+					idea = FNG_Post-Colonial_Chaos_3
+					days = 45
+				}
+			}
+		}
+	}
+
+	option = {
+		name = fengtian.27.b
+
+		ai_chance = { factor = 30 }
+
+		trigger = {
+			NOT = { has_war_with = QIE }
+		}
+		add_political_power = -40
+	}
+}
+
+country_event = { # Zhang Zuolin has been left out to dry
+	id = fengtian.28
+	title = fengtian.28.t
+	desc = fengtian.28.d
+	picture = GFX_report_event_spain_civil_war_soldiers
+
+	is_triggered_only = yes
+
+	option = {
+		name = fengtian.28.a
+
+		ai_chance = { factor = 30 }
+
+		remove_from_faction = QIE
+
+		if = {
+			limit = { JAP = { is_in_faction = no }}
+
+			JAP = { create_faction = "Sino-Japanese Co-Prosperity Sphere" }
+		}
+
+		JAP = { add_to_faction = QIE }
+	}
+
+	option = {
+		name = fengtian.28.b
+
+		ai_chance = { factor = 70 }
+
+		add_opinion_modifier = { target = JAP modifier = QIE_NO_ALL_JAP } # -50
+		add_opinion_modifier = { target = JAP modifier = QIE_NO_ALL_JAP_CHI } # 15
+	}
+}
+
+######################################
+
+country_event = { # The Fengtian Republic has a christian leader.
+	id = fengtian.35
+	title = fengtian.35.t
+	desc = fengtian.35.d
+	picture = GFX_report_event_spain_civil_war_soldiers
+
+	is_triggered_only = yes
+
+	option = {
+		name = fengtian.35.a
+
+		ai_chance = { factor = 70 }
+
+		add_political_power = 100
+		add_opinion_modifier = { target = FNG modifier = FNG_GOV_MET } # 50
+		hidden_effect = { FNG = { country_event = { id = fengtian.36 days = 1 }}}
+	}
+
+	option = {
+		name = fengtian.35.b
+
+		ai_chance = { factor = 30 }
+
+		add_political_power = -20
+
+		add_opinion_modifier = { target = FNG modifier = SQI_TRUE_CHRIS } # -10
+	}
+}
+
+country_event = { # The The Pure Kingdom Upon the Heavens asks for an alliance
+	id = fengtian.36
+	title = fengtian.36.t
+	desc = fengtian.36.d
+	picture = GFX_report_event_spain_civil_war_soldiers
+
+	is_triggered_only = yes
+
+	option = {
+		name = fengtian.36.a
+
+		ai_chance = { factor = 65 }
+
+		add_political_power = 100
+		add_opinion_modifier = { target = SQI modifier = FNG_SQI_ALL } # 150
+		add_opinion_modifier = { target = JAP modifier = FNG_SQI_ALL_JAP } # -15
+
+		if = {
+			limit = { SQI = { is_in_faction = no }}
+
+			SQI = { create_faction = "Pure Alliance" }
+		}
+
+		SQI = { add_to_faction = FNG }
+	}
+
+	option = {
+		name = fengtian.36.b
+
+		ai_chance = { factor = 20 }
+
+		add_political_power = -20
+
+		add_opinion_modifier = { target = SQI modifier = FNG_NO_ALL_SQI } # -10
+	}
+
+	option = {
+		name = fengtian.36.c
+
+		ai_chance = { factor = 70 }
+
+		add_political_power = 20
+
+		add_opinion_modifier = { target = SQI modifier = FNG_NO_ALL_SQI } # -10
+		hidden_effect = { SQI = { country_event = { id = fengtian.40 days = 1 }}}
+	}
+}
+
+country_event = { # Japan demands our incorporation into empire
+	id = fengtian.37
+	title = fengtian.37.t
+	desc = fengtian.37.d
+	picture = GFX_report_event_spain_civil_war_soldiers
+
+	is_triggered_only = yes
+
+	option = {
+		name = fengtian.37.a
+
+		ai_chance = { factor = 60 }
+
+		hidden_effect = { JAP = { country_event = { id = fengtian.38 days = 1 }}}
+		add_political_power = -200
+	}
+
+	option = {
+		name = fengtian.37.b
+
+		ai_chance = { factor = 40 }
+
+		end_puppet = FNG
+		add_opinion_modifier = { target = JAP modifier = FNG_LEAVES_JAP } # -250
+
+		if = {
+			limit = { FNG = { is_in_faction_with = JAP }}
+
+			JAP = { remove_from_faction = FNG }
+		}
+
+		add_opinion_modifier = { target = JAP modifier = embargo }
+		add_political_power = 100
+		hidden_effect = { JAP = { country_event = { id = fengtian.39 days = 1 }}}
+		if = {
+			limit = { 
+				has_idea = FNG_informal_empire_2
+			}
+			FNG = {
+				add_timed_idea = {
+					idea = FNG_Post-Colonial_Chaos_1
+					days = 30
+				}
+			}
+		}
+		
+		if = {
+			limit = {
+				has_idea = FNG_informal_empire_3
+			}
+			FNG = {
+				add_timed_idea = {
+					idea = FNG_Post-Colonial_Chaos_1
+					days = 60
+				}
+			}
+		}
+		
+		if = {
+			limit = {
+				has_idea = FNG_informal_empire_4
+			}
+			FNG = {
+				add_timed_idea = {
+					idea = FNG_Post-Colonial_Chaos_2
+					days = 45
+				}
+			}
+		}
+		
+		if = {
+			limit = {
+				has_idea = FNG_informal_empire_5
+			}
+			FNG = {
+				add_timed_idea = {
+					idea = FNG_Post-Colonial_Chaos_3
+					days = 45
+				}
+			}
+		}
+	}
+}
+
+country_event = { # fengtian Republic accepts the inevitable
+	id = fengtian.38
+	title = fengtian.38.t
+	desc = fengtian.38.d
+	picture = GFX_report_event_spain_civil_war_soldiers
+
+	is_triggered_only = yes
+
+	option = {
+		name = fengtian.38.a
+
+		annex_country = { target = FNG transfer_troops = no }
+		add_political_power = -300
+
+		JAP = {
+			add_state_core = 716
+			add_state_core = 328
+			add_state_core = 717
+			add_state_core = 714
+			add_state_core = 715
+		}
+	}
+}
+
+country_event = { # fengtian Republic rejects our decision
+	id = fengtian.39
+	title = fengtian.39.t
+	desc = fengtian.39.d
+	picture = GFX_report_event_spain_civil_war_soldiers
+
+	is_triggered_only = yes
+
+	option = {
+		name = fengtian.39.a
+
+		ai_chance = { factor = 30 }
+
+		add_political_power = -100
+	}
+
+	option = {
+		name = fengtian.39.b
+
+		ai_chance = { factor = 70 }
+
+		declare_war_on = { target = FNG type = annex_everything	}
+		end_puppet = FNG
+		if = {
+			limit = { 
+				has_idea = FNG_informal_empire_2
+			}
+			FNG = {
+				add_timed_idea = {
+					idea = FNG_Post-Colonial_Chaos_1
+					days = 30
+				}
+			}
+		}
+		
+		if = {
+			limit = {
+				has_idea = FNG_informal_empire_3
+			}
+			FNG = {
+				add_timed_idea = {
+					idea = FNG_Post-Colonial_Chaos_1
+					days = 60
+				}
+			}
+		}
+		
+		if = {
+			limit = {
+				has_idea = FNG_informal_empire_4
+			}
+			FNG = {
+				add_timed_idea = {
+					idea = FNG_Post-Colonial_Chaos_2
+					days = 45
+				}
+			}
+		}
+		
+		if = {
+			limit = {
+				has_idea = FNG_informal_empire_5
+			}
+			FNG = {
+				add_timed_idea = {
+					idea = FNG_Post-Colonial_Chaos_3
+					days = 45
+				}
+			}
+		}
+	}
+}
+
+country_event = { # fengtian Republic would like us to join them as one Christian nation. Could that work?
+	id = fengtian.40
+	title = fengtian.40.t
+	desc = fengtian.40.d
+	picture = GFX_report_event_spain_civil_war_soldiers
+
+	is_triggered_only = yes
+
+	option = {
+		name = fengtian.40.a
+
+		ai_chance = { factor = 30 }
+
+		hidden_effect = { FNG = { country_event = { id = fengtian.41 days = 1 }}}
+	}
+
+	option = {
+		name = fengtian.40.b
+
+		ai_chance = { factor = 70 }
+
+		add_opinion_modifier = { target = FNG modifier = SQI_ALL_FNG } # 50
+
+		if = {
+			limit = { SQI = { is_in_faction = no }}
+
+			SQI = { create_faction = "Pure Alliance" }
+		}
+
+		SQI = { add_to_faction = FNG }
+	}
+
+	option = {
+		name = fengtian.40.c
+
+		ai_chance = { factor = 70 }
+
+		add_political_power = -160
+		add_opinion_modifier = { target = FNG modifier = SQI_NO_ONE_NAT } # -150
+	}
+}
+
+country_event = { # Two republics as one!
+	id = fengtian.41
+	title = fengtian.41.t
+	desc = fengtian.41.d
+	picture = GFX_report_event_spain_civil_war_soldiers
+
+	is_triggered_only = yes
+
+	option = {
+		name = fengtian.41.a
+
+		annex_country = { target = SQI transfer_troops = yes }
+		add_political_power = -200
+		add_opinion_modifier = { target = JAP modifier = FNG_SQI_UNION_JAP } # -150
+		add_manpower = 50000
+
+		every_state = {
+			limit = { is_core_of = QIE }
+
+			add_core_of = FNG
+		}
+
+		every_state = {
+			limit = { is_core_of = SQI }
+
+			remove_core_of = SQI
+		}
+
+		if = {
+			limit = { NOT = { is_in_faction_with = AOG }}
+
+			hidden_effect = { FNG = { country_event = { id = repchi.3 days = 1 }}}
+		}
+	}
+}
+
+country_event = { # Two republics as one!
+	id = fengtian.42
+	title = fengtian.42.t
+	desc = fengtian.42.d
+	picture = GFX_report_event_spain_civil_war_soldiers
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = FNG
+		NOT = { has_global_flag = Man_puyi}
+		controls_state = 622
+		controls_state = 608
+		controls_state = 599
+		controls_state = 325
+		controls_state = 604
+		NOT = {
+			country_exists = SQI
+			country_exists = YUN
+			country_exists = QIE
+			country_exists = AOG
+			country_exists = XSM
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 2
+	}
+
+	option = {
+		name = fengtian.42.a
+
+		add_political_power = -100
+		add_ideas = FNG_CHI_CONQUERED
+		set_country_flag = CHI_unified
+		CHI = { annex_country = { target = FNG transfer_troops = yes } change_tag_from = FNG }
+		add_manpower = 200000
+		hidden_effect = { CHI = { country_event = { id = fengtian.44 days = 0 }}}
+
+		every_state = {
+			limit = { is_core_of = QIE }
+
+			add_core_of = CHI
+		}
+
+		every_state = {
+			limit = { is_core_of = FNG }
+
+			remove_core_of = FNG
+		}
+	}
+}
+
+country_event = { # The capital
+	id = fengtian.43
+	title = fengtian.43.t
+	desc = fengtian.43.d
+	picture = GFX_report_event_spain_civil_war_soldiers
+
+	fire_only_once = yes
+
+	trigger = {
+		OR = {
+			tag = FNG
+			original_tag = FNG
+		}
+		NOT = { has_global_flag = Man_puyi}
+		has_war = no
+		controls_state = 328
+		controls_state = 608
+		controls_state = 613
+		owns_state = 328
+		owns_state = 608
+		owns_state = 613
+	}
+
+	mean_time_to_happen = {
+		days = 2
+	}
+
+	option = {
+		name = fengtian.43.a
+
+		ai_chance = { factor = 25 }
+
+		set_capital = 328
+	}
+
+	option = {
+		name = fengtian.43.b
+
+		ai_chance = { factor = 25 }
+
+		set_capital = 608
+	}
+
+	option = {
+		name = fengtian.43.c
+
+		ai_chance = { factor = 25 }
+
+		set_capital = 613
+	}
+}
+
+### Technology takover
+country_event = {
+	id = fengtian.44
+
+	is_triggered_only = yes
+
+	hidden = yes
+	
+	immediate = {
+		FNG = {
+			ROOT = { transfer_technology = yes }
+		}
+	}
+}
+
+#############################################
+### New Fengtian Political Events (Flame) ###
+#############################################
+
+country_event = { #Imperial Han Society Suppression
+	id = fengtian.new.1
+	title = fengtian.new.1.t
+	desc = fengtian.new.1.d
+	picture = Kempeitai
+
+	fire_only_once = no
+
+	trigger = {
+		tag = FNG
+		NOT = { has_completed_focus = FNG_From_Beijing_to_the_Begonia_Leaf }
+		national_populist > 0.00
+		national_populist < 0.99
+	}
+
+	mean_time_to_happen = {
+		days = 7
+	}
+
+	option = {
+		name = fengtian.new.1.a
+		add_political_power = -20
+		set_political_party = { 
+			ideology = national_populist 
+			popularity = 0.00
+		}
+	}
+}
+
+country_event = { #Communication Clique Strike
+	id = fengtian.new.2
+	title = fengtian.new.2.t
+	desc = fengtian.new.2.d
+	picture = railway_strike
+
+	fire_only_once = no
+
+	trigger = {
+		tag = FNG
+		social_conservative > 0.00
+		social_conservative < 0.05
+	}
+
+	mean_time_to_happen = {
+		days = 7
+	}
+
+	option = {
+		name = fengtian.new.2.a
+		add_political_power = -20
+		add_popularity = { ideology = social_conservative popularity = 0.03 }
+	}
+}
+
+####Land Reform Events###
+country_event = { #Xiangshen vs Land Reform 1
+	id = fengtian.new.3
+	title = fengtian.new.3.t
+	desc = fengtian.new.3.d
+	picture = fengtian_farmers
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = FNG
+		has_idea = FNG_Unscrupulous_Governance
+		date > 1937.5.1
+	}
+
+	mean_time_to_happen = {
+		days = 720
+	}
+
+	option = { #Support the Xiangshen
+		name = fengtian.new.3.a
+		add_political_power = 10
+		set_country_flag = Xiangshen_1
+		ai_chance = { 
+			factor = 60
+		}
+		
+	}
+
+	option = { #Support Local Land Reform
+		name = fengtian.new.3.b
+		add_political_power = -10
+		set_country_flag = Land_Reform_1
+		ai_chance = { 
+			factor = 40
+		}
+	}
+}
+
+country_event = { #Xiangshen vs Land Reform 2
+		id = fengtian.new.4
+		title = fengtian.new.4.t
+		desc = fengtian.new.4.d
+		picture = xiangshen
+
+		fire_only_once = yes
+
+		trigger = {
+			tag = FNG
+			has_idea = FNG_Unscrupulous_Governance
+			has_country_flag = Xiangshen_1
+			has_country_flag = Land_Reform_1
+		}
+
+		mean_time_to_happen = {
+			days = 100
+		}
+
+		option = { #Support the Xiangshen
+			name = fengtian.new.4.a
+			add_political_power = 30
+			set_country_flag = Xiangshen_2
+			ai_chance = { 
+				factor = 60
+			}
+		}
+
+		option = { #Support Local Land Reform
+			name = fengtian.new.4.b
+			add_political_power = 40
+			set_country_flag = Land_Reform_2
+			ai_chance = { 
+				factor = 40
+			}
+		}
+}
+
+country_event = { #Xiangshen vs Land Reform 3 (Final)
+		id = fengtian.new.5
+		title = fengtian.new.5.t
+		desc = fengtian.new.5.d
+		picture = china_official_announcement
+
+		fire_only_once = yes
+
+		trigger = {
+			tag = FNG
+			has_idea = FNG_Unscrupulous_Governance
+			has_country_flag = Land_Reform_2
+		}
+
+		mean_time_to_happen = {
+			days = 70
+		}
+
+		option = { #Support the Xiangshen
+			name = fengtian.new.5.a
+			add_political_power = 50
+			set_country_flag = Xiangshen_3
+			ai_chance = { 
+				factor = 60
+			}
+		}
+
+		option = { #Support Land Reform
+			name = fengtian.new.5.b
+			add_political_power = 80
+			set_country_flag = Land_Reform_3
+			ai_chance = { 
+				factor = 40
+			}
+		}
+}
+
+##Land Reform Events Conclusions##
+
+country_event = { #Xiangshen vs Land Reform Small Revolt
+	id = fengtian.new.6
+	title = fengtian.new.6.t
+	desc = fengtian.new.6.d
+	picture = fengtian_prisoner
+
+	fire_only_once = yes
+
+	mean_time_to_happen = {
+		days = 30
+	}
+
+	trigger = { #Small Revolt
+		tag = FNG
+		has_idea = FNG_Unscrupulous_Governance
+		has_country_flag = Xiangshen_1
+		has_country_flag = Land_Reform_2
+		has_country_flag = Xiangshen_3
+		OR = {
+			has_idea = FNG_Unscrupulous_Governance
+			has_country_flag = Land_Reform_1
+			has_country_flag = Xiangshen_2
+			has_country_flag = Xiangshen_3
+		}
+	}
+
+	option = { 
+		name = fengtian.new.6.a
+		add_political_power = -100
+	}
+}
+
+country_event = { #Xiangshen vs Land Reform Large Revolt
+	id = fengtian.new.7
+	title = fengtian.new.7.t
+	desc = fengtian.new.7.d
+	picture = fengtian_several_prisoners
+
+	fire_only_once = yes
+
+	mean_time_to_happen = {
+		days = 30
+	}
+
+	trigger = { #Large Revolt
+		tag = FNG
+		has_idea = FNG_Unscrupulous_Governance
+		has_country_flag = Xiangshen_1
+		has_country_flag = Xiangshen_2
+		has_country_flag = Land_Reform_3
+		OR = {
+			has_idea = FNG_Unscrupulous_Governance
+			has_country_flag = Land_Reform_1
+			has_country_flag = Land_Reform_2
+			has_country_flag = Xiangshen_3
+		}
+	}
+
+	option = { 
+		name = fengtian.new.7.a
+		add_political_power = -200
+	}
+}
+
+country_event = { #Xiangshen vs Land Reform, Reform Underway
+	id = fengtian.new.8
+	title = fengtian.new.8.t
+	desc = fengtian.new.8.d
+	picture = fengtian_protest
+	
+	fire_only_once = yes
+
+	mean_time_to_happen = {
+		days = 30
+	}
+
+	trigger = {
+		tag = FNG
+		has_idea = FNG_Unscrupulous_Governance
+		has_country_flag = Land_Reform_1
+		has_country_flag = Land_Reform_2
+		has_country_flag = Land_Reform_3
+	}
+
+	option = { #Land Reform Underway
+		name = fengtian.new.8.a
+		add_timed_idea = { 
+			idea = FNG_Land_Reform_Underway
+			days = 125
+		}
+	}
+}
+
+country_event = { #The Fate of Mantetsu Schooling
+	id = fengtian.new.9
+	title = fengtian.new.9.t
+	desc = fengtian.new.9.d
+	picture = mantetsu_school
+	
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		days = 200
+	}
+	
+	trigger = {
+		tag = FNG
+		has_completed_focus = FNG_Reform_the_Civil_Service_Examination
+	}
+	
+	option = { #Close Mantetsu Schools
+		name = fengtian.new.9.a
+		add_political_power = 100
+		set_country_flag = FNG_School_Closed
+		add_timed_idea = { 
+			idea = FNG_Educational_Vacuum
+			days = 125
+		}
+		add_popularity = { 
+			ideology = market_liberal popularity = -0.05
+		}
+		ai_chance = { 
+				factor = 55
+		}
+	}
+	
+	option = { #Retain Mantetsu Schools
+		name = fengtian.new.9.b
+		add_political_power = -50
+		set_country_flag = FNG_School_Open
+		ai_chance = { 
+			factor = 45
+		}
+	}
+}
+
+country_event = { #Mantetsu School Open Kimono
+	id = fengtian.new.10
+	title = fengtian.new.10.t
+	desc = fengtian.new.10.d
+	picture = schooling_kimono
+	
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		days = 720
+	}
+	
+	trigger = {
+		tag = FNG
+		has_country_flag = FNG_School_Open
+	}
+	
+	option = {
+		name = fengtian.new.10.a
+		add_political_power = -50
+		set_country_flag = FNG_School_Kimono
+	}
+	
+	option = {
+		name = fengtian.new.10.b
+		add_political_power = 80
+		set_country_flag = FNG_School_Closed
+		add_timed_idea = { 
+			idea = FNG_Educational_Vacuum
+			days = 125
+		}
+		add_popularity = { 
+			ideology = market_liberal popularity = -0.05
+		}
+	}
+}
+
+country_event = { #Mantetsu School Open Fengtian Youth League
+	id  = fengtian.new.11
+	title = fengtian.new.11.t
+	desc = fengtian.new.11.d
+	picture = youth_league_students
+	
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		days = 500
+	}
+	
+	trigger = {
+		tag = FNG
+		has_country_flag = FNG_School_Kimono
+	}
+	
+	option = {
+		name = fengtian.new.11.a
+		add_political_power = -100
+		add_popularity = { 
+			ideology = market_liberal popularity = 0.03
+		}
+	}
+	
+	option = {
+		name = fengtian.new.11.b
+		add_political_power = 50
+		add_timed_idea = { 
+			idea = FNG_Educational_Vacuum
+			days = 125
+		}
+		add_popularity = { 
+			ideology = market_liberal popularity = -0.05
+		}
+	}
+}
+
+country_event = { #Mantetsu School Closed Uniform
+	id = fengtian.new.12
+	title = fengtian.new.12.t
+	desc = fengtian.new.12.d
+	picture = chinese_school_uniform
+	
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		days = 720
+	}
+	
+	trigger = {
+		tag = FNG
+		has_country_flag = FNG_School_Closed
+	}
+	
+	option = {
+		name = fengtian.new.12.a
+		add_political_power = 10
+		add_popularity = { 
+			ideology = market_liberal popularity = -0.01
+		}
+	}
+}
+
+country_event = { #Railway Construction Jilin-Hailong
+	id = fengtian.new.13
+	title = fengtian.new.13.t
+	desc = fengtian.new.13.d
+	
+	picture = railway_map
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = { #Chinese Contract
+		name = fengtian.new.13.a
+		set_country_flag = chinese_railway_contract
+		set_country_flag = Jilin-Hailong
+		add_popularity = {
+			ideology = market_liberal popularity = -0.03
+		}
+		add_popularity = {
+			ideology = social_conservative popularity = 0.03
+		}
+		hidden_effect = {
+			random_list = {
+				20 = { set_country_flag = railway_strike_can_happen }
+				40 = { set_country_flag = chinese_interruption_can_happen }
+				40 = {}
+			}
+		}
+		ai_chance = { 
+			factor = 55
+		}
+	}
+
+	option = { # Japanese Contract
+		name = fengtian.new.13.b
+		set_country_flag = japanese_railway_contract
+		set_country_flag = Jilin-Hailong
+		clr_country_flag = railway_strike_on
+		clr_country_flag = japanese_interruption_on
+		clr_country_flag = chinese_interruption_on
+		add_popularity = {
+			ideology = social_conservative popularity = -0.03
+		}
+		add_popularity = {
+			ideology = market_liberal popularity = 0.03
+		}
+		hidden_effect = {
+			random_list = {
+				20 = { set_country_flag = railway_strike_can_happen }
+				40 = { set_country_flag = japanese_interruption_can_happen }
+				40 = {}
+			}
+		}
+		ai_chance = { 
+				factor = 45
+		}
+	}
+}
+
+country_event = { #Jilin-Hailong Complete
+	id = fengtian.new.14
+	title = fengtian.new.14.t
+	desc = fengtian.new.14.d
+	picture = railway_construction_1
+	
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		days = 720
+		modifier = { 
+			factor = 1.15 
+			has_country_flag = rail_strike
+		}
+		modifier = {
+			factor = 1.33
+			has_country_flag = chinese_interruption
+		}
+		modifier = {
+			factor = 1.15
+			has_country_flag = japanese_interruption
+		}
+	}
+	
+	trigger = {
+		tag = FNG
+		OR = {
+		has_country_flag = chinese_railway_contract
+		has_country_flag = japanese_railway_contract
+		}
+		has_country_flag = Jilin-Hailong
+	}
+	
+	option = {
+		name = fengtian.new.14.a
+		add_political_power = 10
+		clr_country_flag = rail_strike
+		clr_country_flag = japanese_interruption
+		clr_country_flag = chinese_interruption
+		clr_country_flag = chinese_railway_contract
+		clr_country_flag = japanese_railway_contract
+		clr_country_flag = railway_strike_can_happen
+		clr_country_flag = chinese_interruption_can_happen
+		clr_country_flag = japanese_interruption_can_happen
+		886 = { 
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = infrastructure
+            level = 1
+			instant_build = yes
+			}
+		}
+		715 = { 
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+			type = infrastructure
+            level = 1
+			instant_build = yes
+			}
+		}
+	}
+}
+
+country_event = { #Railway Construction Changchun-Dalai
+	id = fengtian.new.15
+	title = fengtian.new.15.t
+	desc = fengtian.new.15.d
+	picture = railway_map
+	
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		days = 200
+	}
+	
+	trigger = {
+		tag = FNG
+		has_country_flag = Jilin-Hailong
+		NOT = { 
+			has_country_flag = chinese_railway_contract
+			has_country_flag = japanese_railway_contract
+		}
+	}
+	
+	option = { #Chinese Contract
+		name = fengtian.new.15.a
+		set_country_flag = chinese_railway_contract
+		set_country_flag = Changchun-Dalai
+		clr_country_flag = Jilin-Hailong
+		add_popularity = {
+			ideology = market_liberal popularity = -0.03
+		}
+		add_popularity = {
+			ideology = social_conservative popularity = 0.03
+		}
+		hidden_effect = {
+			random_list = {
+				20 = { set_country_flag = railway_strike_can_happen }
+				40 = { set_country_flag = japanese_interruption_can_happen }
+				40 = {}
+			}
+		}
+		ai_chance = { 
+				factor = 55
+		}
+	}
+
+	option = { #Japanese Contract
+		name = fengtian.new.15.b
+		set_country_flag = japanese_railway_contract
+		set_country_flag = Changchun-Dalai
+		clr_country_flag = Jilin-Hailong
+		add_popularity = {
+			ideology = social_conservative popularity = -0.03
+		}
+		add_popularity = {
+			ideology = market_liberal popularity = 0.03
+		}
+		hidden_effect = {
+			random_list = {
+				20 = { set_country_flag = railway_strike_can_happen }
+				40 = { set_country_flag = japanese_interruption_can_happen }
+				40 = {}
+			}
+		}
+		ai_chance = { 
+				factor = 45
+		}
+	}
+}
+
+country_event = { # Changchun-Dalai Complete
+	id = fengtian.new.16
+	title = fengtian.new.16.t
+	desc = fengtian.new.16.d
+	picture = railway_construction_2
+	
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		days = 720
+		modifier = { 
+			factor = 1.15 
+			has_country_flag = rail_strike
+		}
+		modifier = {
+			factor = 1.33
+			has_country_flag = chinese_interruption
+		}
+		modifier = {
+			factor = 1.15
+			has_country_flag = japanese_interruption
+		}
+	}
+	
+	trigger = {
+		tag = FNG
+		OR = {
+		has_country_flag = chinese_railway_contract
+		has_country_flag = japanese_railway_contract
+		}
+		has_country_flag = Changchun-Dalai
+	}
+	
+	option = {
+		name = fengtian.new.16.a
+		add_political_power = 10
+		clr_country_flag = rail_strike
+		clr_country_flag = japanese_interruption
+		clr_country_flag = chinese_interruption
+		clr_country_flag = chinese_railway_contract
+		clr_country_flag = japanese_railway_contract
+		clr_country_flag = railway_strike_on
+		clr_country_flag = japanese_interruption_on
+		clr_country_flag = chinese_interruption_on
+		clr_country_flag = railway_strike_can_happen
+		clr_country_flag = japanese_interruption_can_happen
+		clr_country_flag = chinese_interruption_can_happen
+		886 = { 
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes
+			}
+		}
+		714 = { 
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+}
+	
+country_event = { # Railway Construction Taonan-Suolun
+	id = fengtian.new.17
+	title = fengtian.new.17.t
+	desc = fengtian.new.17.d
+	picture = railway_map
+	
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		days = 200
+	}
+	
+	trigger = {
+		tag = FNG
+		has_country_flag = Changchun-Dalai
+		NOT = { 
+			has_country_flag = chinese_railway_contract
+			has_country_flag = japanese_railway_contract
+		}
+	}
+	
+	option = { #Chinese Contract
+		name = fengtian.new.17.a
+		set_country_flag = chinese_railway_contract
+		set_country_flag = Taonan-Suolun
+		add_popularity = {
+			ideology = market_liberal popularity = -0.03
+		}
+		add_popularity = {
+			ideology = social_conservative popularity = 0.03
+		}
+		hidden_effect = {
+			random_list = {
+				20 = { set_country_flag = railway_strike_can_happen }
+				40 = { set_country_flag = chinese_interruption_can_happen }
+				40 = {}
+			}
+		}
+		ai_chance = { 
+			factor = 55
+		}
+	}
+
+	option = { #Japanese Contract
+		name = fengtian.new.17.b
+		set_country_flag = japanese_railway_contract
+		set_country_flag = Taonan-Suolun
+		clr_country_flag = Changchun-Dalai
+		add_popularity = {
+			ideology = social_conservative popularity = -0.03
+		}
+		add_popularity = {
+			ideology = market_liberal popularity = 0.03
+		}
+		hidden_effect = {
+			random_list = {
+				20 = { set_country_flag = railway_strike_can_happen }
+				40 = { set_country_flag = japanese_interruption_can_happen }
+				40 = {}
+			}
+		}
+		ai_chance = { 
+				factor = 45
+		}
+	}
+}
+
+country_event = { # Taonan-Suolun Complete
+	id = fengtian.new.18
+	title = fengtian.new.18.t
+	desc = fengtian.new.18.d
+	picture = railway_construction_3
+	
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		days = 720
+		modifier = { 
+			factor = 1.15
+			has_country_flag = rail_strike
+		}
+		modifier = {
+			factor = 1.33
+			has_country_flag = chinese_interruption
+		}
+		modifier = {
+			factor = 1.15
+			has_country_flag = japanese_interruption
+		}
+	}
+	
+	trigger = {
+		tag = FNG
+		OR = {
+		has_country_flag = chinese_railway_contract
+		has_country_flag = japanese_railway_contract
+		}
+		has_country_flag = Taonan-Suolun
+	}
+	
+	option = {
+		name = fengtian.new.18.a
+		add_political_power = 10
+		clr_country_flag = rail_strike
+		clr_country_flag = japanese_interruption
+		clr_country_flag = chinese_interruption
+		clr_country_flag = chinese_railway_contract
+		clr_country_flag = japanese_railway_contract
+		clr_country_flag = Taonan-Suolun
+		clr_country_flag = railway_strike_on
+		clr_country_flag = japanese_interruption_on
+		clr_country_flag = chinese_interruption_on
+		clr_country_flag = railway_strike_can_happen
+		clr_country_flag = chinese_interruption_can_happen
+		clr_country_flag = japanese_interruption_can_happen
+		714 = { add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = infrastructure
+				level = 2
+				instant_build = yes
+			}
+		}
+	}
+}
+
+country_event = { #Railway Strike
+	id = fengtian.new.19
+	title = fengtian.new.19.t
+	desc = fengtian.new.19.d
+	picture = railway_strike_2
+	
+	fire_only_once = no
+	
+	mean_time_to_happen = {
+		days = 100
+	}
+		
+	trigger = { 
+		tag = FNG
+		OR = {
+		has_country_flag = chinese_railway_contract
+		has_country_flag = japanese_railway_contract
+		has_country_flag = railway_strike_can_happen
+		}
+		NOT = {
+			has_country_flag = rail_strike_on
+		}
+	}
+	
+	option = {
+		name = fengtian.new.19.a
+		add_political_power = -30
+		set_country_flag = rail_strike
+		set_country_flag = rail_strike_on
+	}
+}
+
+country_event = { #Chinese Interruption
+	id = fengtian.new.20
+	title = fengtian.new.20.t
+	desc = fengtian.new.20.d
+	
+	picture = chinese_interruption
+	
+	fire_only_once = no
+	
+	mean_time_to_happen = {
+		days = 100
+	}
+	
+	trigger = {
+		tag = FNG
+		has_country_flag = rail_strike
+		has_country_flag = japanese_railway_contract
+		has_country_flag = chinese_interruption_can_happen
+		NOT = {
+			has_country_flag = chinese_interruption_on
+		}
+	}
+	
+	option = {
+		name = fengtian.new.20.a
+		add_political_power = -30
+		set_country_flag = chinese_interruption
+		set_country_flag = chinese_interruption_on
+	}
+}
+
+country_event = { #Japanese Interruption
+	id = fengtian.new.21
+	title = fengtian.new.21.t
+	desc = fengtian.new.21.d
+	
+	picture = japanese_interruption
+	
+	fire_only_once = no
+	
+	mean_time_to_happen = {
+		days = 100
+	}
+	
+	trigger = {
+		tag = FNG
+		has_country_flag = rail_strike_on
+		has_country_flag = chinese_railway_contract
+		has_country_flag = japanese_interruption_can_happen
+		NOT = {
+			has_country_flag = japanese_interruption_on
+		}
+	}
+	
+	option = {
+		name = fengtian.new.21.a
+		add_political_power = -30
+		set_country_flag = japanese_interruption
+		set_country_flag = japanese_interruption_on
+	}	
+}
+
+#Japanese Aid Cut#
+
+country_event = { # Imperial Fury
+	id = fengtian.new.22
+	title = fengtian.new.22.t
+	desc = {
+		text = fengtian.new.22.d_influence_low
+		trigger = {
+			tag = FNG
+			market_liberal > 0.00
+			market_liberal < 0.05
+			NOT = {
+				has_idea = FNG_informal_empire_1
+			}
+		}
+	}
+	desc = {
+		text = fengtian.new.22.d_fengtian_refuses_food
+		trigger = {
+			has_global_flag = fengtian_refuses_food
+			has_global_flag = japan_punishes_fengtian
+		}
+	}
+	desc = {
+		text = fengtian.new.22.d_fengtian_blames_japan
+		trigger = {
+			has_global_flag = fengtian_blames_japan
+		}
+	}
+	picture = japan_ultimatum
+	
+	fire_only_once = no
+	
+	mean_time_to_happen = {
+		days = 7
+	}
+	
+	trigger = {
+		tag = FNG
+		market_liberal > 0.00
+		market_liberal < 0.05
+		NOT = {
+			has_idea = FNG_informal_empire_1
+		}
+		OR = {
+			has_global_flag = fengtian_refuses_food
+		}
+	}
+	
+	option = {
+		name = fengtian.new.22.a
+		add_political_power = -100
+		add_ideas = FNG_Japanese_Aid_Cut
+		set_country_flag = japan_aid_cut
+		add_popularity = { 
+			ideology = market_liberal popularity = 0.10
+		}
+		ai_chance = { 
+			factor = 85
+		}
+	}
+	
+	option = {
+		name = fengtian.new.22.b
+		add_political_power = 200
+		add_timed_idea = {
+			idea = FNG_Japanese_Aid_Cut
+			days = 100
+		}	
+		JAP = { 
+			end_puppet = FNG
+		}
+		declare_war_on = { 
+			target = JAP 
+			type = annex_everything
+		}
+		set_political_party = {
+			ideology = market_liberal
+			popularity = 0.00
+		}
+		add_ideas = FNG_informal_empire_1
+		ai_chance = { 
+			factor = 15
+		}
+		if = {
+			limit = { 
+				has_idea = FNG_informal_empire_2
+			}
+			add_timed_idea = {
+				idea = FNG_Post-Colonial_Chaos_1
+				days = 30
+			}
+		}
+		
+		if = {
+			limit = {
+				has_idea = FNG_informal_empire_3
+			}
+			add_timed_idea = {
+				idea = FNG_Post-Colonial_Chaos_1
+				days = 60
+			}
+		}
+		
+		if = {
+			limit = {
+				has_idea = FNG_informal_empire_4
+			}
+			add_timed_idea = {
+				idea = FNG_Post-Colonial_Chaos_2
+				days = 45
+			}
+		}
+		
+		if = {
+			limit = {
+				has_idea = FNG_informal_empire_5
+			}
+			add_timed_idea = {
+				idea = FNG_Post-Colonial_Chaos_3
+				days = 45
+			}
+		}
+	}
+}
+
+country_event = { #Japanese Aid Returns
+	id = fengtian.new.23
+	title = fengtian.new.23.t
+	desc = fengtian.new.23.d
+	picture = japan_announcement
+	
+	fire_only_once = no
+	
+	mean_time_to_happen = {
+		days = 110
+	}
+	
+	trigger = {
+		tag = FNG
+		has_country_flag = japan_aid_cut
+	}
+	
+	option = {
+		name = fengtian.new.23.a
+		add_political_power = 10
+		remove_ideas = FNG_Japanese_Aid_Cut
+		clr_country_flag = japan_aid_cut
+	}
+}
+
+#Clearing Investment Dearth#
+
+country_event = { #Encourage Japanese Investment
+	id = fengtian.new.24
+	title = fengtian.new.24.t
+	desc = fengtian.new.24.d
+	picture = japan_foreign_minister
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = fengtian.new.24.a
+		add_political_power = 10
+		set_country_flag = japanese_investment
+		set_country_flag = { 
+			flag = clear_investment_dearth 
+			value = 1
+		}	
+	}
+}
+
+country_event = { #Japanese Investment Glass, Paper, Textiles (Dongxing Dye & Textile Plant, Fengtian Industrial Paper, Manchurian Glass)
+	id = fengtian.new.25
+	title = fengtian.new.25.t
+	desc = fengtian.new.25.d
+	picture = fengtian_paper_factory
+	
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		days = 720
+	}
+	
+	trigger = {
+		tag = FNG
+		has_country_flag = japanese_investment
+	}
+	
+	option = {
+		name = fengtian.new.25.a
+		add_popularity = { 
+				ideology = market_liberal popularity = 0.03
+			}
+		modify_country_flag = {
+			flag = clear_investment_dearth
+			value = 1
+		}
+		716 = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+}
+
+country_event = { #Japanese Investment Tourism and Shipping(Bohai Shipping Enterprises & Northeastern Tourism)
+	id = fengtian.new.26
+	title = fengtian.new.26.t
+	desc = fengtian.new.26.d
+	picture = hiroshima_package
+	
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		days = 730
+	}
+	
+	trigger = {
+		tag = FNG
+		has_country_flag = japanese_investment
+		has_completed_focus = FNG_Yingkow_Commercial_Development
+	}
+	
+	option = {
+		name = fengtian.new.26.a
+		add_popularity = { 
+			ideology = market_liberal popularity = 0.03
+		}
+		716 = {
+			add_extra_state_shared_building_slots = 1
+		}
+		modify_country_flag = {
+			flag = clear_investment_dearth
+			value = 1
+		}
+	}
+}
+
+country_event = { #Japanese Investment in Metals and Minerals (Gold, Copper, Lead, Tungsten)
+	id = fengtian.new.27
+	title = fengtian.new.27.t
+	desc = fengtian.new.27.d
+	picture = fushun_mine
+	
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		days = 720
+	}
+	
+	trigger = {
+		tag = FNG
+		has_country_flag = japanese_investment
+		has_completed_focus = FNG_Reorganize_the_NTC
+	}
+	
+	option = {
+		name = fengtian.new.27.a
+		add_popularity = { 
+			ideology = market_liberal popularity = 0.03
+		}
+		modify_country_flag = {
+			flag = clear_investment_dearth
+			value = 1
+		}
+		716 = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
+		716 = {
+            add_resource = { 
+				type = tungsten
+				amount = 6
+			}
+		}
+	}
+}
+
+country_event = { #Japanese Investment in Steel (Anshan Iron & Steel)
+	id = fengtian.new.28
+	title = fengtian.new.28.t
+	desc = fengtian.new.28.d
+	picture = anshan_steel
+	
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		days = 720
+	}
+	
+	trigger = {
+		tag = FNG
+		has_country_flag = japanese_investment
+		has_completed_focus = FNG_Expand_the_Anshan_Mines
+		}
+	
+	option = {
+		name = fengtian.new.28.a
+		add_popularity = { 
+			ideology = market_liberal popularity = 0.03
+		}
+        716 = {
+            add_resource = { 
+				type = steel
+				amount = 20
+			}
+        }
+		modify_country_flag = {
+			flag = clear_investment_dearth
+			value = 1
+		}
+	}
+}
+
+country_event = { #Encourage Chinese Investment
+	id = fengtian.new.29
+	title = fengtian.new.29.t
+	desc = fengtian.new.29.d
+	picture = fengtian_industry
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = fengtian.new.29.a
+		add_political_power = 10
+		set_country_flag = chinese_investment
+		set_country_flag = { 
+			flag = clear_investment_dearth 
+			value = 1
+		}
+		
+	}
+}
+
+country_event = { #Encourage Chinese Investment Industry (Zhaozin Ceramics Company, Jinzhou Railway Machinery, Northeastern Chemical Leather Plant)
+	id = fengtian.new.30
+	title = fengtian.new.30.t
+	desc = fengtian.new.30.d
+	picture = fengtian_industry_3
+	
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		days = 200
+	}
+	
+	trigger = {
+		tag = FNG
+		has_country_flag = chinese_investment
+		has_completed_focus = FNG_Establish_the_Jinzhou_Industrial_Zone
+	}
+	
+	option = {
+		name = fengtian.new.30.a
+		328 = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
+		modify_country_flag = {
+			flag = clear_investment_dearth
+			value = 1
+		}
+		add_popularity = { 
+			ideology = social_conservative popularity = 0.02
+		}
+	}
+}
+
+country_event = { #Encourage Chinese Investment Heilongjiang (Dongdai Fertilizer Company, Shanjing Packing Plant)
+	id = fengtian.new.31
+	title = fengtian.new.31.t
+	desc = fengtian.new.31.d
+	picture = fushun_gas
+	
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		days = 720
+	}
+	
+	trigger = {
+		tag = FNG
+		has_country_flag = chinese_investment
+	}
+	
+	option = {
+		name = fengtian.new.31.a
+		714 = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
+		modify_country_flag = {
+			flag = clear_investment_dearth
+			value = 1
+		}
+		add_popularity = { 
+			ideology = authoritarian_democrat popularity = 0.01
+		}
+	}
+}
+
+country_event = { #Encourage Chinese Investment Minsheng Automobile Company
+	id = fengtian.new.32
+	title = fengtian.new.32.t
+	desc = fengtian.new.32.d
+	picture = minsheng_2
+	
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		days = 720
+	}
+	
+	trigger = {
+		tag = FNG
+		has_country_flag = chinese_investment
+		has_completed_focus = FNG_Manufacture_Minsheng
+	}
+	
+	option = {
+		name = fengtian.new.32.a
+		add_popularity = { 
+				ideology = market_liberal popularity = 0.02
+		}
+		modify_country_flag = {
+			flag = clear_investment_dearth
+			value = 1
+		}
+		716 = {
+			add_extra_state_shared_building_slots = 1
+		}
+	}
+}
+
+country_event = { #Investment Shortage Ended
+	id = fengtian.new.33
+	title = fengtian.new.33.t
+	desc = fengtian.new.33.d
+	picture = Mukden
+	
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		days = 200
+	}
+	
+	trigger = {
+		tag = FNG
+		has_country_flag = chinese_investment
+		has_country_flag = japanese_investment
+		has_country_flag = {
+			flag = clear_investment_dearth
+			value > 4
+		}
+	}
+	
+	option = {
+		name = fengtian.new.33.a
+		remove_ideas = FNG_Investment_Dearth
+	}
+}
+
+# The Hiroshima Proposal/Packages #
+
+country_event = { # The proposal is made in Fengtian
+	id = fengtian.new.34
+	title = fengtian.new.34.t
+	desc = fengtian.new.34.d
+	picture = china_official_announcement
+	
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	trigger = {
+		tag = FNG
+		has_completed_focus = FNG_The_Hiroshima_Proposal
+	}
+	
+	option = { # Zhang Accepts the Proposal
+		name = fengtian.new.34.a
+		set_global_flag = hiroshima_proposal
+		add_popularity = { 
+			ideology = market_liberal popularity = 0.01
+		}
+		ai_chance = { 
+			factor = 70
+		}
+	}
+	
+	option = { # Zhang Refuses the Proposal
+		name = fengtian.new.34.b
+		ai_chance = { 
+			factor = 30
+		}
+	}	
+}
+
+country_event = { # The Proposal is made in Japan
+	id = fengtian.new.35
+	title = fengtian.new.35.t
+	desc = fengtian.new.35.d
+	picture = china_ambassador_announcement
+	
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		days = 35
+	}
+	
+	trigger = { # More than enough equipment for 4 standard Fengtian infantry divisions
+		tag = JAP
+		has_global_flag = hiroshima_proposal
+		JAP = { 
+			has_tech = infantry_weapons1
+			has_tech = artillery1
+			has_equipment = {
+				improved_infantry_weapons_2 > 9000
+				artillery2 > 3000
+			}
+		}
+	}
+	
+	option = { # Japan Accepts the Proposal
+		name = fengtian.new.35.a
+		FNG = { 
+			country_event = { 
+				id = fengtian.new.37
+				days = 2
+			}
+		}
+		ai_chance = { 
+				factor = 60
+		}
+	}
+	
+	option = { # Japan Refuses the proposal
+		name = fengtian.new.35.b
+		FNG = { 
+			country_event = { 
+				id = fengtian.new.36
+				days = 2
+			}
+		}
+		ai_chance = { 
+			factor = 60
+		}
+	}
+}
+
+
+country_event = { # Fengtian Learns that the Hiroshima Proposal was refused
+	id = fengtian.new.36
+	title = fengtian.new.36.t
+	desc = fengtian.new.36.d
+	picture = japan_announcement
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = fengtian.new.36.a
+		clr_global_flag = hiroshima_proposal
+		add_political_power = -10
+	}
+}
+
+country_event = { # Fengtian receives the first Hiroshima Package
+	id = fengtian.new.37
+	title = fengtian.new.37.t
+	desc = fengtian.new.37.d
+	picture = hiroshima_package
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = { # The Package is received
+		name = fengtian.new.37.a
+		add_popularity = { 
+			ideology = market_liberal popularity = 0.03
+		}
+		JAP = {
+			send_equipment = {
+				target = FNG
+				type = infantry_weapons_2
+				amount = 4000
+			}
+			send_equipment = {
+				target = FNG
+				type = artillery2
+				amount = 100
+			}
+		}
+	}
+}
+
+country_event = { # Japan Chooses whether to send the Second Hiroshima Package
+	id = fengtian.new.38
+	title = fengtian.new.38.t
+	desc = fengtian.new.38.d
+	picture = hiroshima_package
+	
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		days = 7
+	}
+	
+	trigger = { 
+		tag = JAP
+		has_global_flag = hiroshima_proposal
+		JAP = { 
+			has_tech = improved_infantry_weapons_2
+			has_tech = artillery2
+			has_equipment = {
+				infantry_weapons2 > 9000
+				artillery2 > 3000
+				support_equipment2 > 200
+			}
+		}
+	}
+	option = { # The Package is sent
+		name = fengtian.new.38.a
+		FNG = { 
+			country_event = { 
+				id = fengtian.new.39
+				days = 2
+			}
+		}
+	}
+	option = { # The Package is not sent
+		name = fengtian.new.38.b
+		add_political_power = -30
+		FNG = { 
+			country_event = { 
+				id = fengtian.new.36
+				days = 2
+			}
+		}
+	}
+}
+
+country_event = { # Fengtian Receives the Second Hiroshima Package
+	id = fengtian.new.39
+	title = fengtian.new.39.t
+	desc = fengtian.new.39.d
+	picture = hiroshima_package
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = fengtian.new.39.a
+		add_popularity = { 
+			ideology = market_liberal popularity = 0.02
+		}
+		JAP = {
+			send_equipment = {
+				target = FNG
+				type = improved_infantry_weapons_2
+				amount = 4000
+			}
+			send_equipment = {
+				target = FNG
+				type = artillery2
+				amount = 100
+			}
+			send_equipment = {
+				target = FNG
+				type = support_equipment2
+				amount = 100
+			}
+		}
+	}
+}
+
+country_event = { # Japan Chooses whether to send the Third Hiroshima Package
+	id = fengtian.new.40
+	title = fengtian.new.40.t
+	desc = fengtian.new.40.d
+	picture = hiroshima_package
+	
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		days = 7
+	}
+	
+	trigger = {
+		tag = JAP
+		has_global_flag = hiroshima_proposal
+		JAP = { 
+			has_tech = advanced_infantry_weapons
+			has_tech = artillery3
+			has_equipment = {
+				advanced_infantry_weapons > 9000
+				artillery3 > 3000
+				support_equipment > 200
+			}
+		}
+	}
+	
+	option = { # The second package is sent
+		name = fengtian.new.40.a
+		FNG = { 
+			country_event = { 
+				id = fengtian.new.41
+				days = 2
+			}
+		}
+	}
+	
+	option = { # The Package is not sent
+		name = fengtian.new.40.b
+		FNG = {
+			country_event = {
+				id = fengtian.new.36
+			}
+		}
+	}
+}
+
+country_event = { # Fengtian Receives the Third Hiroshima Package
+	id = fengtian.new.41
+	title = fengtian.new.41.t
+	desc = fengtian.new.41.d
+	picture = hiroshima_package
+		
+	fire_only_once = yes
+		
+	is_triggered_only = yes
+		
+	option = {
+		name = fengtian.new.41.a
+		add_popularity = { 
+			ideology = market_liberal popularity = 0.01
+		}
+		JAP = {
+			send_equipment = {
+				target = FNG
+				type = advanced_infantry_weapons
+				amount = 4000
+			}
+			send_equipment = {
+				target = FNG
+				type = artillery2
+				amount = 100
+			}
+			send_equipment = {
+				target = FNG
+				type = cat_medium_armor
+				amount = 40
+			}
+		}
+	}
+}
+
+# Soy Agricultural Initative #
+
+country_event = { # Fengtian chooses whether to back the initiative
+	id = fengtian.new.42
+	title = fengtian.new.42.t
+	desc = fengtian.new.42.d
+	picture = yamato_hotel
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = { # Back the initiative
+		name = fengtian.new.42.a
+		add_popularity = { 
+			ideology = market_liberal 
+			popularity = 0.03
+		}
+		328 = {
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
+		set_global_flag = soy_initiative_on
+		ai_chance = { 
+			factor = 65
+		}
+	}
+	
+	option = {
+		name = fengtian.new.42.b
+		add_popularity = {
+			ideology = market_liberal 
+			popularity = -0.01
+		}
+		add_political_power = 50
+		set_global_flag = soy_initiative_off
+		ai_chance = { 
+			factor = 35
+		}
+	}
+}
+
+country_event = { # Fengtian is asked to provide food
+	id = fengtian.new.43
+	title = fengtian.new.43.t
+	desc = {
+		text = fengtian.new.43.d_fengtian_forced
+		trigger = {
+			has_global_flag = fengtian_forced
+		}
+	}
+	desc = {
+		text = fengtian.new.43.d_fengtian_normal
+		trigger = {
+			has_global_flag = fengtian_normal
+		}
+	}
+	picture = japan_announcement
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = { # Accept
+		name = fengtian.new.43.a
+		set_global_flag = {
+			flag = fengtian_provides_food
+			value = 1
+		}
+		add_political_power = -50
+		JAP = {
+			country_event = {
+				id = japdom.64
+				days = 2
+			}
+		}
+		ai_chance = { 
+				factor = 60
+		}
+	}
+	
+	option = { # Refuse
+		name = fengtian.new.43.b
+		JAP = {
+			country_event = {
+				id = japdom.62
+				days = 2
+			}
+		}
+		trigger = {
+			has_global_flag = fengtian_normal
+			NOT = {
+				has_global_flag = fengtian_forced
+			}
+		}
+		set_global_flag = fengtian_refuses_food
+		ai_chance = { 
+			factor = 40
+		}
+	}
+}
+
+country_event = { # Sending Food Repeating Event
+	id = fengtian.new.44
+	title = fengtian.new.44.t
+	desc = fengtian.new.44.d
+	picture = hiroshima_package
+	
+	mean_time_to_happen = {
+		days = 60
+	}
+	
+	trigger = {
+		tag = FNG
+		has_global_flag = {
+			flag = fengtian_provides_food
+			value < 8
+		}
+		NOT = {
+			OR = {
+				date < 1940.9.1
+				has_global_flag = fengtian_provides_food
+			}
+		}
+	}
+	
+	option = {
+		name = fengtian.new.44.a
+		modify_global_flag = {
+			flag = fengtian_provides_food
+			value = 1
+		}
+		add_political_power = -10
+	}
+}
+
+country_event = { # Industrial Soy Option
+	id = fengtian.new.45
+	title = fengtian.new.45.t
+	desc = fengtian.new.45.d
+	picture = china_industry
+	
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		days = 80
+	}
+	
+	trigger = {
+		tag = FNG
+		has_global_flag = {
+			flag = fengtian_provides_food
+			value > 3
+		}
+	}
+	
+	option = { # Cut Industrial Soy
+		name = fengtian.new.45.a
+		set_global_flag = Industrial_Soy_Cut
+		add_ideas = FNG_Industrial_Soy_Shortage
+		ai_chance = { 
+				factor = 70
+		}
+	}
+	
+	option = { # Do not cut Industrial Soy
+		name = fengtian.new.45.b
+		ai_chance = { 
+				factor = 30
+		}
+	}
+}
+
+country_event = { # drought ends
+	id = fengtian.new.46
+	title = fengtian.new.46.t
+	desc = fengtian.new.46.d
+	picture = fengtian_farmers
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = fengtian.new.46.a
+		set_country_flag = drought_over
+		clr_global_flag = fengtian_provides_food
+		remove_ideas = FNG_Industrial_Soy_Shortage
+	}
+}
+
+#Hokkaido Farming#
+country_event = { # Mantetsu's proposal
+	id = fengtian.new.47
+	title = fengtian.new.47.t
+	desc = fengtian.new.47.d
+	picture = yamato_hotel
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = FNG
+		has_completed_focus = FNG_The_Soy_Agricultural_Initiative
+		has_country_flag = drought_over
+		FNG = {
+			is_subject_of = JAP
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 720
+	}
+	
+	option = { # Accept the proposal
+		name = fengtian.new.47.a
+		set_country_flag = {
+			flag = hokkaido_farming
+			value = 1
+		}
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.01
+		}
+		ai_chance = { 
+			factor = 80
+		}
+	}
+	
+	option = { #Refuse the proposal
+		name = fengtian.new.47.b
+		add_popularity = {
+			ideology = market_liberal 
+			popularity = -0.01
+		}
+		ai_chance = { 
+			factor = 20
+		}
+	}
+}
+
+country_event = { # Repeating Event
+	id = fengtian.new.48
+	title = fengtian.new.48.t
+	desc = fengtian.new.48.d
+	
+	mean_time_to_happen = {
+		days = 600
+	}
+	
+	trigger  = {
+		tag = FNG
+		has_country_flag = {
+			flag = hokkaido_farming
+			value < 3
+		}
+		FNG = {
+			is_subject_of = JAP
+		}
+		NOT = {
+			OR = {
+				has_country_flag = hokkaido_farming_discovered_jap
+				has_country_flag = hokkaido_farming_discovered_chi
+			}
+		}
+	}
+	
+	option = {
+		name = fengtian.new.48.a
+		modify_country_flag = {
+			flag = hokkaido_farming
+			value = 1
+		}
+		add_popularity = {
+			ideology = market_liberal 
+			popularity = 0.01
+		}
+		random_list = {
+			60 = {}
+			20 = {
+				set_country_flag = hokkaido_farming_discovered_jap
+			}
+			20 = {
+				set_country_flag = hokkaido_farming_discovered_chi
+			}
+		}
+		random_list = {
+			60 = {
+				883 = {
+					add_extra_state_shared_building_slots = 1
+				}
+			}
+			40 = {
+				884 = {
+					add_extra_state_shared_building_slots = 1
+				}
+			}
+		}
+	}
+}
+
+country_event = { # The Kwantung Army Discovers the Plan
+	id = fengtian.new.49
+	title = fengtian.new.49.t
+	desc = fengtian.new.49.d
+	picture = Jap_coup
+	
+	mean_time_to_happen = {
+		days = 7
+	}
+	
+	trigger = {
+		tag = FNG
+		has_country_flag = hokkaido_farming_discovered_jap
+		FNG = {
+			is_subject_of = JAP
+		}
+	}
+	
+	option = {
+		name = fengtian.new.49.a
+		clr_country_flag = hokkaido_farming
+		add_political_power = -50
+		random_list = {
+			1 = {}
+			33 = {
+				add_timed_idea =  {
+					idea = FNG_Hidden_Kwantung_Doctrines
+					days = 60
+				}
+			}
+			
+			33 = {
+				add_timed_idea = {
+					idea = FNG_Hidden_Kwantung_Factories
+					days = 60
+				}
+			}
+			
+			33 = {
+				add_timed_idea = {
+					idea = FNG_Hidden_Kwantung_Organization
+					days = 60
+				}
+			}
+		}
+	}
+}
+
+country_event = { # The Plan is Discovered by the Chinese/Rural Reconstruction Movement
+	id = fengtian.new.50
+	title = fengtian.new.50.t
+	desc = fengtian.new.50.d
+	picture = fengtian_protest
+	
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		days = 7
+	}
+	
+	trigger = {
+		tag = FNG
+		has_country_flag = hokkaido_farming_discovered_chi
+		has_country_flag = rural_reconstruction_movement
+		FNG = {
+			is_subject_of = JAP
+		}
+	}
+	
+	option = { #Accept the situation
+		name = fengtian.new.50.a
+		clr_country_flag = hokkaido_farming
+		add_political_power = -100
+		decrease_ruling_party_popularity_by_10 = yes
+	}
+	
+	option = { # Defend the plan
+		name = fengtian.new.50.b
+		add_political_power = -30
+		hidden_effect = {
+			random_list = {
+				40 = { 
+					FNG = {
+						country_event = {
+							id = fengtian.new.51
+							days = 5
+						}
+					}
+				}
+				60 = {
+					FNG = {
+						country_event = {
+							id = fengtian.new.52
+							days = 5
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+country_event = { # Defense Successful
+	id = fengtian.new.51
+	title = fengtian.new.51.t
+	desc = fengtian.new.51.d
+	picture = china_official_announcement
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = fengtian.new.51.a
+		add_political_power = 20
+	}
+}
+
+country_event = { # Defense Unsuccessful
+	id = fengtian.new.52
+	title = fengtian.new.52.t
+	desc = fengtian.new.52.d
+	picture = fengtian_protest
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = fengtian.new.52.a
+		add_political_power = -70
+		decrease_ruling_party_popularity_by_20 = yes
+	}
+}
+
+# Focus Tree Specific Events
+
+country_event = { #Fuguo Qiangbing
+	id = fengtian.new.53
+	title = fengtian.new.53.t
+	desc = fengtian.new.53.d
+	picture = Mukden
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = fengtian.new.53.a
+	}
+}
+
+country_event = { #Enrich the Country
+	id = fengtian.new.54
+	title = fengtian.new.54.t
+	desc = fengtian.new.54.d
+	picture = dairen
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = fengtian.new.54.a
+	}
+}
+
+country_event = { #Strengthen the Army
+	id = fengtian.new.55
+	title = fengtian.new.55.t
+	desc = fengtian.new.55.d
+	picture = fengtian_army1
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = fengtian.new.55.a
+	}
+}
+
+country_event = { #Develop the Nine Provinces
+	id = fengtian.new.56
+	title = fengtian.new.56.t
+	desc = fengtian.new.56.d
+	picture = fushun_mine
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = fengtian.new.56.a
+	}
+}
+
+country_event = { #Resume the Wang Yongjiang Reforms
+	id = fengtian.new.57
+	title = fengtian.new.57.t
+	desc = fengtian.new.57.d
+	picture = fengtian_industry
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = fengtian.new.57.a
+		add_political_power = 50
+	}
+}
+
+country_event = { #Yamato Hotel Licenses
+	id = fengtian.new.58
+	title = fengtian.new.58.t
+	desc = fengtian.new.58.d
+	picture = yamato_hotel
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = { #Limit construction
+		name = fengtian.new.58.a
+		add_political_power = -50
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = -0.01
+		}
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.01
+		}
+		set_country_flag = yamato_hotels_limited
+		ai_chance = { 
+			factor = 80
+		}
+	}
+	
+	option = { #Let them build as they please
+		name = fengtian.new.58.b
+		add_political_power = -10
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = -0.03
+		}
+		add_popularity = {
+			ideology = market_liberal
+			popularity = -0.03
+		}
+		set_country_flag = yamato_hotels_unlimited
+		ai_chance = { 
+				factor = 20
+		}
+	}
+}
+
+country_event = { #Found the Northeast IDC
+	id = fengtian.new.59
+	title = fengtian.new.59.t
+	desc = fengtian.new.59.d
+	picture = fengtian_ministry
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = { #Prioritize exports
+		name = fengtian.new.59.a
+		add_political_power = 10
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.03
+		}
+		set_country_flag = IDC_exports
+		716 = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
+		886 = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
+		ai_chance = { 
+			factor = 40
+		}
+	}
+	option = { #Prioritize the Military
+		name = fengtian.new.59.b
+		add_political_power = -30
+		add_popularity = {
+			ideology = paternal_autocrat
+			popularity = 0.03
+		}
+		set_country_flag = IDC_military
+		716 = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = arms_factory
+				level = 1
+				instant_build = yes
+			}
+		}
+		886 = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = arms_factory
+				level = 1
+				instant_build = yes
+			}
+		}
+		ai_chance = { 
+			factor = 40
+		}
+	}
+	option = { # Mixed Approach
+		name = fengtian.new.59.c
+		add_political_power = -10
+		add_popularity = {
+			ideology = social_conservative
+			popularity = 0.03
+		}
+		set_country_flag = IDC_mixed
+		716 = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
+		886 = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = arms_factory
+				level = 1
+				instant_build = yes
+			}
+		}
+		ai_chance = { 
+			factor = 20
+		}
+	}
+}
+
+country_event = { #Mantetsu Chosabu
+	id = fengtian.new.60
+	title = fengtian.new.60.t
+	desc = fengtian.new.60.desc
+	picture = japan_science
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = fengtian.new.60.a
+		set_country_flag = chosabu_radar
+		ai_chance = { 
+			factor = 20
+		}
+	}
+	option = {
+		name = fengtian.new.60.b
+		set_country_flag = chosabu_construction
+		ai_chance = { 
+			factor = 20
+		}
+	}
+	option = {
+		name = fengtian.new.60.c
+		set_country_flag = chosabu_efficiency
+		ai_chance = { 
+			factor = 20
+		}
+	}
+	option = {
+		name = fengtian.new.60.d
+		set_country_flag = chosabu_decryption
+		ai_chance = { 
+			factor = 19
+		}
+	}
+	option = {
+		name = fengtian.new.60.e
+		ai_chance = { 
+			factor = 1
+		}
+	}
+}
+
+country_event = { #Chosabu Radar 1
+	id = fengtian.new.61
+	title = fengtian.new.61.t
+	desc = fengtian.new.61.d
+	picture = japan_science
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = FNG
+		has_country_flag = chosabu_radar
+		JAP = {
+			has_tech = radio_detection
+		}
+		FNG = {
+			is_subject_of = JAP
+		}
+		NOT = {
+			FNG = {
+				has_tech = radio_detection
+				has_tech = decimetric_radar
+				has_tech = improved_decimetric_radar
+				has_tech = centimetric_radar
+				has_tech = improved_centimetric_radar
+				has_tech = advanced_centimetric_radar
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 30
+	}
+	
+	option = {
+		name = fengtian.new.61.a
+		add_tech_bonus = {
+			name = radar
+			bonus = 0.15
+			uses = 1
+			category = radar_tech
+		}
+	}
+}
+
+country_event = { #Chosabu Radar 2
+	id = fengtian.new.62
+	title = fengtian.new.62.t
+	desc = fengtian.new.62.d
+	picture = japan_science
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = FNG
+		has_country_flag = chosabu_radar
+		JAP = {
+			has_tech = decimetric_radar
+		}
+		FNG = {
+			is_subject_of = JAP
+		}
+		NOT = {
+			FNG = {
+				has_tech = decimetric_radar
+				has_tech = improved_decimetric_radar
+				has_tech = centimetric_radar
+				has_tech = improved_centimetric_radar
+				has_tech = advanced_centimetric_radar
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 30
+	}
+	
+	option = {
+		name = fengtian.new.62.a
+		add_tech_bonus = {
+			name = radar
+			bonus = 0.15
+			uses = 1
+			category = radar_tech
+		}
+	}
+}
+
+country_event = { #Chosabu Construction 1
+	id = fengtian.new.63
+	title = fengtian.new.63.t
+	desc = fengtian.new.63.d
+	picture = fushun_mine
+
+	fire_only_once = yes
+	
+	trigger = {
+		tag = FNG
+		has_country_flag = chosabu_construction
+		JAP = {
+			has_tech = construction2
+		}
+		FNG = {
+			is_subject_of = JAP
+		}
+		NOT = {
+			FNG = {
+				has_tech = construction2
+				has_tech = construction3
+				has_tech = excavation3
+				has_tech = construction4
+				has_tech = excavation4
+				has_tech = construction5
+				has_tech = excavation5
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 30
+	}
+	
+	option = {
+		name = fengtian.new.63.a
+		add_tech_bonus = {
+			name = construction_tech
+			bonus = 0.10
+			uses = 1
+			category = construction_tech
+		}
+	}
+}
+
+country_event = { #Chosabu Construction 2
+	id = fengtian.new.64
+	title = fengtian.new.64.t
+	desc = fengtian.new.64.d
+	picture = fushun_mine
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = FNG
+		has_country_flag = chosabu_construction
+		JAP = {
+			has_tech = construction3
+		}
+		FNG = {
+			is_subject_of = JAP
+		}
+		NOT = {
+			FNG = {
+				has_tech = construction3
+				has_tech = construction4
+				has_tech = excavation4
+				has_tech = construction5
+				has_tech = excavation5
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 30
+	}
+	
+	option = {
+		name = fengtian.new.64.a
+		add_tech_bonus = {
+			name = construction_tech
+			bonus = 0.10
+			uses = 1
+			category = construction_tech
+		}
+	}
+}
+
+country_event = { #Chosabu Efficiency 1
+	id = fengtian.new.65
+	title = fengtian.new.65.t
+	desc = fengtian.new.65.d
+	picture = china_industry
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = FNG
+		has_country_flag = chosabu_efficiency
+		JAP = {
+			has_tech = improved_machine_tools
+		}
+		FNG = {
+			is_subject_of = JAP
+		}
+		NOT = {
+			FNG = {
+				has_tech = improved_machine_tools
+				has_tech = advanced_machine_tools
+				has_tech = assembly_line_production
+				has_tech = flexible_line
+				has_tech = streamlined_line
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 30
+	}
+	
+	option = {
+		name = fengtian.new.65.a
+		add_tech_bonus = {
+			name = efficiency_tech
+			bonus = 0.10
+			uses = 1
+			category = efficiency_tech
+		}
+	}
+}
+
+country_event = { #Chosabu Efficiency 2
+	id = fengtian.new.66
+	title = fengtian.new.66.t
+	desc = fengtian.new.66.d
+	picture = china_industry
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = FNG
+		has_country_flag = chosabu_efficiency
+		JAP = {
+			has_tech = advanced_machine_tools
+		}
+		FNG = {
+			is_subject_of = JAP
+		}
+		NOT = {
+			FNG = {
+				has_tech = advanced_machine_tools
+				has_tech = assembly_line_production
+				has_tech = flexible_line
+				has_tech = streamlined_line
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 30
+	}
+	
+	option = {
+		name = fengtian.new.66.a
+		add_tech_bonus = {
+			name = efficiency_tech
+			bonus = 0.10
+			uses = 1
+			category = efficiency_tech
+		}
+	}
+}
+
+country_event = { #Chosabu Decryption 2
+	id = fengtian.new.67
+	title = fengtian.new.67.t
+	desc = fengtian.new.67.d
+	picture = japan_science
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = FNG
+		has_country_flag = chosabu_decryption
+		JAP = {
+			has_tech = basic_decryption
+		}
+		FNG = {
+			is_subject_of = JAP
+		}
+		NOT = {
+			FNG = {
+				has_tech = basic_decryption
+				has_tech = improved_decryption
+				has_tech = advanced_decryption
+				has_tech = streamlined_line
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 30
+	}
+	
+	option = {
+		name = fengtian.new.67.a
+		add_tech_bonus = {
+			name = decryption_tech
+			bonus = 0.15
+			uses = 1
+			category = decryption_tech
+		}
+	}
+}
+
+country_event = { #Chosabu Decryption 2
+	id = fengtian.new.68
+	title = fengtian.new.68.t
+	desc = fengtian.new.68.d
+	picture = japan_science
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = FNG
+		has_country_flag = chosabu_decryption
+		JAP = {
+			has_tech = improved_decryption
+		}
+		FNG = {
+			is_subject_of = JAP
+		}
+		NOT = {
+			FNG = {
+				has_tech = improved_decryption
+				has_tech = advanced_decryption
+				has_tech = streamlined_line
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 30
+	}
+	
+	option = {
+		name = fengtian.new.68.a
+		add_tech_bonus = {
+			name = decryption_tech
+			bonus = 0.15
+			uses = 1
+			category = decryption_tech
+		}
+	}
+}
+
+country_event = { #Jinzhou Industrial Zone
+	id = fengtian.new.69
+	title = fengtian.new.69.t
+	desc = fengtian.new.69.d
+	picture = fengtian_industry_2
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = fengtian.new.69.a
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.05
+		}
+		716 = { #Mantetsu Offer
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = industrial_complex
+				level = 2
+				instant_build = yes
+			}
+		}
+		ai_chance = { 
+			factor = 30
+		}
+	}
+	
+	option = { #Communications Clique Offer
+		name = fengtian.new.69.b
+		add_popularity = {
+			ideology = social_conservative
+			popularity = 0.03
+		}
+		716 = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
+		ai_chance = { 
+			factor = 33
+		}
+	}
+	option = { #Zhang Clique Offer
+		name = fengtian.new.69.c
+		add_popularity = {
+			ideology = paternal_autocrat
+			popularity = 0.03
+		}
+		716 = {
+		add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = arms_factory
+				level = 2
+				instant_build = yes
+			}
+		}
+		ai_chance = { 
+			factor = 36
+		}
+	}
+}
+
+country_event = {
+	id = fengtian.new.70
+	title = fengtian.new.70.t
+	desc = fengtian.new.70.d
+	picture = fengtian_ministry
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = { #Fill the Reserve
+		name = fengtian.new.70.a
+		set_country_flag = reserve_full
+		add_timed_idea = {
+			idea = FNG_Buying_Silver
+			days = 60
+		}
+		ai_chance = { 
+			factor = 60
+		}
+	}
+	
+	option = { #No risk no reward
+		name = fengtian.new.70.b
+		hidden_effect = {
+			random_list = {
+				40 = {
+					set_country_flag = reserve_full
+				}
+				60 = {
+					set_country_flag = reserve_low
+				}
+			}
+		}
+		ai_chance = { 
+			factor = 40
+		}
+	}
+}
+
+country_event = { #Economic Disaster!
+	id = fengtian.new.71
+	title = fengtian.new.71.t
+	desc = fengtian.new.71.d
+	picture = fengtian_protest
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = FNG
+		has_country_flag = reserve_low
+	}
+	
+	mean_time_to_happen = {
+		days = 720
+	}
+	
+	option = { #Burn the evidence!
+		name = fengtian.new.71.a
+		add_political_power = -80
+		add_timed_idea = {
+			idea = FNG_Central_Bank_Collapse
+			days = 182
+		}
+		hidden_effect = {
+			random_list = {
+				40 = {
+					set_country_flag = bank_evidence_discovered
+				}
+				60 = {}
+			}
+		}
+		ai_chance = { 
+			factor = 20
+		}
+	}
+	
+	option = { #Burn it and blame the Japanese!
+		name = fengtian.new.71.b
+		add_political_power = 20
+		add_timed_idea = {
+			idea = FNG_Central_Bank_Collapse
+			days = 182
+		}
+		JAP = {
+			country_event = japfor.203
+		}
+		ai_chance = { 
+			factor = 10
+		}
+	}
+
+	option = { #Ask Japan for a Bailout!
+		name = fengtian.new.71.c
+		add_political_power = -100
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.05
+		}
+		JAP = {
+			country_event = japfor.202
+		}
+		ai_chance = { 
+			factor = 50
+		}
+	}
+	
+	option = { #We must come clean!
+		name = fengtian.new.71.d
+		add_political_power = -120
+		add_timed_idea = {
+			idea = FNG_Central_Bank_Collapse
+			days = 182
+		}
+		ai_chance = { 
+			factor = 20
+		}
+	}
+}
+
+country_event = { #Banking Evidence Discovered!
+	id = fengtian.new.72
+	title = fengtian.new.72.t
+	desc = fengtian.new.72.d
+	picture = Jap_coup
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = FNG
+		has_country_flag = bank_evidence_discovered
+		has_completed_focus = FNG_Fill_the_Silver_Reserve
+	}
+	
+	mean_time_to_happen = {
+		days = 365
+	}
+	
+	option = { #We must accept
+		name = fengtian.new.72.a
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.10
+		}
+		ai_chance = { 
+			factor = 80
+		}
+	}
+	
+	option = { #We cannot accept
+		name = fengtian.new.72.b
+		add_political_power = -200
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.03
+		}
+		ai_chance = { 
+			factor = 20
+		}
+	}
+}
+
+country_event = { #Japan Bails out Fengtian
+	id = fengtian.new.73
+	title = fengtian.new.73.t
+	desc = fengtian.new.73.d
+	picture = japan_announcement
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+	option = { #We are saved!
+		name = fengtian.new.73.a
+		add_political_power = 30
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.05
+		}
+		remove_ideas = FNG_Central_Bank_Collapse
+	}
+}
+
+country_event = { #Japan refused to bailout Fengtian
+	id = fengtian.new.74
+	title = fengtian.new.74.t
+	desc = fengtian.new.74.d
+	picture = japan_ultimatum
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+	option = { #Disaster!
+		name = fengtian.new.73.a
+		add_political_power = -30
+		add_popularity = {
+			ideology = market_liberal
+			popularity = -0.05
+		}
+	}
+}
+
+
+country_event = { #The State of the Officer Corps
+	id = fengtian.new.75
+	title = fengtian.new.75.t
+	desc = fengtian.new.75.d
+	picture = fengtian_troops
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+	option = {
+		name = fengtian.new.75.a
+		add_political_power = -30
+	}
+}
+
+country_event = { #Expel Japanese Officers
+	id = fengtian.new.76
+	title = fengtian.new.76.t
+	desc = fengtian.new.76.d
+	picture = japan_restorationist_centralist
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+	option = { #Expel them all
+		name = fengtian.new.76.a
+		remove_ideas = {
+			FNG_Japanese_Military_Mission
+		}
+		add_political_power = 200
+		JAP = {
+			country_event = japfor.205
+		}
+		add_popularity = {
+			ideology = market_liberal
+			popularity = -0.10
+		}
+		add_popularity = {
+			ideology = paternal_autocrat
+			popularity = 0.10
+		}
+		ai_chance = { 
+			factor = 60
+		}
+	}
+	
+	option = { #Be diplomatic
+		name = fengtian.new.76.b
+		remove_ideas = {
+			FNG_Japanese_Military_Mission
+		}
+		add_political_power = 50
+		JAP = {
+			country_event = japfor.204
+		}
+		add_popularity = {
+			ideology = market_liberal
+			popularity = -0.05
+		}
+		add_popularity = {
+			ideology = paternal_autocrat
+			popularity = 0.05
+		}
+		ai_chance = { 
+			factor = 40
+		}
+	}
+}
+
+country_event = { #Japan Declares War
+	id = fengtian.new.77
+	title = fengtian.new.77.t
+	desc = fengtian.new.77.d
+	desc = {
+		text = fengtian.new.77.d_breakaway
+		trigger = { has_country_flag = fng_breakaway
+		}
+	}
+	picture = japan_ultimatum
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+	option = { #Zhongua Mingguo Wansui!
+		name = fengtian.new.77.a
+		clr_country_flag = JAP_Help
+		JAP = {
+			declare_war_on = {
+				target = FNG
+				type = annex_everything
+			}
+		}
+		add_political_power = 200
+		set_political_party = { 
+			ideology = market_liberal 
+			popularity = 0.00
+		}
+		add_ideas = FNG_informal_empire_1
+		hidden_effect = {
+			remove_ideas = {
+				FNG_informal_empire_2
+				FNG_informal_empire_3
+				FNG_informal_empire_4
+				FNG_informal_empire_5
+			}
+		}
+	}
+}
+
+country_event = { #Fengtian is forced/ultimatum
+	id = fengtian.new.78
+	title = fengtian.new.78.t
+	desc = fengtian.78.d
+	desc = { 
+		text = fengtian.new.78.d_ultimatum
+		trigger = {
+			has_global_flag = jap_fengtian_ultimatum
+		}
+	}
+	picture = japan_ultimatum
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+	option = { #We can do nothing
+		name = fengtian.new.78.a
+		add_political_power = -200
+		add_ideas = FNG_Japanese_Military_Mission
+		ai_chance = { 
+			factor = 55
+		}
+	}
+	
+	option = { #Then we strike!
+		name = fengtian.new.78.b
+		country_event = fengtian.informalempire.1
+		declare_war_on = { 
+			target = JAP 
+			type = annex_everything
+		}
+		ai_chance = { 
+			factor = 45
+		}
+	}
+}
+
+country_event = { #Wu Wang Zai Ju
+	id = fengtian.new.79
+	title = fengtian.new.79.t
+	desc = fengtian.new.79.d
+	picture = china_ambassador_announcement
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+	option = { #Southern Reclamation is Inevitable!
+		name = fengtian.new.79.a
+		add_political_power = 100
+		set_global_flag = wu_wang_zai_ju
+	}
+}
+
+country_event = { #Retaking Chahar
+	id = fengtian.new.80
+	title = fengtian.new.80.t
+	desc = fengtian.new.80.d
+	picture = china_official_announcement
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+	option = { #Our cause is righteous!
+		name = fengtian.new.80.a
+		create_wargoal = { 
+			type = take_state
+			target = MON
+		}
+		declare_war_on = {
+			target = MON
+			type = take_state
+		}
+	}
+}
+
+country_event = { #chahar Peace Event
+	id = fengtian.new.81
+	title = fengtian.new.81.t
+	desc = fengtian.new.81.d
+	picture = china_ambassador_announcement
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = { #We have achieved our goals
+		name = fengtian.new.81.a
+		FNG = {
+			white_peace_with_ROOT = yes
+		}
+		MON = {
+			transfer_state = 612
+		}
+		ai_chance = { 
+			factor = 99
+		}
+	}
+	
+	option = { #No peace
+		name = fengtian.new.81.b
+		add_political_power = -200
+		ai_chance = { 
+			factor = 1
+		}
+	}	
+}
+
+country_event = { #Doihara's Proposal
+	id = fengtian.new.82
+	title = fengtian.new.82.t
+	desc = fengtian.new.82.d
+	picture = doihara
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = FNG
+		date > 1936.9.22
+	}
+	mean_time_to_happen = {
+		days = 150
+	}
+	
+	option = {
+		name = fengtian.new.82.a
+		set_country_flag = doihara_cigarettes
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.01
+		}
+		ai_chance = { 
+			factor = 60
+		}
+	}
+	
+	option = {
+		name = fengtian.new.82.b
+		add_political_power = 10
+		add_popularity = {
+			ideology = market_liberal
+			popularity = -0.01
+		}
+		ai_chance = { 
+			factor = 40
+		}
+	}
+}
+
+country_event = { #Golden Dragon Cigarettes
+	id = fengtian.new.83
+	title = fengtian.new.83.t
+	desc = fengtian.new.83.d
+	picture = hiroshima_package
+		
+	fire_only_once = yes
+		
+	is_triggered_only = yes
+		
+	option = {
+		name = fengtian.new.83.a
+		set_global_flag = golden_dragon_cigarettes
+		hidden_effect = {
+			random_list = {
+				15 = {
+					set_global_flag = golden_dragon_cigarettes_success
+				}
+				70 = { 
+					set_global_flag = golden_dragon_cigarettes_delay_1
+				}
+				15 = { 
+					set_global_flag = golden_dragon_cigarettes_failure
+				}
+			}
+		}
+	}
+}
+
+country_event = { #Golden Dragon Cigarettes Delay
+	id = fengtian.new.84
+	title = fengtian.new.84.t
+	desc = fengtian.new.84.d
+	picture = shanghai_river
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = FNG
+		has_global_flag = golden_dragon_cigarettes_delay_1
+	}
+	
+	mean_time_to_happen = {
+		days = 450
+	}
+	
+	option = { #Continue 1
+		name = fengtian.new.84.a
+		hidden_effect = {
+			random_list = {
+				60 = {
+					set_global_flag = golden_dragon_cigarettes_delay_2
+				}
+				30 = {
+					set_global_flag = golden_dragon_cigarettes_success
+				}
+				10 = {
+					set_global_flag = golden_dragon_cigarettes_failure
+				}
+			}
+		}
+		ai_chance = { 
+			factor = 70
+		}
+	}
+	
+	option = { #We've had enough
+		name = fengtian.new.84.b
+		add_political_power = -20
+		clr_global_flag = golden_dragon_cigarettes_delay_1
+		clr_global_flag = golden_dragon_cigarettes
+		clr_global_flag = golden_dragon_cigarettes_failure
+		clr_global_flag = golden_dragon_cigarettes_success
+		ai_chance = { 
+			factor = 30
+		}
+	}
+}
+
+country_event = { #Further Delays
+	id = fengtian.new.85
+	title = fengtian.new.85.t
+	desc = fengtian.new.85.d
+	picture = china_abandoned
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = FNG
+		has_global_flag = golden_dragon_cigarettes_delay_2
+	}
+	
+	mean_time_to_happen = {
+		days = 450
+	}
+	
+	option = { #Continue
+		name = fengtian.new.85.a
+		hidden_effect = {
+			random_list = {
+				70 = {
+					set_country_flag = golden_dragon_cigarettes_success
+				}
+				30 = {
+					set_country_flag = golden_dragon_cigarettes_failure
+				}
+			}
+		}
+		ai_chance = { 
+			factor = 60
+		}
+	}
+	
+	option = { #We've had enough
+		name = fengtian.new.86.b
+		add_political_power = -40
+		clr_global_flag = golden_dragon_cigarettes_delay_1
+		clr_global_flag = golden_dragon_cigarettes_delay_2
+		ai_chance = { 
+			factor = 40
+		}
+	}
+}
+
+country_event = { #Success
+	id = fengtian.new.86
+	title = fengtian.new.86.t
+	desc = fengtian.new.86.d
+	picture = hiroshima_package
+		
+	fire_only_once = yes
+		
+	trigger = {
+		tag = FNG
+		has_global_flag = golden_dragon_cigarettes_success
+	}
+		
+	mean_time_to_happen = {
+		days = 450
+	}
+
+	option = {
+		name = fengtian.new.86.a
+		clr_global_flag = golden_dragon_cigarettes
+		clr_global_flag = golden_dragon_cigarettes_delay
+		clr_global_flag = golden_dragon_cigarettes_failure
+		add_ideas = FNG_golden_dragon_1
+		QIE = {
+			add_ideas = QIE_golden_dragon_1
+			country_event = qing.157
+		}
+	}
+}
+
+country_event = { # Failure
+	id = fengtian.new.87
+	title = fengtian.new.87.t
+	desc = fengtian.new.87.d
+	picture = shanghai_lane
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = FNG
+		has_global_flag = golden_dragon_cigarettes_failure
+		NOT = {
+			has_global_flag = golden_dragon_cigarettes_success
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 450
+	}
+	
+	option = {
+		name = fengtian.new.87.a
+		clr_global_flag = golden_dragon_cigarettes
+		clr_global_flag = golden_dragon_cigarettes_delay
+		clr_global_flag = golden_dragon_cigarettes_success
+		clr_global_flag = golden_dragon_cigarettes_failure
+		add_political_power = -30
+	}
+}
+
+country_event = { #Repeating potential Doihara death event trigger
+	id = fengtian.new.88
+	title = fengtian.new.88.t
+	desc = fengtian.new.88.d
+	
+	hidden = yes
+	
+	trigger = {
+		tag = FNG
+		has_global_flag = golden_dragon_cigarettes
+	}
+	
+	mean_time_to_happen = {
+		days = 150
+	}
+	
+	immediate = {
+		random_list = {
+			70 = {}
+			30 = {
+				country_event = fengtian.new.89
+				clr_global_flag = golden_dragon_cigarettes
+			}
+		}
+	}
+	
+	option = {
+		name = fengtian.new.88.a
+	}
+}
+
+country_event = { #Doihara death event
+	id = fengtian.new.89
+	title = fengtian.new.89.t
+	desc = fengtian.new.89.d
+	picture = shanghai_lane
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = fengtian.new.89
+		clr_global_flag = golden_dragon_cigarettes
+		clr_global_flag = golden_dragon_cigarettes_delay
+		clr_global_flag = golden_dragon_cigarettes_success
+		clr_global_flag = golden_dragon_cigarettes_failure
+		add_political_power = -30
+	}
+}
+
+country_event = { #Opium successful
+	id = fengtian.new.90
+	title = fengtian.new.90.t
+	desc = fengtian.new.90.d
+	picture = china_abandoned
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = FNG
+		has_global_flag = golden_dragon_cigarettes_success
+	}
+	option = {
+		name = fengtian.new.90
+		QIE = {
+			remove_ideas = QIE_golden_dragon_1
+			add_ideas  = QIE_golden_dragon_2
+		}
+	}
+}
+
+country_event = { #Escalate the Propaganda War
+	id = fengtian.new.91
+	title = fengtian.new.91.t
+	desc = fengtian.new.91.d
+	desc = {
+		text = fengtian.new.91.d_mantetsu
+		trigger = {
+			OR = {
+				has_idea = FNG_informal_empire_4
+				has_idea = FNG_informal_empire_5
+			}
+		}
+	}
+	picture = china_ambassador_announcement
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = fengtian.new.91.a
+		if = {
+			limit = {
+				has_idea = FNG_informal_empire_2
+			}
+			add_political_power = 50
+		}
+		if = {
+			limit = {
+				has_idea = FNG_informal_empire_3
+			}
+			add_political_power = 30
+		}
+		if = {
+			limit = {
+				has_idea = FNG_informal_empire_4
+			}
+			add_political_power = 10
+		}
+		if = {
+			limit = {
+				has_idea = FNG_informal_empire_5
+			}
+			add_political_power = -50
+		}
+	}
+}
+
+#Japan Weapons Import Events
+
+country_event = { # Artillery Event
+	id = fengtian.new.92
+	title = fengtian.new.92.t
+	desc = fengtian.new.92.d
+	picture = hiroshima_package
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+
+	option = {
+		name = fengtian.new.92.a
+		set_country_flag = arty_delivery
+		add_equipment_to_stockpile = { 
+			type = artillery_2 
+			amount = 250 
+			producer = JAP
+		}
+	}
+}
+
+country_event = { # Artillery Event 2
+	id = fengtian.new.93
+	title = fengtian.new.93.t
+	desc = fengtian.new.93.d
+	picture = hiroshima_package
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = FNG
+		has_country_flag = arty_delivery
+		JAP = {
+			exists = yes
+			has_tech = artillery2
+		}
+	}
+
+	option = {
+		name = fengtian.new.93.a
+		add_equipment_to_stockpile = { 
+			type = artillery_2 
+			amount = 250
+			producer = JAP
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 720
+	}
+}
+
+country_event = { # Artillery Event 3
+	id = fengtian.new.94
+	title = fengtian.new.94.t
+	desc = fengtian.new.94.d
+	picture = hiroshima_package
+	
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		days = 365
+	}
+	
+	trigger = {
+		tag = FNG
+		has_country_flag = arty_delivery
+		JAP = {
+			exists = yes
+			has_tech = artillery3
+		}
+	}
+
+	option = {
+		name = fengtian.new.94.a
+		add_equipment_to_stockpile = { 
+			type = artillery_3
+			amount = 250 
+			producer = JAP
+		} 
+	}
+}
+
+country_event = { # Infantry Event 1
+	id = fengtian.new.95
+	title = fengtian.new.95.t
+	desc = fengtian.new.95.d
+	picture = hiroshima_package
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+
+	option = {
+		name = fengtian.new.95.a
+		set_country_flag = rifle_delivery
+		add_equipment_to_stockpile = { 
+			type = infantry_equipment_2
+			amount = 4000
+			producer = JAP
+		} 
+	}
+}
+
+country_event = { # Infantry Event 2
+	id = fengtian.new.96
+	title = fengtian.new.96.t
+	desc = fengtian.new.96.d
+	picture = hiroshima_package
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = FNG
+		has_country_flag = rifle_delivery
+		JAP = {
+			exists = yes
+			has_tech = advanced_infantry_weapons
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 720
+	}
+	
+	option = {
+		name = fengtian.new.96.a
+
+		add_equipment_to_stockpile = { 
+			type = infantry_equipment_3 
+			amount = 4000
+			producer = JAP
+		} 
+	}
+}
+
+country_event = { # Infantry Event 3
+	id = fengtian.new.97
+	title = fengtian.new.97.t
+	desc = fengtian.new.97.d
+	picture = hiroshima_package
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = FNG
+		has_country_flag = rifle_delivery
+		JAP = {
+			exists = yes
+			has_tech = advanced_infantry_weapons
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 365
+	}
+
+	option = {
+		name = fengtian.new.97.a
+
+		add_equipment_to_stockpile = { 
+			type = infantry_equipment_3 
+			amount = 4000
+			producer = JAP
+		} 
+	}
+}
+
+country_event = { # Tank Event 1
+	id = fengtian.new.98
+	title = fengtian.new.98.t
+	desc = fengtian.new.98.d
+	picture = hiroshima_package
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+
+	option = {
+		name = fengtian.new.98.a
+		set_country_flag = tank_delivery
+		add_equipment_to_stockpile = { 
+			type = light_tank_equipment_2
+			amount = 100
+			producer = JAP
+		} 
+	}
+}
+
+country_event = { # tank event 2
+	id = fengtian.new.99
+	title = fengtian.new.99.t
+	desc = fengtian.new.99.d
+	picture = hiroshima_package
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = FNG
+		has_country_flag = tank_delivery
+		JAP = {
+			exists = yes
+			has_tech = improved_light_tank
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 720
+	}
+
+	option = {
+		name = fengtian.new.99.a
+		add_equipment_to_stockpile = { 
+			type = light_tank_equipment_2
+			amount = 100
+			producer = JAP
+		} 
+	}
+}
+
+country_event = { # tank event 3
+	id = fengtian.new.100
+	title = fengtian.new.100.t
+	desc = fengtian.new.100.d
+	picture = hiroshima_package
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = FNG
+		has_country_flag = tank_delivery
+		JAP = {
+			exists = yes
+			has_tech = improved_light_tank
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 720
+	}
+
+	option = {
+		name = fengtian.new.100.a
+		add_equipment_to_stockpile = { 
+			type = light_tank_equipment_2 
+			amount = 100
+			producer = JAP
+		} 
+	}
+}
+
+country_event = { #The Grand Marshal's Proclamation
+	id = fengtian.new.101
+	title = fengtian.new.101.t
+	desc = fengtian.new.101.d
+	picture = chinese_warlords
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = fengtian.new.101.a
+		trigger = {
+			NOT = {
+				FNG = {
+					is_subject_of = JAP
+				}
+			}
+		}
+		set_country_flag = year_righteous_effort
+		add_timed_idea = {
+			idea = FNG_year_of_righteous_effort
+			days = 365
+		}
+		hidden_effect = {
+			QIE = {
+				country_event = fengtian.new.129
+			}
+		}
+	}
+	
+	option = {
+		name = fengtian.new.101.b
+		set_country_flag = year_righteous_effort
+		trigger = {
+			FNG = {
+				is_subject_of = JAP
+			}
+		}
+		add_timed_idea = {
+			idea = FNG_year_of_righteous_effort
+			days = 365
+		}
+		hidden_effect = {
+			JAP = {
+				country_event = fengtian.new.128
+			}
+			QIE = {
+				country_event = fengtian.new.129
+			}
+		}
+	}
+}
+
+country_event = { #Failure to begin the War of National Reclamation
+	id = fengtian.new.102
+	title = fengtian.new.102.t
+	desc = fengtian.new.102.d
+	picture = fengtian_protest
+	
+	fire_only_once = yes
+	
+	trigger = {
+		has_completed_focus = FNG_The_Grand_Marshals_Proclamation
+		has_country_flag = year_righteous_effort
+		NOT = {
+			has_idea = FNG_year_of_righteous_effort
+		}
+		QIE = {
+			exists = yes
+		}
+		FNG = {
+			has_war_with = QIE
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = fengtian.new.102.a
+		add_political_power = -500
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = -10
+		}
+		add_popularity = {
+			ideology = paternal_autocrat
+			popularity = -10
+		}
+	}
+}
+
+country_event = { #Shanhaiguan
+	id = fengtian.new.103
+	title = fengtian.new.103.t
+	desc = fengtian.new.103.d
+	picture = shanhaiguan
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = { #Best of luck
+		name = fengtian.new.103.a
+		add_manpower = -36000
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = -1800
+			producer = FNG
+		}
+		hidden_effect = {
+			random_list = {
+				40 = {
+					set_global_flag = shanhaiguan_successful
+				}
+				15 = {
+					set_global_flag = shanhaiguan_delayed_success
+				}
+				20 = {
+					set_global_flag = shanhaiguan_delayed_failure
+				}
+				25 = {
+					set_global_flag = shanhaiguan_immediate_failure
+				}
+			}
+		}
+		ai_chance = { 
+			factor = 90
+		}
+	}
+	
+	option = { #Forget it
+		name = fengtian.new.103.b
+		ai_chance = { 
+			factor = 10
+		}
+	}
+}
+
+country_event = { #shanhaiguan setup successful
+	id = fengtian.new.104
+	title = fengtian.new.104.t
+	desc = fengtian.new.104.d
+	picture = chinese_militia
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = FNG
+		has_global_flag = shanhaiguan_successful
+		NOT = {
+			has_completed_focus = FNG_Begin_the_War_of_National_Reclamation
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 130
+	}
+	
+	option = {
+		name = fengtian.new.104.a
+		set_global_flag = shanhaiguan_successful_1
+	}
+}	
+
+country_event = { #shanhaiguan immediate failure
+	id = fengtian.new.105
+	title = fengtian.new.105.t
+	desc = fengtian.new.105.d
+	picture = fengtian_prisoner
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = FNG
+		has_global_flag = shanhaiguan_immediate_failure
+	}
+	
+	mean_time_to_happen = {
+		days = 130
+	}
+	
+	option = {
+		name = fengtian.new.105.a
+		add_political_power = -30
+	}
+}
+
+country_event = { #shanhaiguan infiltrators disappeared
+	id = fengtian.new.106
+	title = fengtian.new.106.t
+	desc = fengtian.new.106.d
+	picture = china_abandoned
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = FNG
+		OR = {
+			has_global_flag = shanhaiguan_delayed_success
+			has_global_flag = shanhaiguan_delayed_failure
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 130
+	}
+	
+	option = {
+		name = fengtian.new.106.a
+		set_global_flag = shanhaiguan_delayed_success_1
+		set_global_flag = shanhaiguan_delayed_failure_1
+	}
+}
+
+country_event = { #shanhaiguan successful
+	id = fengtian.new.107
+	title = fengtian.new.107.t
+	desc = fengtian.new.107.d
+	picture = chinese_militia
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = FNG
+		has_global_flag = shanhaiguan_successful_1
+		FNG = {
+			has_war_with = QIE
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 10
+	}
+	
+	option = {
+		name = fengtian.new.107.a
+		load_oob = FNG_shanhaiguan
+	}
+}
+
+country_event = { #shanhaiguan delayed success
+	id = fengtian.new.108
+	title = fengtian.new.108.t
+	desc = fengtian.new.108.d
+	picture = warlord_battle
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = FNG
+		has_global_flag = shanhaiguan_delayed_success_1
+		FNG = {
+			has_war_with = QIE
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 10
+	}
+	
+	option = {
+		name = fengtian.new.108.a
+		load_oob = FNG_shanhaiguan
+	}
+}
+
+country_event = { #Shanhaiguan delayed failure
+	id = fengtian.new.109
+	title = fengtian.new.109.t
+	desc = fengtian.new.109.d
+	picture = warlord_battle
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = FNG
+		has_global_flag = shanhaiguan_delayed_failure_1
+		FNG = {
+			has_war_with = QIE
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 10
+	}
+	
+	option = {
+		name = fengtian.new.109.a
+	}
+}
+
+country_event = { #The Gang of Three
+	id = fengtian.new.110
+	title = fengtian.new.110.t
+	desc = fengtian.new.110.d
+	picture = xiangshen
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = FNG
+		has_completed_focus = FNG_Preservation_of_the_Xinhai_Order
+	}
+	
+	mean_time_to_happen = {
+		days = 65
+	}
+	
+	option = {
+		name = fengtian.new.110.a
+		add_political_power = -150
+	}
+}
+
+country_event = { #Mantetsu Bribes
+	id = fengtian.new.111
+	title = fengtian.new.111.t
+	desc = fengtian.new.111.d
+	picture = fengtian_ministry
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = FNG
+		has_completed_focus = FNG_Fuguo_Qiangbing
+	}
+	
+	mean_time_to_happen = {
+		days = 65
+	}
+	
+	option = { #Remove them anyway
+		name = fengtian.new.111.a
+		add_political_power = -100
+		add_popularity = {
+			ideology = market_liberal
+			popularity = -0.01
+		}
+		ai_chance = { 
+			factor = 50
+		}
+	}
+	
+	option = { #We can do nothing
+		name = fengtian.new.111.b
+		add_political_power = -50
+		ai_chance = { 
+			factor = 50
+		}
+	}
+}
+
+country_event = { #The Anshan Incident
+	id = fengtian.new.112
+	title = fengtian.new.112.t
+	desc = fengtian.new.112.d
+	picture = jap_manchurian_exploitation
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = FNG
+		has_completed_focus = FNG_Mantetsu_Collaboration
+	}
+	
+	mean_time_to_happen = {
+		days = 365
+	}
+	
+	option = { #Denounce the Japanese
+		name = fengtian.new.112.a
+		add_political_power = -100
+		JAP = {
+			country_event = japfor.206
+		}
+		ai_chance = { 
+			factor = 70
+		}
+	}
+	
+	option = { #stay silent
+		name = fengtian.new.112.b
+		add_political_power = -150
+		ai_chance = { 
+			factor = 30
+		}
+	}
+}
+
+country_event = { #Japan Denounces us
+	id = fengtian.new.113
+	title = fengtian.new.113.t
+	desc = fengtian.new.113.d
+	picture = japan_ultimatum
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = { #so be it
+		name = fengtian.new.113.a
+		add_political_power = -30
+		ai_chance = {
+			factor = 50
+		}
+	}
+	
+	option = { #We will not be intimidated!
+		name = fengtian.new.113.b
+		add_political_power = 50
+		hidden_effect = {
+			set_country_flag = fengtian_blames_japan
+			country_event = {
+				id = fengtian.new.122
+				days = 1
+			}
+		}
+	}
+		
+}
+
+country_event = { #Repeating Imperial Han Society Killings
+	id = fengtian.new.114
+	title = fengtian.new.114.t
+	desc = fengtian.new.114.d
+	picture = railway_strike_2
+	
+	trigger = {
+		tag = FNG
+	}
+	
+	mean_time_to_happen = {
+		days = 750
+	}
+	
+	option = { #Imperial Han lives in the past
+		name = fengtian.new.114.a
+		add_political_power = -30
+	}
+}
+
+country_event = { #The Grand Marshal Radio Incident
+	id = fengtian.new.115
+	title = fengtian.new.115.t
+	desc = fengtian.new.115.d
+	picture = Mukden
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = FNG
+		has_completed_focus = FNG_Japanese_Electrical_Expertise
+	}
+	
+	mean_time_to_happen = {
+		days = 65
+	}
+	
+	option = { #Unfortunate
+		name = fengtian.new.115.a
+		add_political_power = -100
+	}
+}
+	
+country_event = { #Seditious Articles Proliferate
+	id = fengtian.new.116
+	title = fengtian.new.116.t
+	desc = fengtian.new.116.d
+	picture = china_ambassador_announcement
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = FNG
+		FNG = {
+			is_subject_of = JAP
+		}
+		date > 1940.1.3
+	}
+	
+	mean_time_to_happen = {
+		days = 65
+	}
+	
+	option = { #Unfortunate
+		name = fengtian.new.116.a
+		add_political_power = -100
+	}
+}
+
+country_event = { #Honghuzi Attacks in Heilongjiang
+	id = fengtian.new.117
+	title = fengtian.new.117.t
+	desc = fengtian.new.117.d
+	picture = honghuzi
+	
+	trigger = {
+		tag = FNG
+		date > 1937.1.1
+	}
+	
+	mean_time_to_happen = {
+		days = 365
+		modifier = {
+			factor = 1.33
+			has_country_flag = {
+				flag = honghuzi
+				value > 2
+			}
+		}
+	}
+	
+	option = {
+		name = fengtian.new.117.a
+		add_political_power = -30
+		set_country_flag = {
+			flag = honghuzi
+			value = 1
+		}
+	}
+}
+
+country_event = { #Honghuzi Attacks in Xing'an
+	id = fengtian.new.118
+	title = fengtian.new.118.t
+	desc = fengtian.new.118.d
+	picture = honghuzi
+	
+	trigger = {
+		tag = FNG
+		has_country_flag = {
+			flag = honghuzi
+			value > 1
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 365
+		modifier = {
+			factor = 1.50
+			has_country_flag = {
+				flag = honghuzi
+				value > 3
+			}
+		}
+	}
+	
+	option = {
+		name = fengtian.new.118.a
+		add_political_power = -30
+		modify_country_flag = {
+			flag = honghuzi
+			value = 1
+		}
+	}
+}
+
+country_event = { #Honghuzi Attacks in Liaobei
+	id = fengtian.new.119
+	title = fengtian.new.119.t
+	desc = fengtian.new.119.d
+	picture = honghuzi
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = FNG
+		has_country_flag = {
+			flag = honghuzi
+			value > 2
+		}
+		NOT = {
+			OR = {
+				has_completed_focus = FNG_New_Model_Army
+				has_completed_focus = FNG_Dare_to_Die_Corps
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 365
+	}
+	
+	option = {
+		name = fengtian.new.119.a
+		add_political_power = -50
+		modify_country_flag = {
+			flag = honghuzi
+			value = 1
+		}
+	}
+}
+
+country_event = { #The Manchurian Youth League
+	id = fengtian.new.120
+	title = fengtian.new.120.t
+	desc = fengtian.new.120.d
+	picture = youth_league_students
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = FNG
+		has_country_flag = {
+			flag = honghuzi
+			value > 3
+		}
+		FNG = {
+			is_subject_of = JAP
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 30
+	}
+	
+	option = {
+		name = fengtian.new.120.a
+		add_political_power = -50
+	}
+}
+
+country_event = { #Repeating Mantetsu Influence
+	id = fengtian.new.121
+	title = fengtian.new.121.t
+	desc = fengtian.new.121.d
+	picture = dairen
+	
+	trigger = {
+		tag = FNG
+		FNG = {
+			is_subject_of = JAP
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 700
+		modifier = {
+			factor = 1.25
+			has_country_flag = {
+				flag = mantetsu_influence_repeating
+				value > 1
+				value < 3
+			}
+		}
+		modifier = {
+			factor = 1.65
+			has_country_flag = {
+				flag = mantetsu_influence_repeating
+				value > 3
+			}
+		}
+	}
+	
+	immediate = {
+		trigger = {
+			NOT = {
+				has_country_flag = mantetsu_influence_repeating
+			}
+		}
+		set_country_flag = {
+			flag = mantetsu_influence_repeating
+			value = 1
+		}
+	}
+	
+	option = {
+		name = fengtian.new.121.a
+		add_political_power = -50
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.03
+		}
+		modify_country_flag = {
+			flag = mantetsu_influence_repeating
+			value = 1
+		}
+	}
+}
+
+country_event = { #Zhang Clique Low Influence
+	id = fengtian.new.122
+	title = fengtian.new.122.t
+	desc = fengtian.new.122.d
+	picture = chinese_warlords
+	
+	trigger = {
+		tag = FNG
+		has_country_flag = pataut_pop_low
+	}
+	
+	mean_time_to_happen = {
+		days = 150
+		modifier = {
+			factor = 1.15
+			has_country_flag = {
+				flag = zhang_clique_low
+				value > 1
+			}
+		}
+		modifier = {
+			factor = 1.33
+			has_country_flag = {
+				flag = zhang_clique_low
+				value > 2
+			}
+		}
+		modifier = {
+			factor = 1.50
+			has_country_flag = {
+				flag = zhang_clique_low
+				value > 4
+			}
+		}
+	}
+	
+	option = {
+		name = fengtian.new.122.a
+		add_political_power = -50
+		set_country_flag = zhang_clique_low
+		add_popularity = {
+			ideology = paternal_autocrat
+			popularity = 0.08
+		}
+	}
+}
+
+country_event = { #Communications Clique Low Influence
+	id = fengtian.new.123
+	title = fengtian.new.123.t
+	desc = fengtian.new.123.d
+	picture = railway_strike
+	
+	trigger = {
+		tag = FNG
+		has_country_flag = soccon_pop_low
+	}
+	
+	mean_time_to_happen = {
+		days = 150
+		modifier = {
+			factor = 1.15
+			has_country_flag = {
+				flag = communications_clique_low
+				value > 1
+			}
+		}
+		modifier = {
+			factor = 1.33
+			has_country_flag = {
+				flag = communications_clique_low
+				value > 2
+			}
+		}
+		modifier = {
+			factor = 1.50
+			has_country_flag = {
+				flag = communications_clique_low
+				value > 4
+			}
+		}
+	}
+	
+	option = {
+		name = fengtian.new.123.a
+		add_political_power = -50
+		add_popularity = {
+			ideology = social_conservative
+			popularity = 0.08
+		}
+	}
+}
+
+country_event = { #Communications Clique Assassination
+	id = fengtian.new.124
+	title = fengtian.new.124.t
+	desc = fengtian.new.124.d
+	picture = Mukden
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = FNG
+		date > 1936.2.2
+	}
+	
+	mean_time_to_happen = {
+		days = 20
+	}
+	
+	option = {
+		name = fengtian.new.124.a
+		add_political_power = -50
+		add_popularity = {
+			ideology = social_conservative
+			popularity = -0.01
+		}
+	}
+}
+
+country_event = { #Record Mantetsu Profits
+	id = fengtian.new.125
+	title = fengtian.new.125.t
+	desc = fengtian.new.125.d
+	picture = dairen
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+	option = {
+		name = fengtian.new.125.a
+		add_political_power = -30
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.03
+		}
+		set_country_flag = unpopular_government
+	}
+}
+
+country_event = { #Counterfit Fengtian Dollars
+	id = fengtian.new.126
+	title = fengtian.new.126.t
+	desc = fengtian.new.126.d
+	picture = china_paper_factory
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = FNG
+		has_completed_focus = FNG_Re-Introduce_the_Fengtian_Dollar
+	}
+	
+	mean_time_to_happen = {
+		days = 365
+	}
+	
+	option = { 
+		name = fengtian.new.126.a
+		add_political_power = -20
+	}
+}
+
+country_event = { #The Lavrov Affair
+	id = fengtian.new.127
+	title = fengtian.new.127.t
+	desc = fengtian.new.127.d
+	picture = china_official_announcement
+	
+	fire_only_once = yes
+	
+	trigger = { 
+		tag = FNG
+		country_exists = RUS
+		country_exists = SOV
+		FNG = {
+			is_neighbor_of = SOV
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 35
+	}
+	
+	option = { #Grant Asylum
+		name = fengtian.new.127.a
+		set_country_flag = lavrov_affair
+		custom_effect_tooltip = FNG_lavrov_affair_tooltip
+		ai_chance = { 
+			factor = 40
+		}
+	}
+	
+	option = { #Hand over to Transamur
+		name = fengtian.new.127.b
+		add_political_power = 30
+		ai_chance = { 
+			factor = 40
+		}
+	}
+	
+	option = { #Do nothing
+		name = fengtian.new.127.c
+		ai_chance = { 
+			factor = 10
+		}
+	}
+}
+
+country_event = { #Notification to Japan of the Grand Marshal's Proclamation
+	id = fengtian.new.128
+	title = fengtian.new.128.t
+	desc = fengtian.new.128.d
+	picture = chinese_warlords
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+	option = { #Support
+		name = fengtian.new.128.a
+		FNG = {
+			add_opinion_modifier = {
+				target = JAP
+				modifier = FNG_NATIONAL_RECLAMATION_SUPPORT
+			}
+		}
+		JAP = {
+			send_equipment = {
+				target = FNG
+				type = support_equipment
+				amount = 200
+			}
+		}
+		ai_chance = { 
+			factor = 60
+		}
+	}
+	
+	option = { #Do not support
+		name = fengtian.new.128.b
+		FNG = {
+			add_opinion_modifier = {
+				target = JAP
+				modifier = FNG_NATIONAL_RECLAMATION_NO_SUPPORT
+			}
+		}
+		ai_chance = { 
+			factor = 40
+		}
+	}
+}
+
+country_event = { #Notification to Qing of the Grand Marshal's Proclamation
+	id = fengtian.new.129
+	title = fengtian.new.129.t
+	desc = fengtian.new.129.d
+	picture = chinese_warlords
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+	option = { #We will be ready
+		name = fengtian.new.129.a
+	}
+}
+
+country_event = { #Fengtian receives Japan's support
+	id = fengtian.new.130
+	title = fengtian.new.130.t
+	desc = fengtian.new.130.d
+	picture = japan_foreign_minister
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+	option = { #Excellent
+		name = fengtian.new.130.a
+		custom_effect_tooltip = FNG_Japan_Support
+	}
+}
+
+country_event = { #Beijing Parade Event
+	id = fengtian.new.131
+	title = fengtian.new.131.t
+	desc = fengtian.new.131.d
+	desc = {
+		text = fengtian.new.131.d_mantetsu
+		trigger = {
+			OR = {
+				has_idea = FNG_informal_empire_4
+				has_idea = FNG_informal_empire_5
+			}
+		}
+	}
+	picture = japanese_officer_phone
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = FNG
+		FNG = {
+			controls_state = 608
+			has_war_with = QIE
+			is_subject_of = JAP
+		}
+		JAP = {
+			has_war_with = QIE
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 5
+	}
+	
+	option = { #This is our day!
+		name = fengtian.new.131.a
+		trigger = {
+			OR = {
+				has_idea = FNG_informal_empire_2
+				has_idea = FNG_informal_empire_3
+			}
+		}
+		add_political_power = 50
+		add_popularity = {
+			ideology = market_liberal
+			popularity = -0.03
+		}
+		add_popularity = {
+			ideology = paternal_autocrat
+			popularity = 0.03
+		}
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = 0.05
+		}
+		add_opinion_modifier = {
+			target = JAP
+			modifier = FNG_FENGTIAN_PARADE
+		}
+		JAP = {
+			country_event = fengtian.new.132
+		}
+		ai_chance = { 
+			factor = 30
+		}
+	}
+	
+	option = { #We will march side by side!
+		name = fengtian.new.131.b
+		add_political_power = 30
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.02
+		}
+		add_popularity = {
+			ideology = paternal_autocrat 
+			popularity = 0.01
+		}
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = 0.01
+		}
+		ai_chance = { 
+			factor = 40
+		}
+	}
+	
+	option = { #We will not participate!
+		name = fengtian.new.131.c
+		add_political_power = -50
+		add_popularity = {
+			ideology = market_liberal
+			popularity = -0.03
+		}
+		add_popularity = {
+			ideology = paternal_autocrat
+			popularity = 0.03
+		}
+		add_opinion_modifier = {
+			target = JAP
+			modifier = FNG_JAPAN_PARADE
+		}
+		JAP = {
+			country_event = fengtian.new.133
+		}
+		ai_chance = { 
+			factor = 30
+		}
+	}
+}
+
+country_event = { #Japan Parade Reaction - This is our day!
+	id = fengtian.new.132
+	title = fengtian.new.132.t
+	desc = fengtian.new.132.d
+	picture = japanese_officer_phone
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+	option = { #Punish this insolence immediately!
+		name = fengtian.new.132.a
+		add_political_power = 40
+		FNG = {
+			set_country_flag = fengtian_refuses_food #Just using this flag for the specific event desc
+			country_event = fengtian.new.22
+		}
+	}
+	
+	option = { #Punishment will have to wait
+		name = fengtian.new.132.b
+		add_political_power = 20
+		FNG = {
+			set_country_flag = japan_delayed_punishment
+		}
+	}
+	
+	option = {#So be it
+		name = fengtian.new.132.c
+	}
+}
+
+country_event = { #Japan Parade Reaction - We will not participate!
+	id = fengtian.new.133
+	title = fengtian.new.133.t
+	desc = fengtian.new.133.d
+	picture = japanese_officer_phone
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+	option = { #Punish this insolence immediately!
+		name = fengtian.new.133.a
+		add_political_power = 50
+		FNG = {
+			set_country_flag = fengtian_refuses_food #Just using this flag for the specific event desc
+			country_event = fengtian.new.22
+		}
+	}
+	
+	option = { #Punishment will have to wait
+		name = fengtian.new.133.b
+		add_political_power = 40
+		FNG = {
+			set_country_flag = japan_delayed_punishment
+		}
+	}
+	
+	option = { #So be it
+		name = fengtian.new.132.c
+	}
+}
+
+country_event = { #Japan delayed punishment for parade
+	id = fengtian.new.134
+	title = fengtian.new.134.t
+	desc = fengtian.new.134.d
+	picture = japan_ultimatum
+	
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		days = 10
+	}
+	
+	trigger = {
+		tag = FNG
+		OR = {
+			NOT = {
+				country_exists = QIE
+			}
+			QIE = {
+				is_subject_of = FNG
+			}
+			QIE = {
+				is_subject_of = JAP
+			}
+		}
+		country_exists = FNG
+		FNG = {
+			is_subject_of = JAP
+		}
+		has_country_flag = japan_delayed_punishment
+	}
+	
+	option = {
+		name = fengtian.new.134.a
+		add_political_power = -100
+		add_ideas = FNG_Japanese_Aid_Cut
+		set_country_flag = japan_aid_cut
+		add_popularity = { 
+			ideology = market_liberal popularity = 0.5
+		}
+		ai_chance = { 
+			factor = 65
+		}
+	}
+	
+	option = {
+		name = fengtian.new.134.b
+		add_political_power = 200
+		add_timed_idea = {
+			idea = FNG_Japanese_Aid_Cut
+			days = 100
+		}	
+		JAP = { 
+			end_puppet = FNG
+		}
+		declare_war_on = { 
+			target = JAP 
+			type = annex_everything
+		}
+		set_political_party = {
+			ideology = market_liberal
+			popularity = 0.00
+		}
+		add_ideas = FNG_informal_empire_1
+		if = {
+			limit = { 
+				has_idea = FNG_informal_empire_2
+			}
+			add_timed_idea = {
+				idea = FNG_Post-Colonial_Chaos_1
+				days = 30
+			}
+		}
+		
+		if = {
+			limit = {
+				has_idea = FNG_informal_empire_3
+			}
+			add_timed_idea = {
+				idea = FNG_Post-Colonial_Chaos_1
+				days = 60
+			}
+		}
+		
+		if = {
+			limit = {
+				has_idea = FNG_informal_empire_4
+			}
+			add_timed_idea = {
+				idea = FNG_Post-Colonial_Chaos_2
+				days = 45
+			}
+		}
+		
+		if = {
+			limit = {
+				has_idea = FNG_informal_empire_5
+			}
+			add_timed_idea = {
+				idea = FNG_Post-Colonial_Chaos_3
+				days = 45
+			}
+		}
+		ai_chance = { 
+			factor = 35
+		}
+	}
+}
+
+country_event = { #The Founding of the Jilin Film Association
+	id = fengtian.new.135
+	title = fengtian.new.135.t
+	desc = fengtian.new.135.d
+	picture = mantetsu_film
+	
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		days = 15
+	}
+	
+	trigger = {
+		tag = FNG
+		date > 1937.8.1
+		is_subject_of = JAP
+	}
+	
+	option = { #Modernity is good
+		name = fengtian.new.135.a
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.03
+		}
+		ai_chance = {
+			factor = 60
+		}
+	}
+	
+	option = { #Not on our soil
+		name = fengtian.new.135.b
+		add_political_power = 10
+		add_popularity = {
+			ideology = market_liberal
+			popularity = -0.01
+		}
+		ai_chance = {
+			factor = 40
+		}
+	}
+}
+	
+#############################################
+### Fengtian Political Influence Mechanic ###
+#############################################
+
+# Recovery League/Auth Dem #
+country_event = { #Authdem Popularity Low
+	id = fngpolitic.1
+	
+	hidden = yes
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	trigger = {
+		tag = FNG
+		NOT = {
+			has_country_flag = authdem_pop_low
+		}
+		authoritarian_democrat > 0.00
+		authoritarian_democrat < 0.10
+	}
+	
+	immediate = {
+		set_country_flag = authdem_pop_low
+		clr_country_flag = authdem_pop_medium
+		clr_country_flag = authdem_pop_high
+	}
+}
+
+country_event = { #Authdem Popularity Medium
+	id = fngpolitic.2
+	
+	hidden = yes
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	trigger = {
+		tag = FNG
+		NOT = {
+			has_country_flag = authdem_pop_medium
+		}
+		authoritarian_democrat > 0.10
+		authoritarian_democrat < 0.35
+	}
+	
+	immediate = {
+		set_country_flag = authdem_pop_medium
+		clr_country_flag = authdem_pop_low
+		clr_country_flag = authdem_pop_high
+	}
+}
+
+country_event = { #Authdem Popularity High
+	id = fngpolitic.3
+	
+	hidden = yes
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	trigger = {
+		tag = FNG
+		NOT = {
+			has_country_flag = authdem_pop_high
+		}
+		authoritarian_democrat > 0.35
+		authoritarian_democrat < 1.00
+	}
+	
+	immediate = {
+		set_country_flag = authdem_pop_high
+		clr_country_flag = authdem_pop_low
+		clr_country_flag = authdem_pop_medium
+	}
+}
+
+# Zhang Clique/ Pat Aut #
+
+country_event = { #Pat Aut Popularity Low
+	id = fngpolitic.4
+	
+	hidden = yes
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	trigger = {
+		tag = FNG
+		NOT = {
+			has_country_flag = pataut_pop_low
+		}
+		paternal_autocrat > 0.00
+		paternal_autocrat < 0.10
+	}
+	
+	immediate = {
+		set_country_flag = pataut_pop_low
+		clr_country_flag = pataut_pop_medium
+		clr_country_flag = pataut_pop_high
+	}
+}
+
+country_event = { #Pataut Popularity Medium
+	id = fngpolitic.5
+	
+	hidden = yes
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	trigger = {
+		tag = FNG
+		NOT = {
+			has_country_flag = pataut_pop_medium
+		}
+		paternal_autocrat > 0.10
+		paternal_autocrat < 0.35
+	}
+	
+	immediate = {
+		set_country_flag = pataut_pop_medium
+		clr_country_flag = pataut_pop_low
+		clr_country_flag = pataut_pop_high
+	}
+}
+
+country_event = { #Pataut Popularity High
+	id = fngpolitic.6
+	
+	hidden = yes
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	trigger = {
+		tag = FNG
+		NOT = {
+			has_country_flag = Pataut_pop_high
+		}
+		paternal_autocrat > 0.35
+		paternal_autocrat < 1.00
+	}
+	
+	immediate = {
+		set_country_flag = pataut_pop_high
+		clr_country_flag = pataut_pop_low
+		clr_country_flag = pataut_pop_medium
+	}
+}
+
+# Communications Clique/Soc Con #
+
+country_event = { #Soccon Popularity Low
+	id = fngpolitic.7
+	
+	hidden = yes
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	trigger = {
+		tag = FNG
+		NOT = {
+			has_country_flag = soccon_pop_low
+		}
+		social_conservative > 0.00
+		social_conservative < 0.10
+	}
+	
+	immediate = {
+		set_country_flag = soccon_pop_low
+		clr_country_flag = soccon_pop_medium
+		clr_country_flag = soccon_pop_high
+	}
+}
+
+country_event = { #Soccon Popularity Medium
+	id = fngpolitic.8
+	
+	hidden = yes
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	trigger = {
+		tag = FNG
+		NOT = {
+			has_country_flag = soccon_pop_medium
+		}
+		social_conservative > 0.10
+		social_conservative < 0.35
+	}
+	
+	immediate = {
+		set_country_flag = soccon_pop_medium
+		clr_country_flag = soccon_pop_low
+		clr_country_flag = soccon_pop_high
+	}
+}
+
+country_event = { #Soccon Popularity High
+	id = fngpolitic.9
+	
+	hidden = yes
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	trigger = {
+		tag = FNG
+		NOT = {
+			has_country_flag = authdem_pop_high
+		}
+		social_conservative > 0.35
+		social_conservative < 1.00
+	}
+	
+	immediate = {
+		set_country_flag = soccon_pop_high
+		clr_country_flag = soccon_pop_low
+		clr_country_flag = soccon_pop_medium
+	}
+}
+
+# Concordia Association/Mark Lib #
+
+country_event = { #Marklib Popularity Low
+	id = fngpolitic.10
+	
+	hidden = yes
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	trigger = {
+		tag = FNG
+		NOT = {
+			has_country_flag = marklib_pop_low
+		}
+		market_liberal > 0.00
+		market_liberal < 0.10
+	}
+	
+	immediate = {
+		set_country_flag = marklib_pop_low
+		clr_country_flag = marklib_pop_medium
+		clr_country_flag = marklib_pop_high
+	}
+}
+
+country_event = { #Marklib Popularity Medium
+	id = fngpolitic.11
+	
+	hidden = yes
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	trigger = {
+		tag = FNG
+		NOT = {
+			has_country_flag = marklib_pop_medium
+		}
+		market_liberal > 0.10
+		market_liberal < 0.35
+	}
+	
+	immediate = {
+		set_country_flag = marklib_pop_medium
+		clr_country_flag = marklib_pop_low
+		clr_country_flag = marklib_pop_high
+	}
+}
+
+country_event = { #Marklib Popularity High
+	id = fngpolitic.12
+	
+	hidden = yes
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	trigger = {
+		tag = FNG
+		NOT = {
+			has_country_flag = marklib_pop_high
+		}
+		market_liberal > 0.35
+		market_liberal < 1.00
+	}
+	
+	immediate = {
+		set_country_flag = marklib_pop_high
+		clr_country_flag = marklib_pop_low
+		clr_country_flag = marklib_pop_medium
+	}
+}	
+
+#########################################
+### Fengtian Informal Empire Mechanic ###
+#########################################
+
+### Informal Empire 1 - Expel the Japanese Bandits!
+## FNG_informal_empire_1
+country_event = {
+	id = fengtian.informalempire.1
+	title = kr.informalempire.1.t
+	desc = kr.informalempire.1.d
+
+	fire_only_once = no
+	
+	is_triggered_only = yes
+
+	immediate = {
+		add_ideas = FNG_informal_empire_1
+		hidden_effect = {
+			remove_ideas = {
+			FNG_informal_empire_2
+			FNG_informal_empire_3
+			FNG_informal_empire_4
+			FNG_informal_empire_5
+			}
+		}
+	}
+	option = {
+		name = fengtian.informalempire.1.a
+	}
+}
+
+### Informal Empire 2 - Preservation of the Xinhai Order
+## FNG_informal_empire_2
+country_event = {
+	id = fengtian.informalempire.2
+	title = fengtian.informalempire.2.t
+	desc = fengtian.informalempire.2.d
+
+	fire_only_once = no
+
+	trigger = {
+		tag = FNG
+		has_completed_focus = FNG_Preservation_of_the_Xinhai_Order
+		NOT = { has_idea = FNG_informal_empire_2 }
+		market_liberal > 0.01
+		market_liberal < 0.19
+	}
+
+	mean_time_to_happen = {
+		days = 2
+	}
+
+	option = {
+		name = fengtian.informalempire.2.a
+		add_ideas = FNG_informal_empire_2
+		hidden_effect = {
+			remove_ideas = {
+			FNG_informal_empire_1
+			FNG_informal_empire_3
+			FNG_informal_empire_4
+			FNG_informal_empire_5
+			}
+		}
+	}
+}
+
+### Informal Empire 3 - Mantetsu Influence
+##FNG_informal_empire_3
+country_event = {
+	id = fengtian.informalempire.3
+	title = fengtian.informalempire.3.t
+	desc = fengtian.informalempire.3.d
+
+	fire_only_once = no
+
+	trigger = {
+		tag = FNG
+		NOT = { has_idea = FNG_informal_empire_3 }
+		market_liberal > 0.20
+		market_liberal < 0.40
+	}
+
+	mean_time_to_happen = {
+		days = 2
+	}
+
+	option = {
+		name = fengtian.informalempire.3.a
+		add_ideas = FNG_informal_empire_3
+		hidden_effect = {
+			remove_ideas = {
+			FNG_informal_empire_1
+			FNG_informal_empire_2
+			FNG_informal_empire_4
+			FNG_informal_empire_5
+			}
+		}
+	}
+}
+
+## Informal Empire 4 - Pervasive Mantetsu Influence
+##FNG_informal_empire_4
+country_event = {
+	id = fengtian.informalempire.4
+	title = fengtian.informalempire.4.t
+	desc = fengtian.informalempire.4.d
+
+	fire_only_once = no
+
+	trigger = {
+		tag = FNG
+		NOT = { has_idea = FNG_informal_empire_4 }
+		market_liberal > 0.41
+		market_liberal < 0.60
+	}
+
+	mean_time_to_happen = {
+		days = 2
+	}
+
+	option = {
+		name = fengtian.informalempire.4.a
+		add_ideas = FNG_informal_empire_4
+		hidden_effect = {
+			remove_ideas = {
+			FNG_informal_empire_1
+			FNG_informal_empire_2
+			FNG_informal_empire_3
+			FNG_informal_empire_5
+			}
+		}
+	}
+}
+
+###Fengtian Informal Empire Mechanic - Mantetsu Dominance
+##FNG_informal_empire_5
+country_event = {
+	id = fengtian.informalempire.5
+	title = fengtian.informalempire.5.t
+	desc = fengtian.informalempire.5.d
+
+	fire_only_once = no
+
+	trigger = {
+		tag = FNG
+		NOT = { has_idea = FNG_informal_empire_5 }
+		market_liberal > 0.61
+	}
+
+	mean_time_to_happen = {
+		days = 2
+	}
+
+	option = {
+		name = fengtian.informalempire.5.a
+		add_ideas = FNG_informal_empire_5
+		hidden_effect = {
+			remove_ideas = {
+			FNG_informal_empire_1
+			FNG_informal_empire_2
+			FNG_informal_empire_3
+			FNG_informal_empire_4
+			}
+		}
+	}
+}
+###########################
+# Informal Empire Protest Events
+###########################
+# By Skullcrusher
+###########################
+
+country_event = { #Protest (Low Influence)
+
+	id = fengtian.informalempire.6
+	title = fengtian.informalempire.6.t
+	desc = fengtian.informalempire.6.d
+	fire_only_once = no
+
+  trigger = {
+		tag = FNG
+		has_idea = FNG_informal_empire_4
+	}
+
+	mean_time_to_happen = {
+		days = 250
+		modifier = {
+			factor = 0.5
+			has_idea = FNG_informal_empire_5
+		}
+	}
+
+	option = {
+		name = fengtian.informalempire.6.a
+		random_list = {
+			25 = {
+				add_political_power = -25
+			}
+			25 = {
+				add_political_power = -50
+			}
+			25 = {
+				add_political_power = -75
+			}
+			25 = {
+				add_political_power = -100
+			}
+	    }
+    }
+}
+
+country_event = { #Protest (Major Influence)
+
+  	id = fengtian.informalempire.7
+  	title = fengtian.informalempire.7.t
+  	desc = fengtian.informalempire.7.d
+  	fire_only_once = no
+
+    trigger = {
+  		tag = FNG
+  		has_idea = FNG_informal_empire_5
+  	}
+
+  	mean_time_to_happen = {
+  		days = 250
+  	}
+
+  	option = {
+  		name = fengtian.informalempire.7.a
+		random_list = {
+  			25 = {
+  				add_political_power = -25
+  			}
+  			25 = {
+  				add_political_power = -50
+  			}
+  			25 = {
+  				add_political_power = -75
+  			}
+  			25 = {
+  				add_political_power = -100
+  			}
+		}
+    }
+}
+
+########################
+# Fengtian War Events
+########################
+
+country_event = { # Qing Pre-War
+	id = fngwar.1
+	title = fngwar.1.t
+	desc = fngwar.1.d
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = FNG
+		country_exists = QIE
+		FNG = {
+			is_neighbor_of = QIE
+			has_war = no
+			is_subject = yes
+			has_completed_focus = FNG_Begin_the_War_of_National_Reclamation
+		}
+    }
+
+	mean_time_to_happen = {
+		days = 150
+	}
+
+
+	option = {
+		name = fngwar.1.a
+		create_wargoal = { 
+			type = annex_everything
+			target = QIE
+		}
+		country_event = { 
+			days = 48 
+			id = fngwar.2
+		}
+	}
+	
+	option = {
+		name = fngwar.1.b
+		add_political_power = -50
+	}
+}
+
+country_event = { # Qing War
+	id = fngwar.2
+	title = fngwar.2.t
+	desc = fngwar.2.d
+
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = fngwar.2.a
+		declare_war_on = {
+			target = QIE
+			type = annex_everything
+		}
+	}
+}
+
+country_event = { # Shangqing Pre-War
+	id = fngwar.3
+	title = fngwar.3.t
+	desc = fngwar.3.d
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = FNG
+		has_completed_focus = FNG_Begin_the_War_of_National_Reclamation
+		country_exists = SQI
+		FNG = {
+			is_neighbor_of = SQI
+			has_war = no
+			is_subject = yes
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 150
+	}
+
+
+	option = {
+		name = fngwar.3.a
+		country_event = { 
+			days = 48 
+			id = fngwar.4
+		}
+		create_wargoal = { 
+			type = annex_everything
+			target = SQI
+		}
+	}
+	
+	option = {
+		name = fngwar.3.b
+		add_political_power = -20
+	}
+}
+
+country_event = { # Shangqing War
+	id = fngwar.4
+	title = fngwar.4.t
+	desc = fngwar.4.d
+
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = fngwar.4.a
+		declare_war_on = {
+			target = SQI
+			type = annex_everything
+		}
+	}
+}
+
+country_event = { # Yunnan Pre-War
+	id = fngwar.5
+	title = fngwar.5.t
+	desc = fngwar.5.d
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = FNG
+		has_completed_focus = FNG_Begin_the_War_of_National_Reclamation
+		country_exists = YUN
+		FNG = {
+			is_neighbor_of = YUN
+			has_war = no
+			is_subject = yes
+		}
+    }
+
+	mean_time_to_happen = {
+		days = 150
+	}
+
+
+	option = {
+		name = fngwar.5.a
+		country_event = { 
+			days = 48 
+			id = fngwar.6
+		}
+		create_wargoal = { 
+			type = annex_everything
+			target = YUN
+		}
+	}
+	
+	option = {
+		name = fngwar.5.b
+		add_political_power = -20
+	}
+}
+
+country_event = { # Yunnan War
+	id = fngwar.6
+	title = fngwar.6.t
+	desc = fngwar.6.d
+
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = fngwar.6.a
+		declare_war_on = {
+			target = YUN
+			type = annex_everything
+		}
+	}
+}
+
+country_event = { # Allg. Pre-War
+	id = fngwar.7
+	title = fngwar.7.t
+	desc = fngwar.7.d
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = FNG
+		has_completed_focus = FNG_Begin_the_War_of_National_Reclamation
+		country_exists = AOG
+		FNG = {
+			is_neighbor_of = AOG
+			has_war = no
+			is_subject = yes
+		}
+    }
+
+	mean_time_to_happen = {
+		days = 150
+	}
+
+
+	option = {
+		name = fngwar.7.a
+		country_event = { 
+			days = 48 id = fngwar.8
+		}
+		create_wargoal = { 
+			type = annex_everything
+			target = AOG
+		}
+	}
+	
+	option = {
+		name = fngwar.7.b
+		add_political_power = -20
+	}
+}
+
+country_event = { # Allg. War
+	id = fngwar.8
+	title = fngwar.8.t
+	desc = fngwar.8.d
+
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = fngwar.8.a
+		declare_war_on = {
+			target = AOG
+			type = annex_everything
+		}
+	}
+}
+
+
+country_event = { # Tibet Pre-War
+	id = fngwar.9
+	title = fngwar.9.t
+	desc = fngwar.9.d
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = FNG
+		has_completed_focus = FNG_Begin_the_War_of_National_Reclamation
+		country_exists = TIB
+		FNG = {
+			is_neighbor_of = TIB
+			has_war = no
+			is_subject = yes
+		}
+    }
+
+	mean_time_to_happen = {
+		days = 150
+	}
+
+	option = {
+		name = fngwar.9.a
+		country_event = { 
+			days = 48 
+			id = fngwar.10
+		}
+		create_wargoal = { 
+			type = annex_everything
+			target = TIB
+		}
+	}
+	
+	option = {
+		name = fngwar.9.b
+		add_political_power = -20
+	}
+}
+
+country_event = { # Tibet War
+	id = fngwar.10
+	title = fngwar.10.t
+	desc = fngwar.10.d
+
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = fngwar.10.a
+		declare_war_on = {
+			target = TIB
+			type = annex_everything
+		}
+	}
+}
+
+country_event = { # MA Pre-War
+	id = fngwar.11
+	title = fngwar.11.t
+	desc = fngwar.11.d
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = FNG
+		has_completed_focus = FNG_Begin_the_War_of_National_Reclamation
+		country_exists = XSM
+		FNG = {
+			is_neighbor_of = XSM
+			has_war = no
+			is_subject = yes
+		}
+    }
+
+	mean_time_to_happen = {
+		days = 150
+	}
+
+
+	option = {
+		name = fngwar.11.a
+		country_event = { 
+			days = 48 
+			id = fngwar.12
+		}
+		create_wargoal = { 
+			type = annex_everything
+			target = XSM
+		}
+	}
+	
+	option = {
+		name = fngwar.11.b
+		add_political_power = -20
+	}
+}
+
+country_event = { # MA War
+	id = fngwar.12
+	title = fngwar.12.t
+	desc = fngwar.12.d
+
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = fngwar.12.a
+		declare_war_on = {
+			target = XSM
+			type = annex_everything
+		}
+	}
+}
+
+country_event = { # Legation Pre-War
+	id = fngwar.13
+	title = fngwar.13.t
+	desc = fngwar.13.d
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = FNG
+		has_completed_focus = FNG_Begin_the_War_of_National_Reclamation
+		country_exists = LEC
+		FNG = {
+			is_neighbor_of = LEC
+			has_war = no
+			is_subject = yes
+		}
+    }
+
+	mean_time_to_happen = {
+		days = 150
+	}
+
+
+	option = {
+		name = fngwar.13.a
+		country_event = { 
+			days = 48 
+			id = fngwar.14
+		}
+		create_wargoal = { 
+			type = annex_everything
+			target = LEC
+		}
+	}
+	
+	option = {
+		name = fngwar.13.b
+		add_political_power = -20
+	}
+}
+
+country_event = { # Legation War
+	id = fngwar.14
+	title = fngwar.14.t
+	desc = fngwar.14.d
+
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = fngwar.14.a
+		declare_war_on = {
+			target = LEC
+			type = annex_everything
+		}
+	}
+}
+
+country_event = { # Rep China Pre-War
+	id = fngwar.15
+	title = fngwar.15.t
+	desc = fngwar.15.d
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = FNG
+		has_completed_focus = FNG_Begin_the_War_of_National_Reclamation
+		country_exists = CHI
+		FNG = {
+			is_neighbor_of = CHI
+			has_war = no
+			is_subject = yes
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 150
+	}
+
+
+	option = {
+		name = fngwar.15.a
+		country_event = { 
+			days = 48 
+			id = fngwar.15 
+		}
+		create_wargoal = { 
+			type = annex_everything
+			target = CHI
+		}
+	}
+	
+	option = {
+		name = fngwar.15.b
+		add_political_power = -20
+	}
+}
+
+country_event = { # Rep China War
+	id = fngwar.16
+	title = fngwar.16.t
+	desc = fngwar.16.d
+
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = fngwar.16.a
+		declare_war_on = {
+			target = CHI
+			type = annex_everything
+		}
+	}
+}
+
+country_event = { # National Protection Alliance Pre-War
+	id = fngwar.17
+	title = fngwar.17.t
+	desc = fngwar.17.d
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = FNG
+		has_completed_focus = FNG_Begin_the_War_of_National_Reclamation
+		country_exists = NPA
+		FNG = {
+			is_neighbor_of = NPA
+			has_war = no
+			is_subject = yes
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 150
+	}
+
+
+	option = {
+		name = fngwar.17.a
+		country_event = { 
+			days = 48 
+			id = fngwar.17 
+		}
+		create_wargoal = { 
+			type = annex_everything
+			target = NPA
+		}
+	}
+	
+	option = {
+		name = fngwar.17.b
+		add_political_power = -20
+	}
+}
+
+country_event = { # National Protection Alliance War
+	id = fngwar.18
+	title = fngwar.18.t
+	desc = fngwar.18.d
+
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = fngwar.18.a
+		declare_war_on = {
+			target = NPA
+			type = annex_everything
+		}
+	}
+}

@@ -1,0 +1,161 @@
+﻿capital = 271
+OOB = "ETH"
+set_research_slots = 3
+set_technology = {
+### MOD ###
+	### General ###
+	shipbuild_basics = 1
+	### Navy ###
+	early_submarine = 1
+	early_destroyer = 1
+	early_light_cruiser = 1
+	transport = 1
+	### Tanks ###
+	### INF ###
+	infantry_weapons = 1
+	tech_support = 1
+	tech_engineers = 1
+	gw_artillery = 1
+	### AIR ###
+	early_fighter = 1
+}
+
+set_politics = {
+
+	parties = {
+		totalist = {
+			popularity = 0
+		}
+		radical_socialist = {
+			popularity = 1
+		}
+		syndicalist = {
+			popularity = 0
+		}
+		social_democrat = { # Ethiopian People's Democratic Front
+			popularity = 1
+		}
+		social_liberal = { # Coalition for Unity and Democracy
+			popularity = 6
+		}
+		market_liberal = { # United Ethiopian Democratic Forces
+			popularity = 11
+		}
+		social_conservative = { # Forum for Democratic Dialogue
+			popularity = 15
+		}
+		authoritarian_democrat = { # Direct Monarch Rule & Mesafint/Mekwanint Party
+			popularity = 47
+		}
+		paternal_autocrat = { # Imperial Ethiopia
+			popularity = 16
+		}
+		national_populist = {
+			popularity = 3
+		}
+	}
+	
+	ruling_party = authoritarian_democrat
+	last_election = "1888.15.6"
+	election_frequency = 48
+	elections_allowed = no
+}
+
+set_convoys = 30
+
+create_country_leader = {
+	name = "Haile Selassie"
+	desc = "POLITICS_HAILE_SELASSIE_DESC"
+	picture = "Portrait_Ethiopia_KR_Haile_Selassie.tga"
+	expire = "1965.1.1"
+	ideology = authoritarian_democrat_subtype
+	traits = {
+		#
+	}
+}
+
+create_country_leader = {
+	name = "Haile Selassie"
+	desc = "POLITICS_HAILE_SELASSIE_DESC"
+	picture = "Portrait_Ethiopia_KR_Haile_Selassie.tga"
+	expire = "1965.1.1"
+	ideology = social_democrat_subtype
+	traits = {
+		#
+	}
+}
+
+create_country_leader = {
+	name = "Haile Selassie"
+	desc = "POLITICS_HAILE_SELASSIE_DESC"
+	picture = "Portrait_Ethiopia_KR_Haile_Selassie.tga"
+	expire = "1965.1.1"
+	ideology = social_liberal_subtype
+	traits = {
+		#
+	}
+}
+
+create_country_leader = {
+	name = "Haile Selassie"
+	desc = "POLITICS_HAILE_SELASSIE_DESC"
+	picture = "Portrait_Ethiopia_KR_Haile_Selassie.tga"
+	expire = "1965.1.1"
+	ideology = market_liberal_subtype
+	traits = {
+		#
+	}
+}
+
+create_country_leader = {
+	name = "Haile Selassie"
+	desc = "POLITICS_HAILE_SELASSIE_DESC"
+	picture = "Portrait_Ethiopia_KR_Haile_Selassie.tga"
+	expire = "1965.1.1"
+	ideology = social_conservative_subtype
+	traits = {
+		#
+	}
+}
+
+create_country_leader = {
+	name = "Imperial Council"
+	desc = "POLITICS_IMPERIAL_COUNCIL_DESC"
+	picture = "Imperial_Council_Ethiopia.tga"
+	expire = "1965.1.1"
+	ideology = paternal_autocrat_subtype
+	traits = {
+		#
+	}
+}
+
+create_field_marshal = { 
+	name = "Haile Selassie I"
+	picture = "Portrait_Ethiopia_KR_Haile_Selassie.tga"
+	traits = {}
+	skill = 2
+}
+
+create_field_marshal = {
+	name = "Kassa Haile Darge"
+	picture = "Portrait_Ethiopia_Kassa_Haile_Darge.tga"
+	traits = { 
+		defensive_doctrine
+		offensive_doctrine
+	}
+	skill = 1
+}
+
+create_corps_commander = {
+	name = "Mulugeta Yeggazu"
+	picture = "Portrait_Ethiopia_Mulugeta_Yeggazu.tga"
+	traits = {
+		trickster
+	}
+	skill = 1
+}
+
+add_ideas = ETH_Bedjironde_Tekle_Hawariate_hog_ade
+add_ideas = ETH_Herouy_Wolde_Selassie_for_ade
+add_ideas = ETH_Herouy_Wolde_Selassie_eco_ade
+add_ideas = ETH_Bedjironde_Tekle_Hawariate_sec_ade

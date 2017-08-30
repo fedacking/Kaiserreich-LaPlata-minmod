@@ -1,0 +1,30 @@
+
+state={
+	id=608
+	name="STATE_608"
+	manpower = 14048400
+	
+	state_category = large_city
+
+	history={
+		owner = QIE
+		add_core_of = QIE
+		add_core_of = SQI
+		add_core_of = FNG
+		
+		victory_points = {
+			9843 20
+		}
+		buildings = {
+			infrastructure = 5
+			arms_factory = 3
+			industrial_complex = 1
+			air_base = 3
+			}
+		
+	}
+
+	provinces={
+		900 1052 1134 3830 3900 4140 6828 6969 9843 9905 11761 11822 11886 12026 12043
+	}
+}

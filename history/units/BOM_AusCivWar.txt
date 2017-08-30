@@ -1,0 +1,34 @@
+﻿division_template = {
+	name = "Landwehr"					
+
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 0 y = 2 }
+   		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+		infantry = { x = 1 y = 2 }
+
+	}
+	support = {
+
+	}
+}
+
+units = {
+
+	division= {	
+		name = "4/6 Boehmische Landwehrbrigaden"
+		location = 11556
+		division_template = "Landwehr"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+	division= {	
+		name = "5/7 Boehmische Landwehrbrigaden"
+		location = 11556
+		division_template = "Landwehr"
+		start_experience_factor = 0.2
+		start_equipment_factor = 1
+	}
+}

@@ -1,0 +1,407 @@
+### Siamese Ideas
+
+ideas = {
+##############
+# Country ideas
+##############
+	country = {
+		SIA_military_expense_cut = {
+			modifier = {
+				research_time_factor = 0.10
+			}
+			removal_cost = -1
+			allowed = { always = no }
+			picture = great_depression
+		}
+		SIA_military_expense_cut_rifle = {
+			modifier = {
+				research_time_factor = 0.10
+			}
+			research_bonus = {
+				infantry_weapons = 0.10 # Countering the all-down budget cut
+			}
+			removal_cost = -1
+			allowed = { always = no }
+			picture = great_depression
+		}
+		SIA_bloated_bureaucracy = { # Only here to be removed
+			modifier = {
+				political_power_cost = 0.20
+				justify_war_goal_time = 0.10
+				consumer_goods_factor = 0.10
+			}
+			removal_cost = -1
+			allowed = { always = no }
+			picture = GFX_idea_SIA_bloated_bureaucracy
+		}
+		SIA_bloated_bureaucracy_plebs_purged = { # Only here to be removed
+			modifier = {
+				political_power_cost = 0.10
+				justify_war_goal_time = 0.10
+				consumer_goods_factor = 0.10
+			}
+			removal_cost = -1
+			allowed = { always = no }
+			picture = GFX_idea_SIA_reorganized_bureaucracy
+		}
+		SIA_bloated_bureaucracy_manager_purged = { # Only here to be removed
+			modifier = {
+				political_power_cost = 0.20
+				justify_war_goal_time = 0.10
+				consumer_goods_factor = 0.05
+			}
+			removal_cost = -1
+			allowed = { always = no }
+			picture = GFX_idea_SIA_reorganized_bureaucracy
+		}
+		SIA_black_monday = {
+			modifier = {
+				production_factory_max_efficiency_factor = -0.40
+				industrial_capacity_factory = -0.5
+				production_speed_buildings_factor = -0.6 
+			}
+			removal_cost = -1
+			allowed = { always = no }
+			picture = great_depression	
+		}
+		SIA_black_monday2 = {
+			modifier = {
+				production_factory_max_efficiency_factor = -0.20
+				industrial_capacity_factory = -0.3
+				production_speed_buildings_factor = -0.3
+			}
+			removal_cost = -1
+			allowed = { always = no }
+			picture = great_depression	
+		}
+		SIA_black_monday3 = {
+			modifier = {
+				production_factory_max_efficiency_factor = -0.10
+				industrial_capacity_factory = -0.1
+				production_speed_buildings_factor = -0.1
+			}
+			removal_cost = -1
+			allowed = { always = no }
+			picture = great_depression	
+		}
+		SIA_suranaree_corps_idea = {
+			picture = YUG_yugoslavian_general_staff
+			allowed =  {always = no}
+			modifier = {
+				conscription = 0.05
+				unity_factor = -0.05
+			}
+			removal_cost = -1
+		}
+		SIA_yuwachon_taharn_idea = {
+			picture = generic_manpower_bonus
+			allowed =  {always = no}
+			modifier = {
+				conscription = 0.03
+				army_morale_factor = 0.1
+			}
+			removal_cost = -1
+		}
+		SIA_conscription_bonus = { #from the Austrian files
+			picture = GFX_idea_SIA_rearmement
+			allowed =  {always = no}
+			modifier = {
+				training_time_army_factor = -0.2
+			}
+			modifier = { conscription = 0.025 }
+			removal_cost = -1
+		}
+		SIA_RPC_good = { #Royal Ploughing Ceremony
+			modifier = {
+				production_factory_max_efficiency_factor = 0.10
+				industrial_capacity_factory = 0.1
+			}		
+			removal_cost = -1
+			allowed = { always = no }
+			picture = 	generic_agrarian_society
+		}
+		SIA_RPC_neutral = { #Royal Ploughing Ceremony
+			modifier = {
+				production_factory_max_efficiency_factor = 0.05
+				industrial_capacity_factory = 0.05
+			}		
+			removal_cost = -1
+			allowed = { always = no }
+			picture = 	generic_agrarian_society
+		}
+		SIA_RPC_bad = { #Royal Ploughing Ceremony
+			modifier = {
+				production_factory_max_efficiency_factor = -0.10
+				industrial_capacity_factory = -0.10
+			}		
+			removal_cost = -1
+			allowed = { always = no }
+			picture = 	generic_agrarian_society
+		}
+		SIA_air_production = {
+			allowed = { always = no }
+			equipment_bonus = {
+				air_equipment = {
+					build_cost_ic = -0.05
+				}
+			}
+			removal_cost = -1
+			picture = generic_air_bonus
+		}
+		SIA_airport_authority_idea = {
+			allowed = { always = no }
+			modifier = {
+				air_interception_detect_factor = 0.2
+			}
+			removal_cost = -1
+			picture = generic_air_bonus
+		}
+		SIA_air_focus = {
+			allowed = { always = no }
+			modifier = {
+				production_speed_air_base_factor = 0.25
+				air_ace_generation_chance_factor = 0.25
+			}
+			equipment_bonus = {
+				air_equipment = {
+					build_cost_ic = -0.15
+				}
+			}
+			research_bonus = {
+				air_doctrine = 0.10
+			}
+			removal_cost = -1
+			picture = generic_airforce
+		}
+		SIA_navy_focus = {
+			allowed = { always = no }
+			modifier = {
+				production_speed_naval_base_factor = 0.25
+				production_speed_dockyard_factor = 0.25
+			}
+			equipment_bonus = {
+				naval_equipment = {
+					build_cost_ic = -0.10
+				}
+			}
+			research_bonus = {
+				naval_doctrine = 0.10
+			}
+			removal_cost = -1
+			picture = generic_navy
+		}
+		SIA_salacheepphurchard_idea = {
+			allowed =  {always = no}
+			modifier = {
+				army_core_attack_factor = 0.2
+				army_core_defence_factor = 0.2
+			}
+			removal_cost = -1
+			picture = death_men
+		}
+		SIA_education_reform_idea = {
+			allowed =  {always = no}
+			modifier = {
+				research_time_factor = -0.05
+			}
+			removal_cost = -1
+			picture = generic_research_bonus	
+		}
+		SIA_chulachomklao_academy = {
+			allowed = { always = no }
+			modifier = {
+				max_planning = 0.1
+				experience_gain_army = 0.1
+				army_org_factor = 0.10
+			}
+			removal_cost = -1
+			picture = generic_army_war_college
+		}
+		SIA_reorganization_idea = {
+			picture = economic_control_icon
+			allowed = { always = no }
+			removal_cost = -1
+			equipment_bonus = {
+				infantry_equipment = { build_cost_ic = -0.05 }
+				artillery_equipment = { build_cost_ic = -0.05 }
+			}
+		}
+		SIA_industrialmobilizationplan = {
+			picture = economic_control_icon
+			allowed = { always = no }
+			removal_cost = -1
+			equipment_bonus = {
+				infantry_equipment = { build_cost_ic = -0.05 }
+				artillery_equipment = { build_cost_ic = -0.05 }
+			}
+			modifier = {
+				industrial_capacity_factory = 0.1
+				production_factory_max_efficiency_factor = 0.05
+			}
+		}
+		SIA_taharn_pran_idea = {
+			picture = idea_guns_shield
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = { experience_gain_factor = 0.05 }
+			equipment_bonus = { recon = { recon = 1 } }	
+		}
+		SIA_counterinsurgency_idea  = {
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				experience_gain_factor = 0.05 
+				enemy_partisan_effect = -0.2
+			}
+			equipment_bonus = { military_police = { suppression_factor = 0.2}  } 
+			equipment_bonus = { recon = { recon = 1 } }
+			picture = idea_guns_shield
+		}
+	}
+
+##############
+# Companies
+##############
+
+#### General ####
+industrial_concern = {
+
+	siam_cement = {
+		allowed = { original_tag = SIA }
+		traits = { industrial_manufacturer regular }
+		modifier = {
+			production_speed_arms_factory_factor = 0.1
+			production_speed_industrial_complex_factor = 0.1
+		}
+		research_bonus = {
+			industry = 0.1
+		}
+	}
+
+	tanin = {
+		allowed = { original_tag = SIA }
+		traits = {electronics_manufacturer regular }
+		modifier = {}
+		research_bonus = {
+			electronics = 0.1
+		}
+	}
+
+   	chulalongkorn = {
+		allowed = { original_tag = SIA }
+		traits = {electronics_manufacturer regular }
+		modifier = {}
+		research_bonus = {
+			electronics = 0.1
+		}
+	}
+
+}
+
+#### Weapons Manufacturer ####
+weapons_manufacturer = {
+	designer = yes
+
+	rung_paisarn = {
+		allowed = { original_tag = SIA }
+		traits = { infantry_equipment_producer_offense_1 blank regular }
+		modifier = {}
+		research_bonus = {
+			infantry_weapons = 0.1
+		}
+	}
+	SIA_MEF = {
+		allowed = { original_tag = SIA }
+		traits = { infantry_equipment_producer_defense_1 blank regular }
+		modifier = {}
+		research_bonus = {
+			infantry_weapons = 0.1
+		}
+	}
+}
+
+#### Heavy Equipment Manufacturer ####	
+tank_manufacturer = {
+	designer = yes
+
+	chaiseri = {
+		allowed = { original_tag = SIA }
+		traits = { small_tank_producer_offense_1 regular }
+		modifier = {}
+		research_bonus = {
+			armor = 0.05
+		}
+	}
+	SIA_SSR = {
+		allowed = { original_tag = SIA }
+		traits = { medium_tank_producer_offense_1 regular }
+		modifier = {}
+		research_bonus = {
+			armor = 0.05
+		}
+	}
+	SIA_DTI = {
+		allowed = { original_tag = SIA }
+		traits = { artillery_producer_offense_1 regular }
+		modifier = {}
+		research_bonus = {
+			artillery = 0.05
+		}
+	}
+	thairung = {
+		allowed = { original_tag = SIA }
+		traits = { motorised_equipment_producer_offense_1 blank regular }
+		modifier = {}
+		research_bonus = {
+			motorized_equipment = 0.05
+		}
+	}
+	SIA_ford = {
+		allowed = { original_tag = SIA }
+		traits = { motorised_equipment_producer_mass_1 blank regular }
+		modifier = {}
+		research_bonus = {
+			motorized_equipment = 0.05
+		}
+	}
+}
+
+#### Air and Naval Manufacturer ####
+air_naval_manufacturer = {
+	designer = yes
+
+	RSAFW = {
+		allowed = { original_tag = SIA }
+		traits = { fighter_producer_offense_1 regular }
+		modifier = {}
+		research_bonus = {
+			air_equipment = 0.05
+		}
+	}
+	SIA_TAI = {
+		allowed = { original_tag = SIA }
+		traits = { bomber_producer_offense_1 }
+		modifier = {}
+		research_bonus = {
+			air_equipment = 0.05
+		}
+	}
+	siam_aeronautics = {
+		allowed = { original_tag = SIA }
+		traits = { bomber_producer_defense_1 }
+		modifier = {}
+		research_bonus = {
+			air_equipment = 0.05
+		}
+	}
+	bangkok_dock = {
+		allowed = { original_tag = SIA }
+		traits = { small_ship_producer_defense_1 }
+		modifier = {}
+		research_bonus = {
+			naval_equipment = 0.05
+		}
+	}
+}
+
+}

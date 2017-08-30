@@ -1,0 +1,29 @@
+state={
+	id=718
+	name="STATE_718"
+	
+	state_category = pastoral
+
+	history={
+		owner = MAF
+		add_core_of = MAF
+		add_core_of = CNR
+		add_core_of = KAZ		
+		buildings = {
+			infrastructure = 2
+
+		}
+		victory_points = {
+			1950 3
+		}
+		victory_points = {
+			1181 1
+		}		
+	}
+
+	provinces={
+		1181 1950 2034 2073 2154 4941 6027 7161 10766 11934 12783 12808 12847
+}
+	manpower=2975264
+	buildings_max_level_factor=1.000
+}

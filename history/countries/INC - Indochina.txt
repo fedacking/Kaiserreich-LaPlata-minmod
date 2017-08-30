@@ -1,0 +1,185 @@
+﻿capital = 671
+OOB = "empty"
+set_research_slots = 2
+set_technology = {
+	### MOD ###
+	### General ###
+	shipbuild_basics = 1
+	### Navy ###
+	transport = 1
+	### Tanks ###
+	gwtank = 1
+	### INF ###
+	infantry_weapons = 1
+	tech_support = 1
+	tech_engineers = 1
+	gw_artillery = 1
+	### AIR ###
+}
+
+set_politics = {
+
+	parties = {
+		totalist = {
+			popularity = 0
+		}
+		radical_socialist = {
+			popularity = 19
+		}
+		syndicalist = {
+			popularity = 41
+		}
+		social_democrat = {
+			popularity = 4
+		}
+		social_liberal = {
+			popularity = 6
+		}
+		market_liberal = {
+			popularity = 8
+		}
+		social_conservative = {
+			popularity = 12
+		}
+		authoritarian_democrat = {
+			popularity = 2
+		}
+		paternal_autocrat = {
+			popularity = 0
+		}
+		national_populist = {
+			popularity = 8
+		}
+	}
+	
+	ruling_party = syndicalist
+	last_election = "1888.15.6"
+	election_frequency = 48
+	elections_allowed = no
+
+}
+add_ideas = { 
+	medium_economy # Ministers + ideas - a bunch of random for the moment (need more historical research)
+	INC_HRH_Norodom_Sihanouk_hog_sde #Some SocDem lads here in-case German gone Kaiserbund with the more radical ones changed through events
+	INC_Sisowath_Monipong_for_sde
+	INC_Sisowath_Monireth_eco_sde
+	INC_Sisowath_Youtevong_sec_sde
+}
+### Leader Spam ###
+create_country_leader = {
+	name = "H.R.H. Bao Dai"
+	desc = "POLITICS_BAO_DAI_DESC"
+	picture = "gfx/leaders/VIE/Portrait_Vietnam_Bao_Dai.tga"
+	expire = "1997.7.30"
+	ideology = national_populist_subtype
+	traits = { }
+}
+create_country_leader = {
+	name = "H.R.H. Bao Dai"
+	desc = "POLITICS_BAO_DAI_DESC"
+	picture = "gfx/leaders/VIE/Portrait_Vietnam_Bao_Dai.tga"
+	expire = "1997.7.30"
+	ideology = paternal_autocrat_subtype
+	traits = { }
+}
+create_country_leader = {
+	name = "H.R.H. Bao Dai"
+	desc = "POLITICS_BAO_DAI_DESC"
+	picture = "gfx/leaders/VIE/Portrait_Vietnam_Bao_Dai.tga"
+	expire = "1997.7.30"
+	ideology = authoritarian_democrat_subtype
+	traits = { }
+}
+create_country_leader = {
+	name = "H.R.H. Bao Dai"
+	desc = "POLITICS_BAO_DAI_DESC"
+	picture = "gfx/leaders/VIE/Portrait_Vietnam_Bao_Dai.tga"
+	expire = "1997.7.30"
+	ideology = social_conservative_subtype
+	traits = { }
+}
+create_country_leader = {
+	name = "H.R.H. Bao Dai"
+	desc = "POLITICS_BAO_DAI_DESC"
+	picture = "gfx/leaders/VIE/Portrait_Vietnam_Bao_Dai.tga"
+	expire = "1997.7.30"
+	ideology = market_liberal_subtype
+	traits = { }
+}
+create_country_leader = {
+	name = "H.R.H. Bao Dai"
+	desc = "POLITICS_BAO_DAI_DESC"
+	picture = "gfx/leaders/VIE/Portrait_Vietnam_Bao_Dai.tga"
+	expire = "1997.7.30"
+	ideology = social_liberal_subtype
+	traits = { }
+}
+create_country_leader = {
+	name = "Ho Chi Minh"
+	desc = "POLITICS_HO_CHI_MINH_DESC"
+	picture = "Ho_chi_minh.tga"
+	expire = "1969.9.2"
+	ideology = social_democrat_subtype
+	traits = { }
+}
+create_country_leader = {
+	name = "Ho Chi Minh"
+	desc = "POLITICS_HO_CHI_MINH_DESC"
+	picture = "Ho_chi_minh.tga"
+	expire = "1969.9.2"
+	ideology = radical_socialist_subtype
+	traits = { }
+}
+create_country_leader = {
+	name = "Ho Chi Minh"
+	desc = "POLITICS_HO_CHI_MINH_DESC"
+	picture = "Ho_chi_minh.tga"
+	expire = "1969.9.2"
+	ideology = syndicalist_subtype
+	traits = { }
+}
+create_country_leader = {
+	name = "Ho Chi Minh"
+	desc = "POLITICS_HO_CHI_MINH_DESC"
+	picture = "Ho_chi_minh.tga"
+	expire = "1969.9.2"
+	ideology = totalist_subtype
+	traits = { }
+}
+### Corps Commander - Jungle triats for all cuz Vietminh :v
+create_corps_commander = { # Upgrade to Field Marshal?
+	name = "Ho Chi Minh"
+	portrait_path = "gfx/leaders/INC/Ho_chi_minh.tga"
+	traits = { }
+	skill = 3
+}
+create_corps_commander = { #No Photo
+	name = "Vo Nguyen Giap"
+	portrait_path = "gfx/leaders/INC/Portrait_INC_Vo_Nguyen_Giap.tga"
+	traits = { trickster }
+	skill = 5
+}
+create_corps_commander = {
+	name = "Chu Van Tan"
+	portrait_path = "gfx/leaders/INC/Portrait_INC_Chu_Van_Tan.tga"
+	traits = { }
+	skill = 1
+}
+create_corps_commander = { 
+	name = "Le Duc Tho"
+	portrait_path = "gfx/leaders/INC/Portrait_INC_Le_Duc_Tho.tga"
+	traits = { }
+	skill = 1
+}
+create_corps_commander = { # No Photo
+	name = "Hoang Van Thai"
+	portrait_path = "gfx/leaders/INC/Portrait_INC_Hoang_Van_Thai.tga"
+	traits = { }
+	skill = 4
+}
+create_corps_commander = { # No Photo
+	name = "Pham Van Dong"
+	portrait_path = "gfx/leaders/INC/Portrait_INC_Pham_Van_Dong.tga"
+	traits = { }
+	skill = 2
+}

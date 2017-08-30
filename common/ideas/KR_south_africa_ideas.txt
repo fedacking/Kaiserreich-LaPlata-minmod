@@ -1,0 +1,447 @@
+### SRI Ideas
+
+ideas = {
+##############
+# Country ideas
+##############
+	country = {
+
+		racial_segregation = {
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = saf_history_of_segregation
+			
+			modifier = {
+				conscription_factor = -0.55
+			}
+		}
+
+		racial_segregation_apartheid = {
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = saf_history_of_segregation_2
+			
+			modifier = {
+				conscription_factor = -0.40
+			}
+		}
+		
+		paramount_chiefs = {
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+
+			picture = generic_morale_bonus
+			
+			modifier = {
+				consumer_goods_factor = -0.05
+			}
+		}	
+
+		local_paramount_chiefs = {
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = raj_indian_gentlemen_officers
+			
+			modifier = {
+				industrial_capacity_factory = 0.05
+			}
+		}		
+
+		full_paramount_chiefs = {
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = raj_indian_gentlemen_officers
+			
+			modifier = {
+				industrial_capacity_factory = 0.1
+			}
+		}
+
+		chief_personal_forces = {
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_manpower_bonus
+			
+			modifier = {
+				conscription = 0.05
+			}
+		}	
+		
+		askari_kommando = {
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = ast_volunteer_defence_corps
+			
+			modifier = {
+				army_core_attack_factor = 0.1
+				army_core_defence_factor = 0.1
+				army_morale_factor = 0.1
+			}
+		}		
+
+		nuweveld_idea = {
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = saf_ossewabrandwag
+			
+			modifier = {
+				industrial_capacity_factory = 0.05
+			}
+		}
+
+		native_labour_idea = {
+			
+			removal_cost = -1
+			
+			allowed = {
+				always = no # Added via focus
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			picture = saf_ossewabrandwag_2
+			
+			modifier = {
+				production_factory_max_efficiency_factor = 0.05
+			}
+		}
+
+		gesuiwerde_plan_idea = {
+			
+			removal_cost = -1
+			
+			allowed = {
+				always = no # Added via focus
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			picture = saf_ossewabrandwag_fascism
+			
+			modifier = {
+				production_factory_max_efficiency_factor = 0.1
+			}
+		}			
+		
+		SAF_industry = {
+			
+			removal_cost = -1
+			
+			allowed = {
+				always = no # Added via focus
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			picture = generic_production_bonus
+			
+			modifier = {
+				production_speed_buildings_factor = 0.10
+			}
+		}	
+		
+		SAF_open_new_mines = {
+			
+			removal_cost = -1
+			
+			allowed = {
+				always = no # Added via focus
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			picture = ast_all_in
+			
+			modifier = {
+				local_resources_factor = 0.10
+			}
+		}
+		
+		SAF_open_borders = { # Entente Specialists
+			
+			removal_cost = -1
+			
+			allowed = {
+				always = no # Added via focus
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			picture = generic_research_bonus
+			
+			modifier = {
+				research_time_factor = -0.03
+			}
+		}
+		
+		work_programs_idea = {
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = SOV_scientist_defect
+			
+			modifier = {
+				consumer_goods_factor = -0.05
+			}
+		}
+		
+		SAF_black_monday = {
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = great_depression
+			
+			modifier = {
+				production_factory_max_efficiency_factor = -0.20
+				industrial_capacity_factory = -0.5
+				unity_factor = -0.2
+			}
+		}
+		
+		SAF_black_monday_minor_recovery = {
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = great_depression
+			
+			modifier = {
+				production_factory_max_efficiency_factor = -0.15
+				industrial_capacity_factory = -0.3
+				unity_factor = -0.15
+			}
+		}
+		
+		SAF_black_monday_major_recovery = {
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = great_depression
+			
+			modifier = {
+				production_factory_max_efficiency_factor = -0.10
+				industrial_capacity_factory = -0.10
+				unity_factor = -0.1
+			}
+		}
+		
+	}
+
+##############
+# Companies
+##############
+	
+#### General ####
+industrial_concern = {
+
+	south_african_steel_and_iron = {
+		allowed = { original_tag = SAF }
+		traits = { industrial_manufacturer }
+		modifier = {
+			production_speed_arms_factory_factor = 0.1
+			production_speed_industrial_complex_factor = 0.1
+		}
+		research_bonus = {
+			industry = 0.1
+		}
+	}
+
+	university_of_cape_town = {
+		allowed = { original_tag = SAF }
+		traits = {electronics_manufacturer }
+		modifier = {}
+		research_bonus = {
+			electronics = 0.1
+		}
+	}
+
+	african_explosives = {
+		allowed = { original_tag = SAF }
+		traits = {chemical_producer }
+		research_bonus = {
+			synth_resources = 0.1
+		}
+	}
+}
+
+#### Weapons Manufacturer ####
+weapons_manufacturer = {
+	designer = yes
+
+	pretoria_mint = {
+		allowed = { original_tag = SAF }
+		traits = { infantry_equipment_producer_mass_1 }
+		modifier = {}
+		research_bonus = {
+			infantry_weapons = 0.1
+		}
+	}
+}
+	
+#### Heavy Equipment Manufacturer ####
+tank_manufacturer = {
+	designer = yes
+	
+	dorman_long = {
+		allowed = { original_tag = SAF }
+		traits = { artillery_producer_offense_1 }
+		modifier = {}
+		research_bonus = {
+			artillery = 0.05
+		}
+	}
+	
+	marmon_herrington_south_africa = {
+		allowed = { original_tag = SAF }
+		traits = { medium_tank_producer_defense_1 }
+		modifier = {}
+		research_bonus = {
+			armor = 0.05
+		}
+	}
+
+	south_african_railways = {
+		allowed = { original_tag = SAF }
+		traits = { small_tank_producer_offense_0 }
+		modifier = {}
+		research_bonus = {
+			armor = 0.05
+		}
+	}
+	
+	south_african_vickers = {
+		allowed = { original_tag = SAF }
+		traits = { vickers_armstrong_industries }
+		modifier = {}
+		research_bonus = {
+			armor = 0.1
+		}
+	}
+}
+
+#### Air and Naval Manufacturer ####
+air_naval_manufacturer = {
+	designer = yes
+	
+	de_havilland_south_africa = {
+		allowed = { original_tag = SAF }
+		traits = { fighter_producer_offense_1 }
+		modifier = {}
+		research_bonus = {
+			air_equipment = 0.05
+		}
+	}
+}
+
+##############
+# Theorist
+##############
+theorist = {
+	
+	
+}
+}

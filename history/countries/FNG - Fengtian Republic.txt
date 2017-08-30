@@ -1,0 +1,239 @@
+﻿capital = 716
+OOB = "FNG"
+set_research_slots = 3
+set_technology = {
+	#### MOD ####
+	#### General ####
+	shipbuild_basics = 1
+	#### Navy ####
+	early_destroyer = 1
+	early_light_cruiser = 1
+	transport = 1
+	#### Tanks ####
+	gwtank = 1
+	#### INF ####
+	infantry_weapons = 1
+	tech_support = 1
+	tech_recon = 1	
+	tech_engineers = 1
+	tech_military_police = 1
+	gw_artillery = 1
+	#### AIR ####
+	early_fighter = 1
+	early_bomber = 1
+}
+
+add_opinion_modifier = { target = GER modifier = embargo }
+add_opinion_modifier = { target = AOG modifier = embargo }
+add_opinion_modifier = { target = SQI modifier = embargo }
+add_opinion_modifier = { target = QIE modifier = embargo }
+
+add_political_power = -80
+
+add_equipment_to_stockpile = { 
+	type = gw_tank_equipment 
+	amount = 26
+	producer = JAP
+}
+add_equipment_to_stockpile = { 
+	type = infantry_equipment_1
+	amount = 20000
+	producer = JAP
+}
+
+set_politics = {
+
+	parties = {
+		totalist = {
+			popularity = 0
+		}
+		radical_socialist = {
+			popularity = 0
+		}
+		syndicalist = {
+			popularity = 0
+		}
+		social_democrat = {
+			popularity = 0
+		}
+		social_liberal = {
+			popularity = 0
+		}
+		market_liberal = {
+			popularity = 14
+		}
+		social_conservative = {
+			popularity = 18
+		}
+		authoritarian_democrat = {
+			popularity = 40
+		}
+		paternal_autocrat = {
+			popularity = 28
+		}
+		national_populist = {
+			popularity = 0
+		}
+	}
+	
+	ruling_party = authoritarian_democrat
+	last_election = "1930.11.9"
+	election_frequency = 48
+	elections_allowed = no
+}
+
+add_ideas = { 
+	medium_economy
+	###Economy Law
+	limited_conscription
+	### Head of Government
+	FNG_Huang_Fu_hog_ade
+	### Foreign Minister
+  	FNG_Wu_Jinglian_for_ade
+	### Eco minister
+ 	FNG_Pan_Fu_eco_ade
+	### Security Minister
+  	FNG_Yuan_Jinkai_sec_pau
+	### Intel Minister
+	FNG_Zang_Shiyi_int_pau
+	###Backward Industry
+	FNG_Backward_Industry
+	###Unscrupulous_Governance
+	FNG_Unscrupulous_Governance
+	###Investment Dearth
+	FNG_Investment_Dearth
+	###Japanese Military Mission
+	FNG_Japanese_Military_Mission
+	###Preservation of the Xinhai Order
+	FNG_informal_empire_2
+}
+
+create_country_leader = {
+	name = "Zhang Zuolin"
+	desc = "ANTE_ZHANG_ZUOLIN_DESC"
+	picture = "Portrait_FNG_Zhang_Zuolin.tga"
+	expire = "1965.1.1"
+	ideology = authoritarian_democrat_subtype
+	traits = {}
+}
+
+set_country_flag = JAP_Help
+set_convoys = 30
+
+### Field Marshal
+create_field_marshal = { #Auto-Generated
+	name = "Zhang Zuolin"
+	picture = "Portrait_FNG_Zhang_Zuolin.tga"
+	traits = {
+		old_guard
+		offensive_doctrine
+	}
+	skill = 3
+}
+
+### Corps Commander
+
+create_corps_commander = { #Auto-Generated
+	name = "Zhang Xueliang"
+	picture = "Portrait_FNG_Zhang_Xueliang.tga"
+	traits = {
+
+	}
+	skill = 3
+}
+
+create_corps_commander = { #Auto-Generated
+	name = "Wu Junsheng"
+	picture = "Portrait_FNG_Wu_Junsheng.tga"
+	traits = {
+		old_guard
+		winter_specialist
+	}
+	skill = 3
+}
+
+create_corps_commander = { #Auto-Generated
+	name = "Zhang Zuoxiang"
+	picture = "Portrait_FNG_Zhang_Zuoxiang.tga"
+	traits = {
+		old_guard
+		trickster
+	}
+	skill = 3
+}
+
+create_corps_commander = { #Auto-Generated
+	name = "Wang Shuchang"
+	picture = "Portrait_FNG_Wang_Shuchang.tga"
+	traits = {
+	}
+	skill = 2
+}
+
+create_corps_commander = { #Auto-Generated
+	name = "Ma Zhanshan"
+	picture = "Portrait_FNG_Ma_Zhanshan.tga"
+	traits = {
+	trickster
+	}
+	skill = 2
+}
+
+create_corps_commander = { #Auto-Generated
+	name = "Shen Honglie"
+	picture = "Portrait_FNG_Shen_Honglie.tga"
+	traits = {
+	}
+	skill = 2
+}
+
+create_corps_commander = { #Auto-Generated
+	name = "Wan_Fulin"
+	picture = "Portrait_FNG_Wan_Fulin.tga"
+	traits = {
+	}
+	skill = 2
+}
+
+create_corps_commander = { #Auto-Generated
+	name = "Yang_Yuting"
+	picture = "Portrait_FNG_Yang_Yuting.tga"
+	traits = {
+	}
+	skill = 2
+}
+
+create_corps_commander = { #Auto-Generated
+	name = "Zang Shiyi"
+	picture = "Portrait_FNG_Zang_Shiyi.tga"
+	traits = {
+	}
+	skill = 2
+}
+
+create_corps_commander = { #Auto-Generated
+	name = "Zhang Haipeng"
+	picture = "Portrait_FNG_Zhang_Haipeng.tga"
+	traits = {
+	}
+	skill = 2
+}
+
+create_corps_commander = { #Auto-Generated
+	name = "Tang Yulin"
+	picture = "Portrait_FNG_Tang_Yulin.tga"
+	traits = {
+	}
+	skill = 2
+}
+
+### Navy Leader
+
+
+create_navy_leader = { #Auto-Generated
+	name = "Yin Tsuo-chien"
+	picture = "Portrait_FNG_Yin_Ysuo_chien.tga"
+	traits = {
+	}
+	skill = 1
+}

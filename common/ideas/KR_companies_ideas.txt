@@ -1,0 +1,13 @@
+ideas = {
+
+##########
+# General
+##########
+industrial_concern = {
+	designer = yes
+		
+
+
+}
+
+}

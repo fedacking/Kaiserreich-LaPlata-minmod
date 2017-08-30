@@ -1,0 +1,1998 @@
+###########################
+# South Africa Focus Tree
+###########################
+
+focus_tree = {
+	id = SAF_focus
+
+	country = {
+		factor = 0
+		
+		modifier = {
+			add = 10
+			tag = SAF
+		}
+
+		modifier = {
+			add = 10
+			original_tag = SAF
+		}
+	}
+	
+	reset_on_civilwar = no
+	default = no
+
+	
+focus = {
+		id = SAF_crisis
+		icon = GFX_goal_generic_improve_relations
+		x = 5
+		y = 0
+		cost = 10
+		available = { 
+			has_civil_war = no
+			has_country_flag = SAF_BLACK_MONDAY_FLAG
+		}
+
+		bypass = { }
+		prerequisite = { }
+		
+		ai_will_do = {
+			factor = 10
+		}
+		
+		completion_reward = {
+			country_event = { id = SAF.2 }
+		}
+	}
+
+focus = {
+		id = SAF_representation_of_natives
+		icon = GFX_goal_generic_improve_relations
+		x = -3
+		y = 1
+		relative_position_id = SAF_crisis
+
+		cost = 10
+		available = { has_civil_war = no }
+		bypass = { }
+		prerequisite = { focus = SAF_crisis }
+		
+		ai_will_do = {
+			factor = 10
+		}
+		
+		completion_reward = {
+			custom_effect_tooltip = SAF_representation_of_natives_tt
+			hidden_effect = {
+				if = {
+					limit = {
+						SAF = {
+							OR = {
+								has_country_flag = SAF_NP_ALONE
+								has_country_flag = SAF_NP_LABOUR
+							}
+						}
+					}
+					country_event = { id = SAF.5 }
+				}
+				if = {
+					limit = {
+						SAF = {
+							has_country_flag = SAF_NP_UNITED
+						}
+					}
+					country_event = { id = SAF.6 }
+				}
+			}
+		}
+	}	
+	
+focus = {
+		id = SAF_protectorates
+		icon = GFX_goal_generic_national_unity
+		x = 0
+		y = 1
+		relative_position_id = SAF_representation_of_natives
+
+		cost = 10
+		available = { has_civil_war = no }
+		bypass = { }
+		prerequisite = { focus = SAF_representation_of_natives }
+		
+		ai_will_do = {
+			factor = 8
+		}	
+			
+		completion_reward = {
+			add_state_core = 542
+			add_state_core = 545
+			country_event = { id = SAF.8 }
+		}		
+	}	
+	
+focus = {
+		id = SAF_paramount_chiefs
+		icon = GFX_goal_molotov_ribbentrop_pact
+		x = -2
+		y = 2
+		relative_position_id = SAF_representation_of_natives
+
+		cost = 10
+		available = {
+			has_civil_war = no
+			has_country_flag = SAF_PARAMOUNT_CHIEFS
+		}
+		bypass = { }
+		prerequisite = { focus = SAF_protectorates }
+		mutually_exclusive = { focus = SAF_nuweveld }		
+		
+		ai_will_do = {
+			factor = 5
+			modifier = {
+				factor = 10
+				has_country_flag = SAF_NP_UNITED
+			}
+		}	
+		
+		completion_reward = {
+			add_ideas = paramount_chiefs
+			country_event = { id = SAF.10 }
+		}		
+	}
+
+focus = {
+		id = SAF_personal_forces
+		icon = GFX_goal_generic_small_arms
+		x = -2
+		y = 3
+		relative_position_id = SAF_representation_of_natives
+
+		cost = 10
+		available = { has_civil_war = no }
+		bypass = { }
+		prerequisite = { focus = SAF_paramount_chiefs }
+		
+		ai_will_do = {
+			factor = 3
+		}	
+		
+		completion_reward = {
+			add_ideas = chief_personal_forces
+		}		
+	}
+
+focus = {
+		id = SAF_askari
+		icon = GFX_goal_generic_special_forces
+		x = -2
+		y = 4
+		relative_position_id = SAF_representation_of_natives
+
+		cost = 10
+		available = { has_civil_war = no }
+		bypass = { }
+		prerequisite = { focus = SAF_personal_forces }
+		
+		ai_will_do = {
+			factor = 3
+		}
+		
+		completion_reward = {
+			add_ideas = askari_kommando
+		}		
+	}
+
+focus = {
+		id = SAF_nuweveld
+		icon = GFX_goal_tfv_saf_support_ossebrandwag
+		x = 2
+		y = 2
+		relative_position_id = SAF_representation_of_natives
+
+		cost = 10
+		available = { 
+			has_civil_war = no
+			has_country_flag = SAF_NUWEVELD
+		}
+		bypass = { }
+		prerequisite = { focus = SAF_protectorates }
+		mutually_exclusive = { focus = SAF_paramount_chiefs }		
+		
+		ai_will_do = {
+			factor = 8
+		}	
+		completion_reward = {
+			add_ideas = nuweveld_idea
+			542 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 3
+					instant_build = yes
+				}
+			}
+			545 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_political_power = -50 # Unhappy locals
+		}		
+	}	
+	
+focus = {
+		id = SAF_native_rights
+		icon = GFX_goal_generic_forceful_treaty
+		x = 2
+		y = 3
+		relative_position_id = SAF_representation_of_natives
+
+		cost = 10
+		available = { has_civil_war = no }
+		bypass = { }
+		prerequisite = { focus = SAF_nuweveld }
+		
+		ai_will_do = {
+			factor = 5
+		}	
+		completion_reward = {
+			country_event = { id = SAF.11 }
+		}		
+	}
+	
+focus = { # Dam
+		id = SAF_gesuiwerde_infrastructure
+		icon = GFX_goal_generic_production2
+		x = 2
+		y = 5
+		relative_position_id = SAF_representation_of_natives
+
+		cost = 10
+		available = { has_civil_war = no }
+		bypass = { }
+		prerequisite = { focus = SAF_native_rights }
+		
+		ai_will_do = {
+			factor = 3
+		}	
+		completion_reward = {
+			542 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			545 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_political_power = -25 #unhappy locals
+		}		
+	}
+
+focus = {
+		id = SAF_gesuiwerde_mines
+		icon = GFX_all_resource
+		x = 1
+		y = 4
+		relative_position_id = SAF_representation_of_natives
+
+		cost = 10
+		available = { has_civil_war = no }
+		bypass = { }
+		prerequisite = { focus = SAF_native_rights }
+		
+		ai_will_do = {
+			factor = 3
+		}	
+		completion_reward = {
+			add_resource = {
+				type = steel
+				amount = 15
+				state = 275
+			}
+			add_resource = {
+				type = chromium
+				amount = 28
+				state = 275
+			}
+			275 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			add_political_power = -25 #unhappy locals
+		}		
+	}
+
+focus = {
+		id = SAF_gesuiwerde_steelworks
+		icon = GFX_goal_steel
+		x = 3
+		y = 4
+		relative_position_id = SAF_representation_of_natives
+
+		cost = 10
+		available = { has_civil_war = no }
+		bypass = { }
+		prerequisite = { focus = SAF_native_rights }
+		
+		ai_will_do = {
+			factor = 3
+		}	
+		completion_reward = {
+			add_resource = {
+				type = steel
+				amount = 15
+				state = 275
+			}
+			275 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_political_power = -25 #unhappy locals
+		}		
+	}
+
+focus = {
+		id = SAF_gesuiwerde_dam
+		icon = GFX_goal_generic_production2
+		x = 2
+		y = 6
+		relative_position_id = SAF_representation_of_natives
+
+		cost = 10
+		available = { has_civil_war = no }
+		bypass = { }
+		prerequisite = { focus = SAF_gesuiwerde_infrastructure }
+		
+		ai_will_do = {
+			factor = 3
+		}	
+		completion_reward = {
+			add_resource = {
+				type = steel
+				amount = 12
+				state = 545
+			}
+			545 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			add_political_power = -25 #unhappy locals
+		}		
+	}
+
+focus = {
+		id = SAF_national_recovery_plan
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 4
+		y = 1
+		relative_position_id = SAF_crisis
+
+		cost = 10
+		available = { has_civil_war = no }
+		bypass = { }
+		prerequisite = { focus = SAF_crisis }
+		
+		ai_will_do = {
+			factor = 8
+		}	
+		completion_reward = {
+			add_tech_bonus = {
+				name = construction_tech_bonus
+				bonus = 0.5
+				uses = 2
+				category = construction_tech
+			}
+			country_event = { id = SAF.9 }
+			
+		}		
+	}
+
+focus = {
+		id = SAF_industrialization
+		icon = GFX_goal_generic_construct_civ_factory
+		x = -2
+		y = 1
+		relative_position_id = SAF_national_recovery_plan
+
+		cost = 10
+		available = { 
+			has_civil_war = no
+			has_country_flag =  SAF_INDUSTRIALIZE
+		}
+		bypass = { }
+		prerequisite = { focus = SAF_national_recovery_plan }
+		mutually_exclusive = { focus = SAF_detente focus = SAF_work_programs }
+		
+		ai_will_do = {
+			factor = 3
+			modifier = {
+				factor = 5
+				has_country_flag = SAF_NP_ALONE
+			}
+		}	
+		completion_reward = {
+			add_national_unity = 0.05
+			add_ideas = SAF_industry
+			add_political_power = -25 # Unhappy dominionist
+		}		
+	}
+
+focus = {
+		id = SAF_witwatersrand
+		icon = GFX_goal_generic_construct_civ_factory
+		x = -2
+		y = 2
+		relative_position_id = SAF_national_recovery_plan
+
+		cost = 10
+		available = { has_civil_war = no }
+		bypass = { }
+		prerequisite = { focus = SAF_industrialization }
+		
+		ai_will_do = {
+			factor = 3	
+		}
+		
+		completion_reward = {
+			275 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+			if = {
+				limit = { has_idea = SAF_black_monday }
+				swap_ideas = {
+					remove_idea = SAF_black_monday
+					add_idea = SAF_black_monday_minor_recovery
+				}
+			}
+		}		
+	}
+
+focus = {
+		id = SAF_new_mines
+		icon = GFX_goal_generic_construction2
+		x = -2
+		y = 3
+		relative_position_id = SAF_national_recovery_plan
+
+		cost = 10
+		available = { has_civil_war = no }
+		bypass = { }
+		prerequisite = { focus = SAF_witwatersrand }
+		
+		ai_will_do = {
+			factor = 3
+		}	
+		completion_reward = {
+			275 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			719 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			if = {
+				limit = { has_idea = SAF_black_monday_minor_recovery }
+				swap_ideas = {
+					remove_idea = SAF_black_monday_minor_recovery
+					add_idea = SAF_black_monday_major_recovery
+				}
+			}
+			add_ideas = SAF_open_new_mines
+			add_political_power = -25 # Unhappy dominionist
+		}		
+	}
+
+focus = {
+		id = SAF_complete_industrialisation
+		icon = GFX_goal_generic_construct_civ_factory
+		x = -2
+		y = 4
+		relative_position_id = SAF_national_recovery_plan
+
+		cost = 10
+		available = { has_civil_war = no }
+		bypass = { }
+		prerequisite = { focus = SAF_new_mines }
+		
+		ai_will_do = {
+			factor = 3
+		}	
+		completion_reward = {
+			275 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			681 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			719 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			if = {
+				limit = { has_idea = SAF_black_monday_major_recovery }
+				remove_ideas = SAF_black_monday_major_recovery
+			}
+			add_political_power = -50 # Unhappy dominionist
+		}		
+	}
+
+focus = {
+		id = SAF_detente
+		icon = GFX_goal_generic_intelligence_exchange
+		x = 0
+		y = 1
+		relative_position_id = SAF_national_recovery_plan
+
+		cost = 10
+		available = { 
+			has_civil_war = no
+			has_country_flag =  SAF_LIBERALIZE
+		}
+		bypass = { }
+		prerequisite = { focus = SAF_national_recovery_plan }
+		mutually_exclusive = { focus = SAF_industrialization focus = SAF_work_programs }
+		
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 5
+				has_country_flag = SAF_NP_UNITED
+			}
+		}	
+		completion_reward = {
+			add_national_unity = 0.05
+			add_ideas = SAF_open_borders
+		}		
+	}
+
+focus = {
+		id = SAF_new_docks
+		icon = GFX_goal_generic_construct_naval_dockyard
+		x = 0
+		y = 2
+		relative_position_id = SAF_national_recovery_plan
+
+		cost = 10
+		available = { has_civil_war = no }
+		bypass = { }
+		prerequisite = { focus = SAF_detente }
+		
+		ai_will_do = {
+			factor = 3
+		}	
+		completion_reward = {
+			681 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			719 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			719 = {
+				add_building_construction = {
+					type = naval_base
+					level = 2
+					province = 1468
+					instant_build = yes
+				}
+			}
+			719 = {
+				add_building_construction = {
+					type = naval_base
+					level = 2
+					province = 4696
+					instant_build = yes
+				}
+			}
+			if = {
+				limit = { has_idea = SAF_black_monday }
+				swap_ideas = {
+					remove_idea = SAF_black_monday
+					add_idea = SAF_black_monday_minor_recovery
+				}
+			}
+		}		
+	}
+
+focus = {
+		id = SAF_Kimberley_mines
+		icon = GFX_goal_generic_construction2
+		x = 0
+		y = 3
+		relative_position_id = SAF_national_recovery_plan
+
+		cost = 10
+		available = { has_civil_war = no }
+		bypass = { }
+		prerequisite = { focus = SAF_new_docks }
+		
+		ai_will_do = {
+			factor = 3
+		}	
+		completion_reward = {
+			275 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			681 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			719 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			if = {
+				limit = { has_idea = SAF_black_monday_minor_recovery }
+				swap_ideas = {
+					remove_idea = SAF_black_monday_minor_recovery
+					add_idea = SAF_black_monday_major_recovery
+				}
+			}
+			add_ideas = SAF_open_new_mines
+			add_political_power = -25 # Unhappy Boers
+		}		
+	}
+
+focus = {
+		id = SAF_complete_detente
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 0
+		y = 4
+		relative_position_id = SAF_national_recovery_plan
+
+		cost = 10
+		available = { has_civil_war = no }
+		bypass = { }
+		prerequisite = { focus = SAF_Kimberley_mines }
+		
+		ai_will_do = {
+			factor = 3
+		}	
+		completion_reward = {
+			719 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			add_tech_bonus = {
+				name = construction_tech_bonus
+				bonus = 0.5
+				uses = 1
+				category = electronics
+			}
+			if = {
+				limit = { has_idea = SAF_black_monday_major_recovery }
+				remove_ideas = SAF_black_monday_major_recovery
+			}
+			add_political_power = -25 # Unhappy boers
+		}		
+	}
+
+focus = {
+		id = SAF_work_programs
+		icon = GFX_goal_generic_construct_civilian
+		x = 2
+		y = 1
+		relative_position_id = SAF_national_recovery_plan
+
+		cost = 10
+		available = { 
+			has_civil_war = no
+			has_country_flag =  SAF_WORK_PROGRAMS
+		}
+		bypass = { }
+		prerequisite = { focus = SAF_national_recovery_plan }
+		mutually_exclusive = { focus = SAF_industrialization focus = SAF_detente }
+		
+		ai_will_do = {
+			factor = 8
+		}	
+		completion_reward = {
+			add_national_unity = 0.10
+			add_ideas = work_programs_idea
+			add_political_power = 25
+		}		
+	}
+
+focus = {
+		id = SAF_new_roads
+		icon = GFX_goal_generic_construct_infrastructure
+		x = 2
+		y = 2
+		relative_position_id = SAF_national_recovery_plan
+
+		cost = 10
+		available = { has_civil_war = no }
+		bypass = { }
+		prerequisite = { focus = SAF_work_programs }
+		
+		ai_will_do = {
+			factor = 3
+		}	
+		completion_reward = {
+			719 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+			275 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+			681 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+			if = {
+				limit = { has_idea = SAF_black_monday }
+				swap_ideas = {
+					remove_idea = SAF_black_monday
+					add_idea = SAF_black_monday_minor_recovery
+				}
+			}
+		}		
+	}	
+	
+	
+focus = {
+		id = SAF_orange_river_mines
+		icon = GFX_goal_generic_construction2
+		x = 2
+		y = 3
+		relative_position_id = SAF_national_recovery_plan
+
+		cost = 10
+		available = { has_civil_war = no }
+		bypass = { }
+		prerequisite = { focus = SAF_new_roads }
+		
+		ai_will_do = {
+			factor = 3
+		}	
+		completion_reward = {
+			719 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			if = {
+				limit = { has_idea = SAF_black_monday_minor_recovery }
+				swap_ideas = {
+					remove_idea = SAF_black_monday_minor_recovery
+					add_idea = SAF_black_monday_major_recovery
+				}
+			}
+			add_ideas = SAF_open_new_mines
+		}		
+	}
+
+focus = {
+		id = SAF_complete_work_programs
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 2
+		y = 4
+		relative_position_id = SAF_national_recovery_plan
+
+		cost = 10
+		available = { has_civil_war = no }
+		bypass = { }
+		prerequisite = { focus = SAF_orange_river_mines }
+		
+		ai_will_do = {
+			factor = 3
+		}	
+		completion_reward = {
+			275 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			if = {
+				limit = { has_idea = SAF_black_monday_major_recovery }
+				remove_ideas = SAF_black_monday_major_recovery
+			}
+			add_political_power = 25
+		}		
+	}
+
+focus = {
+		id = SAF_extra_slot
+		icon = GFX_focus_research
+		x = 0
+		y = 5
+		relative_position_id = SAF_national_recovery_plan
+
+		cost = 10
+		available = { has_civil_war = no }
+		bypass = { }
+		prerequisite = { focus = SAF_complete_industrialisation focus = SAF_complete_detente focus = SAF_complete_work_programs }
+		
+		ai_will_do = {
+			factor = 10
+		}	
+		completion_reward = {
+			add_research_slot = 1
+		}		
+	}
+
+### Military, Navy and Air. Heavily based on the Vanilla tree with tweaks relevant to the divergence ###
+
+	focus = {
+		id = SAF_special_service
+		icon = GFX_goal_generic_army_doctrines
+		available = { 	
+			has_civil_war = no
+			has_country_flag = SAF_BLACK_MONDAY_FLAG
+		}
+
+		x = 14
+		y = 0
+		cost = 10
+		completion_reward = {
+			army_experience = 10
+			add_tech_bonus = {
+				name = land_doc_bonus
+				bonus = 0.5
+				uses = 1
+				category = land_doctrine
+			}
+		}
+	}
+
+	focus = {
+		id = SAF_weltkrieg_relics
+		icon = GFX_goal_generic_small_arms
+		prerequisite = { focus = SAF_special_service }
+		x = -1
+		y = 1
+		relative_position_id = SAF_special_service
+
+		cost = 10
+		available = { has_civil_war = no }
+		completion_reward = {
+			add_tech_bonus = {
+				name = infantry_weapons_bonus
+				bonus = 0.5
+				uses = 2
+				category = infantry_weapons
+			}
+		}
+	}
+
+	focus = {
+		id = SAF_Q_corps
+		icon = GFX_goal_generic_army_motorized
+		prerequisite = { focus = SAF_special_service }
+		x = 1
+		y = 1
+		relative_position_id = SAF_special_service
+
+		cost = 10
+		available = { has_civil_war = no }
+		completion_reward = {
+			add_tech_bonus = {
+				name = SAF_q_services_corps
+				bonus = 0.5
+				uses = 2
+				technology = motorised_infantry
+				technology = tech_logistics_company
+				technology = tech_logistics_company2
+				technology = tech_logistics_company3
+				technology = tech_logistics_company4
+			}
+		}
+	}
+
+	focus = {
+		id = SAF_doctrine_effort
+		icon = GFX_goal_generic_military_sphere
+		prerequisite = { focus = SAF_special_service }
+		x = 0
+		y = 3
+		relative_position_id = SAF_special_service
+
+		cost = 10
+		available = { has_civil_war = no }
+		completion_reward = {
+			army_experience = 10
+			add_tech_bonus = {
+				name = land_doc_bonus
+				bonus = 0.5
+				uses = 1
+				category = land_doctrine
+			}
+		}
+	}
+
+	focus = {
+		id = SAF_weltkrieg_relics_2
+		icon = GFX_goal_generic_army_artillery
+		prerequisite = { focus = SAF_weltkrieg_relics }
+		x = -1
+		y = 2
+		relative_position_id = SAF_special_service
+
+		cost = 10
+		available = { has_civil_war = no }
+		completion_reward = {
+			add_tech_bonus = {
+				name = infantry_artillery_bonus
+				bonus = 0.5
+				uses = 1
+				category = artillery
+			}
+		}
+	}
+
+	focus = {
+		id = SAF_armor_effort
+		icon = GFX_goal_generic_army_tanks
+		prerequisite = { focus = SAF_Q_corps }
+		x = 1
+		y = 2
+		relative_position_id = SAF_special_service
+
+		cost = 10
+		available = { has_civil_war = no }
+		completion_reward = {
+			add_tech_bonus = {
+				name = armor_bonus
+				bonus = 0.5
+				uses = 2
+				category = armor
+			}
+		}
+	}
+
+	focus = {
+		id = SAF_doctrine_effort_2
+		icon = GFX_goal_generic_army_doctrines
+		prerequisite = { focus = SAF_doctrine_effort }
+		x = 0
+		y = 5
+		relative_position_id = SAF_special_service
+
+		cost = 10
+		available = { has_civil_war = no }
+		completion_reward = {
+			army_experience = 10
+			add_tech_bonus = {
+				name = land_doc_bonus
+				bonus = 0.5
+				uses = 1
+				category = land_doctrine
+			}
+		}
+	}	
+	
+	focus = {
+		id = SAF_special_forces
+		icon = GFX_goal_generic_special_forces
+		prerequisite = { focus = SAF_doctrine_effort }
+		x = 1
+		y = 4
+		relative_position_id = SAF_special_service
+
+		cost = 10
+		available = { has_civil_war = no }
+		completion_reward = {
+			add_tech_bonus = {
+				name = special_forces_bonus
+				bonus = 0.5
+				uses = 2
+				technology = paratroopers
+				technology = paratroopers2
+				technology = marines
+				technology = marines2
+				technology = tech_mountaineers
+				technology = tech_mountaineers2
+			}
+		}
+	}
+
+	focus = {
+		id = SAF_support_companies
+		icon = GFX_goal_generic_allies_build_infantry
+		prerequisite = { focus = SAF_doctrine_effort }
+		x = -1
+		y = 4
+		relative_position_id = SAF_special_service
+
+		cost = 10
+		available = { has_civil_war = no }
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 2
+				category = support_tech
+			}
+		}
+	}	
+	
+	focus = {
+		id = SAF_commit_to_the_five_year_plan_mod
+		icon = GFX_goal_generic_build_airforce
+		x = 18
+		y = 0	
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = { 
+			has_civil_war = no
+			has_country_flag = SAF_BLACK_MONDAY_FLAG
+		}
+		
+		bypass = { }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {
+			air_experience = 25
+			random_state = {				
+				limit = {
+					has_state_flag = SAF_commit_to_the_five_year_plan_AB
+				}
+				add_building_construction = {
+					type = air_base
+					level = 2
+					instant_build = yes
+				}
+			}
+			add_tech_bonus = {
+				name = SAF_commit_to_the_five_year_plan
+				bonus = 0.5
+				uses = 1
+				category = air_doctrine
+			}
+		}
+
+		completion_reward = {
+			air_experience = 25
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = air_base
+						size > 1
+					}
+				}
+				add_building_construction = {
+					type = air_base
+					level = 2
+					instant_build = yes
+				}
+				set_state_flag = SAF_commit_to_the_five_year_plan_AB
+			}
+			add_tech_bonus = {
+				name = SAF_commit_to_the_five_year_plan
+				bonus = 0.5
+				uses = 1
+				category = air_doctrine
+			}
+		}
+	}
+
+	focus = {
+		id = SAF_improve_the_hawker_hartbees_mod
+		icon = GFX_goal_generic_air_fighter
+		prerequisite = { focus = SAF_commit_to_the_five_year_plan_mod }
+		mutually_exclusive = { focus = SAF_replace_the_blenheim_mod }
+		x = -1
+		y = 1
+		relative_position_id = SAF_commit_to_the_five_year_plan_mod
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 0.4
+		}
+
+		available = { has_civil_war = no }
+		bypass = { }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		complete_tooltip = {
+
+		}
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = SAF_improve_the_hawker_hartbees
+				bonus = 0.5
+				uses = 1
+				technology = early_fighter
+				technology = fighter1
+				technology = fighter2
+				technology = fighter3
+			}
+		}
+	}
+
+	focus = {
+		id = SAF_replace_the_blenheim_mod
+		icon = GFX_goal_generic_occupy_start_war
+		prerequisite = { focus = SAF_commit_to_the_five_year_plan_mod }
+		mutually_exclusive = { focus = SAF_improve_the_hawker_hartbees_mod }
+		x = 1
+		y = 1
+		relative_position_id = SAF_commit_to_the_five_year_plan_mod
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 0.6
+		}
+
+		available = { has_civil_war = no }
+		bypass = { }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		complete_tooltip = {
+
+		}
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = SAF_replace_the_blenheim
+				bonus = 0.5
+				uses = 1
+				category = tactical_bomber
+				category = cas_bomber
+				category = naval_bomber
+			}
+		}
+	}
+
+	focus = {
+		id = SAF_perfect_the_cab_rank_technique_mod
+		icon = GFX_goal_generic_air_doctrine
+		prerequisite = { focus = SAF_improve_the_hawker_hartbees_mod focus = SAF_replace_the_blenheim_mod }
+		x = 0
+		y = 2
+		relative_position_id = SAF_commit_to_the_five_year_plan_mod
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = { has_civil_war = no }
+		bypass = { }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		complete_tooltip = {
+
+		}
+
+		completion_reward = {
+			air_experience = 25
+			add_tech_bonus = {
+				name = SAF_perfect_the_cab_rank_technique
+				bonus = 0.5
+				uses = 1
+				category = cat_battlefield_support
+			}
+		}
+	}
+
+	focus = {
+		id = SAF_desert_air_force_mod
+		icon = GFX_goal_generic_CAS
+		prerequisite = { focus = SAF_perfect_the_cab_rank_technique_mod }
+		x = -1
+		y = 3
+		relative_position_id = SAF_commit_to_the_five_year_plan_mod
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = { has_civil_war = no }
+		bypass = { }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		complete_tooltip = {
+
+		}
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = SAF_desert_air_force
+				bonus = 0.5
+				uses = 1
+				category = cas_bomber
+			}
+		}
+	}
+
+	focus = {
+		id = SAF_secure_the_cape_sea_route_mod
+		icon = GFX_goal_generic_air_bomber
+		prerequisite = { focus = SAF_perfect_the_cab_rank_technique_mod focus = SAF_replace_the_blenheim_mod }
+		x = 1
+		y = 3
+		relative_position_id = SAF_commit_to_the_five_year_plan_mod
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = { has_civil_war = no }
+		bypass = { }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		complete_tooltip = {
+
+		}
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = SAF_secure_the_cape_sea_route
+				bonus = 0.5
+				uses = 1
+				category = naval_bomber
+			}
+		}
+	}
+
+	focus = {
+		id = SAF_retain_experienced_pilots_mod
+		icon = GFX_goal_generic_air_doctrine
+		prerequisite = { focus = SAF_desert_air_force_mod focus = SAF_secure_the_cape_sea_route_mod }
+		x = 0
+		y = 4
+		relative_position_id = SAF_commit_to_the_five_year_plan_mod
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = { has_civil_war = no }
+		bypass = { }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		complete_tooltip = {
+
+		}
+
+		completion_reward = {
+			air_experience = 35
+			add_tech_bonus = {
+				name = SAF_retain_experienced_pilots
+				bonus = 0.5
+				uses = 1
+				category = air_doctrine
+			}
+		}
+	}
+
+	focus = {
+		id = SAF_seaward_defence_force_mod
+		icon = GFX_goal_generic_navy_doctrines_tactics
+		x = 22
+		y = 0		
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = { 
+			has_civil_war = no
+			has_country_flag = SAF_BLACK_MONDAY_FLAG
+		}
+
+		bypass = { }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {
+			navy_experience = 25
+			random_state = {
+				limit = {
+					has_state_flag = SAF_seaward_defence_force_DY
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+
+		completion_reward = {
+			navy_experience = 25
+			random_owned_controlled_state = {
+				prioritize = { 681 719 }
+				limit = {
+					is_coastal = yes
+					free_building_slots = {
+						building = dockyard
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+				set_state_flag = SAF_seaward_defence_force_DY
+			}			
+			add_tech_bonus = {
+				name = SAF_seaward_defence_force
+				bonus = 0.5
+				uses = 1
+				category = naval_doctrine
+			}
+		}
+	}
+
+	focus = {
+		id = SAF_protect_the_trade_mod
+		icon = GFX_goal_generic_navy_cruiser
+		prerequisite = { focus = SAF_seaward_defence_force_mod }
+		mutually_exclusive = { focus = SAF_disrupt_the_trade_mod }
+		x = -1
+		y = 1
+		relative_position_id = SAF_seaward_defence_force_mod
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 0.8
+		}
+
+		available = { has_civil_war = no }
+		
+		bypass = { }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		complete_tooltip = {
+
+		}
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = SAF_protect_the_trade
+				bonus = 0.5
+				uses = 1
+				category = convoy_defense_tree
+			}
+		}
+	}
+
+	focus = {
+		id = SAF_disrupt_the_trade_mod
+		icon = GFX_goal_generic_occupy_states_coastal
+		prerequisite = { focus = SAF_seaward_defence_force_mod }
+		mutually_exclusive = { focus = SAF_protect_the_trade_mod }
+		x = 1
+		y = 1
+		relative_position_id = SAF_seaward_defence_force_mod
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 0.2
+			modifier = {
+				has_war_with = ENG
+				factor = 10
+			}
+		}
+
+		available = { has_civil_war = no }
+		
+		bypass = { }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		complete_tooltip = {
+
+		}
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = SAF_disrupt_the_trade
+				bonus = 0.5
+				uses = 1
+				category = cat_trade_interdiction
+			}
+		}
+	}
+
+	focus = {
+		id = SAF_expand_the_simons_town_base_mod
+		icon = GFX_goal_generic_construct_naval_dockyard
+		prerequisite = { focus = SAF_protect_the_trade_mod focus = SAF_disrupt_the_trade_mod }
+		x = 0
+		y = 2
+		relative_position_id = SAF_seaward_defence_force_mod
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = { has_civil_war = no }
+		
+		bypass = { }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {
+			random_state = {
+				limit = {
+					has_state_flag = SAF_expand_the_simons_town_base_DY
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 3
+					instant_build = yes
+				}
+			}
+			random_state = {
+				limit = {
+					has_state_flag = SAF_expand_the_simons_town_base_NB
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = coastal_bunker
+					province = 12589
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+
+		completion_reward = {
+			random_owned_controlled_state = {
+				prioritize = { 681 }
+				limit = {
+					is_coastal = yes
+					free_building_slots = {
+						building = dockyard
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+				set_state_flag = SAF_expand_the_simons_town_base_DY
+			}
+			if = {
+				limit = { 681 = { is_controlled_by = ROOT } }
+				681 = {
+					add_building_construction = {
+						type = coastal_bunker
+						province = 12589
+						level = 2
+						instant_build = yes
+					}
+					set_state_flag = SAF_expand_the_simons_town_base_NB
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = SAF_anti_uboat_tactics
+		icon = GFX_goal_generic_navy_anti_submarine
+		prerequisite = { focus = SAF_expand_the_simons_town_base_mod }
+		x = -1
+		y = 3
+		relative_position_id = SAF_seaward_defence_force_mod
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = { has_civil_war = no }
+		bypass = { }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		complete_tooltip = {
+
+		}
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = SAF_anti_submarine_tactics
+				bonus = 0.5
+				ahead_reduction = 1
+				uses = 1
+				category = dd_tech
+			}
+		}
+	}
+
+	focus = {
+		id = SAF_uboat_warfare
+		icon = GFX_goal_generic_navy_submarine
+		prerequisite = { focus = SAF_expand_the_simons_town_base_mod }
+		x = 1
+		y = 3
+		relative_position_id = SAF_seaward_defence_force_mod
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				has_war_with = ENG
+				factor = 3
+			}
+		}
+
+		available = { has_civil_war = no }
+		bypass = { }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		complete_tooltip = {
+
+		}
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = SAF_submarine_warfare
+				bonus = 0.5
+				ahead_reduction = 1
+				uses = 1
+				category = ss_tech
+			}
+		}
+	}
+
+	focus = {
+		id = SAF_prepare_overseas_offensive_mod
+		icon = GFX_goal_generic_navy_doctrines_tactics
+		prerequisite = { focus = SAF_anti_uboat_tactics }
+		mutually_exclusive = { focus = SAF_strengthen_the_cape_garrison_artillery_mod }
+		x = -1
+		y = 4
+		relative_position_id = SAF_seaward_defence_force_mod
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = { has_civil_war = no }
+		bypass = { }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		complete_tooltip = {
+
+		}
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = SAF_prepare_overseas_offensive
+				bonus = 0.5
+				uses = 1
+				category = convoy_defense_tree
+			}
+			add_tech_bonus = {
+				name = SAF_prepare_overseas_offensive
+				bonus = 0.5
+				uses = 1
+				category = marine_tech
+				category = tp_tech
+			}
+		}
+	}
+
+	focus = {
+		id = SAF_strengthen_the_cape_garrison_artillery_mod
+		icon = GFX_goal_generic_construct_military
+		prerequisite = { focus = SAF_uboat_warfare }
+		mutually_exclusive = { focus = SAF_prepare_overseas_offensive_mod }
+		x = 1
+		y = 4
+		relative_position_id = SAF_seaward_defence_force_mod
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = { has_civil_war = no }
+		bypass = { }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		complete_tooltip = {
+
+		}
+
+		completion_reward = {
+			every_owned_state = {
+				limit = {
+					is_controlled_by = ROOT
+					is_in_home_area = yes
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					province = {
+						all_provinces = yes
+						limit_to_coastal = yes
+					}
+					level = 3
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					province = {
+						all_provinces = yes							
+						limit_to_naval_base = yes
+					}
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = SAF_1938_elections
+		icon = GFX_goal_generic_national_unity
+		x = 10
+		y = 8
+		cost = 10
+		available = { 
+			has_civil_war = no
+			has_country_flag = SAF_1938_ELECTIONS
+		}
+
+		bypass = { has_country_flag = SAF_1938_ELECTIONS }
+		prerequisite = { }
+		
+		ai_will_do = {
+			factor = 0
+		}
+		
+		completion_reward = {
+			custom_effect_tooltip = SAF_1938_elections_tt
+		}
+	}
+	
+	focus = {
+		id = SAF_nationalist_reform
+		icon = GFX_goal_tfv_saf_support_german_coup
+		x = -3
+		y = 1
+		relative_position_id = SAF_1938_elections
+		cost = 10
+		available = { 
+			has_civil_war = no
+			has_country_flag = SAF_NAT_WIN
+		}
+
+		bypass = { }
+		prerequisite = { focus = SAF_1938_elections }
+		
+		ai_will_do = {
+			factor = 100 # Can we do it ? Then we must, this is absolutely urgent once unlocked
+		}
+		
+		completion_reward = {
+			country_event = { id = SACW.3 }
+		}
+	}
+
+	focus = {
+		id = SAF_dominionist_reform
+		icon = GFX_goal_tfv_saf_secure_interests_in_africa
+		x = 3
+		y = 1
+		relative_position_id = SAF_1938_elections
+		cost = 10
+		available = { 
+			has_civil_war = no
+			has_country_flag = SAF_DOM_WIN
+		}
+
+		bypass = { }
+		prerequisite = { focus =  SAF_1938_elections }
+		
+		ai_will_do = {
+			factor = 100 # Can we do it ? Then we must, this is absolutely urgent once unlocked
+		}
+		
+		completion_reward = {
+			country_event = { id = SACW.4 }
+		}
+	}
+
+	focus = {
+		id = SAF_implement_apartheid
+		icon = GFX_goal_tfv_saf_support_ossebrandwag
+		x = -3
+		y = 2
+		relative_position_id = SAF_1938_elections
+		cost = 10
+		available = { 
+			has_civil_war = no
+			has_country_flag = SAF_CALM_RETURNS
+			has_country_flag = SAF_NAT_SACW_WON
+		}
+		mutually_exclusive = { focus = SAF_implement_federation }
+
+		bypass = { }
+		prerequisite = { focus = SAF_nationalist_reform focus = SAF_dominionist_reform }
+		
+		ai_will_do = {
+			factor = 100 # Can we do it ? Then we must, this is absolutely urgent once unlocked
+		}
+		
+		completion_reward = {
+			add_political_power = 100 # Total control of the country, people who are against it don't get to be angry
+			if = {
+				limit = { has_idea = racial_segregation }
+				swap_ideas = {
+					remove_idea = racial_segregation
+					add_idea = racial_segregation_apartheid
+				}
+			}			
+		}
+	}
+	
+    focus = {
+		id = SAF_join_mitteleuropa
+		icon = GFX_goal_germany
+		cost = 10.00
+		available = { 
+			SAF = {
+				NOT = {
+					is_in_faction_with = GER
+					is_in_faction_with = CAN
+				}
+			}	
+		}
+		bypass = { SAF = {is_in_faction_with = GER} }		
+		prerequisite = {
+			focus = SAF_implement_apartheid
+		}
+		x = -3
+		y = 3
+		relative_position_id = SAF_implement_apartheid
+		completion_reward = {
+			GER = { country_event = {id = SAF.12 days = 3 }}
+		}
+	}
+	
+	focus = {
+		id = SAF_implement_federation
+		icon = GFX_goal_government_icon
+		x = 3
+		y = 2
+		relative_position_id = SAF_1938_elections
+		cost = 10
+		available = { 
+			has_civil_war = no
+			has_country_flag = SAF_CALM_RETURNS
+			has_country_flag = SAF_DOM_SACW_WON
+		}
+		mutually_exclusive = { focus = SAF_implement_apartheid }
+
+		bypass = { }
+		prerequisite = { focus = SAF_nationalist_reform focus = SAF_dominionist_reform }
+		
+		ai_will_do = {
+			factor = 100 # Can we do it ? Then we must, this is absolutely urgent once unlocked
+		}
+		
+		completion_reward = {
+			add_political_power = 100 # Total control of the country, people who are against it don't get to be angry			
+		}
+	}	
+
+    focus = {
+		id = SAF_rejoin_entente
+		icon = GFX_goal_canada
+		cost = 10.00
+		available = { 
+			SAF = {
+				NOT = {
+					is_in_faction_with = GER
+					is_in_faction_with = CAN
+				}
+			}	
+		}
+		bypass = { SAF = {is_in_faction_with = CAN} }		
+		prerequisite = {
+			focus = SAF_implement_federation
+		}
+		x = 3
+		y = 3
+		relative_position_id = SAF_implement_federation
+		completion_reward = {
+			CAN = { country_event = {id = SAF.13 days = 3 }}
+		}
+	}
+}
